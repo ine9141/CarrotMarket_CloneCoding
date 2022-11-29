@@ -10,21 +10,56 @@
     map:cameraTargetLng="126.986"
     map:cameraZoom="10">
 
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
         <Button
-            android:id="@+id/textView"
+            android:id="@+id/dong_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="동네 이름"
             android:layout_gravity="left"
             android:gravity="center"
             android:textColor="@color/black"
-            android:textSize="20sp" />
+            android:textSize="20sp"
+            android:layout_alignParentLeft="true"/>
 
-    </LinearLayout>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true">
+
+            <Button
+                android:id="@+id/search"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="검색"
+                android:gravity="center"
+                android:textColor="@color/black"
+                android:textSize="20sp" />
+            <Button
+                android:id="@+id/menu"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="메뉴"
+                android:layout_gravity="right"
+                android:gravity="center"
+                android:textColor="@color/black"
+                android:textSize="20sp" />
+            <Button
+                android:id="@+id/notice"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="알림"
+                android:layout_gravity="right"
+                android:gravity="center"
+                android:textColor="@color/black"
+                android:textSize="20sp" />
+
+        </LinearLayout>
+
+    </RelativeLayout>
 
 
     <ScrollView
