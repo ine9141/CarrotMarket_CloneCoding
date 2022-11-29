@@ -10,13 +10,13 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Toast;
 
-public class MainActivity extends AppCompatActivity {
+public class around extends AppCompatActivity {
     Button home, life, around, chat, my;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.around);
 
         //상단 액션바 제거
         ActionBar actionBar = getSupportActionBar();
