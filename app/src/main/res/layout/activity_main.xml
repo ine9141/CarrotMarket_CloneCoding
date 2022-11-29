@@ -10,15 +10,21 @@
     map:cameraTargetLng="126.986"
     map:cameraZoom="10">
 
-
-    <TextView
-        android:id="@+id/textView"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:gravity="center"
-        android:text="상단 고정"
-        android:textColor="@color/black"
-        android:textSize="20sp" />
+        android:layout_height="wrap_content">
+
+        <Button
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="동네 이름"
+            android:layout_gravity="left"
+            android:gravity="center"
+            android:textColor="@color/black"
+            android:textSize="20sp" />
+
+    </LinearLayout>
 
 
     <ScrollView
@@ -68,6 +74,7 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:text="chat" />
+
         <Button
             android:id="@+id/my"
             android:layout_width="match_parent"
