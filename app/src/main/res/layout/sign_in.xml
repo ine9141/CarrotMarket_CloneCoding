@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="left"
+        android:layout_margin="10dp"
+        android:paddingTop="40dp"
+        android:textSize="25dp"
+        android:textColor="@color/black"
+        android:text="안녕하세요!\n휴대폰 번호로 가입해주세요." />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingLeft="10dp"
+        android:textColor="#2c2c2c"
+        android:text="휴대폰 번호는 안전하게 보관되며 이웃들에게 공개되지 않아요." />
+
+    <EditText
+        android:id="@+id/editTextNumberSigned2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingTop="20dp"
+        android:ems="20"
+        android:textColor="#cacaca"
+        android:text="휴대폰 번호(- 없이 숫자만 입력)"
+        android:inputType="numberSigned" />
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="20dp"
+        android:text="인증문자 받기" />
+
+</LinearLayout>
