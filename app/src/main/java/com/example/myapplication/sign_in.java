@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 
 import androidx.annotation.NonNull;
 
@@ -24,7 +25,7 @@ import java.util.concurrent.TimeUnit;
 
 public class sign_in extends Activity {
     Button button;
-
+    EditText phoneNum;
     private static final String TAG = "PhoneAuthActivity";
 
     // [START declare_auth]
@@ -38,6 +39,8 @@ public class sign_in extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         button = findViewById(R.id.button);
+        phoneNum = findViewById(R.id.phoneNum);
+
         super.onCreate(savedInstanceState);
         // [START initialize_auth]
         // Initialize Firebase Auth
@@ -90,6 +93,13 @@ public class sign_in extends Activity {
             }
         };
         // [END phone_auth_callbacks]
+
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //String phone =
+            }
+        });
 
 
     }
