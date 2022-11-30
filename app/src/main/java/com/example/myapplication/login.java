@@ -11,64 +11,24 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 public class login extends AppCompatActivity {
-    Button home, life, around, chat, my;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-
+        Button join;
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.around);
+        setContentView(R.layout.login);
 
         //상단 액션바 제거
         ActionBar actionBar = getSupportActionBar();
         actionBar.hide();
 
-        //하단 액션바
-        home = (Button) findViewById(R.id.home);
-        life = (Button) findViewById(R.id.life);
-        around = (Button) findViewById(R.id.around);
-        chat = (Button) findViewById(R.id.chat);
-        my = (Button) findViewById(R.id.my);
+        join = (Button) findViewById(R.id.join);
 
-        home.setOnClickListener(new View.OnClickListener() {
+        join.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(),home.class);
+                Intent intent = new Intent(getApplicationContext(),sign_in.class);
                 startActivity(intent);
             }
         });
-
-        life.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(),life.class);
-                startActivity(intent);
-            }
-        });
-
-        around.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(),around.class);
-                startActivity(intent);
-            }
-        });
-
-        chat.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(),chat.class);
-                startActivity(intent);
-            }
-        });
-
-        my.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(),my.class);
-                startActivity(intent);
-            }
-        });
-
-
     }
 }

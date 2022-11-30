@@ -36,16 +36,6 @@
         android:theme="@style/Theme.MyApplication"
         tools:targetApi="31">
         <activity
-            android:name=".login"
-            android:configChanges="orientation|keyboardHidden|screenSize"
-            android:exported="false"
-            android:label="@string/title_activity_login"
-            android:theme="@style/Theme.MyApplication.Fullscreen" />
-        <activity
-            android:name=".ui.login.LoginActivity"
-            android:exported="false"
-            android:label="@string/title_activity_login" />
-        <activity
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
@@ -69,6 +59,12 @@
         <activity
             android:name=".my"
             android:label="" />
+        <activity
+            android:name=".login"
+            android:label="" />
+        <activity
+            android:name=".sign_in"
+            android:label="" />
 
         <meta-data
             android:name="com.google.android.maps.v2.API_KEY"
@@ -76,3 +72,4 @@
     </application>
 
 </manifest>
+
