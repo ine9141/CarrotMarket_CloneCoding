@@ -25,7 +25,7 @@
         android:text="휴대폰 번호는 안전하게 보관되며 이웃들에게 공개되지 않아요." />
 
     <EditText
-        android:id="@+id/phoneNum"
+        android:id="@+id/idEdtPhoneNumber"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:paddingTop="20dp"
@@ -34,14 +34,14 @@
         android:inputType="numberSigned" />
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/idBtnGetOtp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:paddingTop="20dp"
         android:text="인증문자 받기" />
 
     <EditText
-        android:id="@+id/snsnum"
+        android:id="@+id/idEdtOtp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:paddingTop="20dp"
@@ -50,7 +50,7 @@
         android:inputType="numberSigned" />
 
     <Button
-        android:id="@+id/snsbtn"
+        android:id="@+id/idBtnVerify"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:paddingTop="20dp"
