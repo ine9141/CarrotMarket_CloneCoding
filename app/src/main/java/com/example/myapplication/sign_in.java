@@ -6,6 +6,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 
@@ -24,8 +25,8 @@ import com.google.firebase.auth.PhoneAuthProvider;
 import java.util.concurrent.TimeUnit;
 
 public class sign_in extends Activity {
-    Button button;
-    EditText phoneNum;
+    Button button, snsbtn;
+    EditText phoneNum, snsnum;
     private static final String TAG = "PhoneAuthActivity";
 
     // [START declare_auth]
@@ -40,13 +41,15 @@ public class sign_in extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         button = findViewById(R.id.button);
         phoneNum = findViewById(R.id.phoneNum);
+        snsbtn = findViewById(R.id.snsbtn);
+        snsnum = findViewById(R.id.snsnum);
 
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.sign_in);
         // [START initialize_auth]
         // Initialize Firebase Auth
         mAuth = FirebaseAuth.getInstance();
         // [END initialize_auth]
-
         // Initialize phone auth callbacks
         // [START phone_auth_callbacks]
         mCallbacks = new PhoneAuthProvider.OnVerificationStateChangedCallbacks() {
@@ -93,15 +96,24 @@ public class sign_in extends Activity {
             }
         };
         // [END phone_auth_callbacks]
-
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //String phone =
+                String phone = phoneNum.getText().toString().trim();
+
+                startPhoneNumberVerification(phone);
+
             }
         });
 
+        snsbtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String code = snsnum.getText().toString().trim();
 
+                verifyPhoneNumberWithCode(mVerificationId,code);
+            }
+        });
     }
 
     // [START on_start_check_user]
@@ -156,12 +168,14 @@ public class sign_in extends Activity {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
+                            Toast.makeText(sign_in.this, "sucess", Toast.LENGTH_SHORT).show();
                             // Sign in success, update UI with the signed-in user's information
                             Log.d(TAG, "signInWithCredential:success");
 
                             FirebaseUser user = task.getResult().getUser();
                             // Update UI
                         } else {
+                            Toast.makeText(sign_in.this, "fail", Toast.LENGTH_SHORT).show();
                             // Sign in failed, display a message and update the UI
                             Log.w(TAG, "signInWithCredential:failure", task.getException());
                             if (task.getException() instanceof FirebaseAuthInvalidCredentialsException) {
