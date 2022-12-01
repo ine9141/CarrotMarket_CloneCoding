@@ -30,10 +30,10 @@ public class sign_in extends AppCompatActivity {
 
     // variable for our text input
     // field for phone and OTP.
-    private EditText edtPhone, edtOTP;
+    private EditText edtPhone, edtOTP, idEdtOtp;
 
     // buttons for generating OTP and verifying OTP
-    private Button verifyOTPBtn, generateOTPBtn;
+    private Button verifyOTPBtn, generateOTPBtn, idBtnVerify;
 
     // string for storing our verification ID
     private String verificationId;
@@ -52,6 +52,8 @@ public class sign_in extends AppCompatActivity {
         edtOTP = findViewById(R.id.idEdtOtp);
         verifyOTPBtn = findViewById(R.id.idBtnVerify);
         generateOTPBtn = findViewById(R.id.idBtnGetOtp);
+        idEdtOtp = findViewById(R.id.idEdtOtp);
+        idBtnVerify = findViewById(R.id.idBtnVerify);
 
         // setting onclick listener for generate OTP button.
         generateOTPBtn.setOnClickListener(new View.OnClickListener() {
@@ -68,6 +70,8 @@ public class sign_in extends AppCompatActivity {
                     // send OTP method for getting OTP from Firebase.
                     String phone = "+1" + edtPhone.getText().toString();
                     sendVerificationCode(phone);
+                    idEdtOtp.setVisibility(View.VISIBLE);
+                    idBtnVerify.setVisibility(View.VISIBLE);
                 }
             }
         });
