@@ -36,6 +36,7 @@ public class chat extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(), chat_room_activity.class);
+                startActivity(intent);
             }
         });
 

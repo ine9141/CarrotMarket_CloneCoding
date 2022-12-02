@@ -1,61 +1,111 @@
 package com.example.myapplication.chat_room;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
 import android.os.Bundle;
-import android.os.Handler;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
 import com.example.myapplication.R;
+import com.google.firebase.database.ChildEventListener;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
+
+import org.w3c.dom.Text;
 
 import java.util.ArrayList;
-import java.util.Date;
+import java.util.List;
 
 public class chat_room_activity extends AppCompatActivity {
-    private ArrayList<Chat_DataItem> dataList;
-    private Chat_Adapter chat_adapter;
+
+    private RecyclerView mRecyclerView;
+    private RecyclerView.Adapter mAdapter;
+    private RecyclerView.LayoutManager mLayoutManager;
+    private List<Chat_Data> chatList;
+    private String nick = "nick1";
+
+    private EditText EditText_chat;
     private Button btn_send;
-    private EditText edit_msg;
-    private String msg;
+    private DatabaseReference myRef;
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_chat_room);
 
-        btn_send = (Button)findViewById(R.id.Btn_send);
-        edit_msg = (EditText) findViewById(R.id.Edit_msg);
-        RecyclerView recyclerView = findViewById(R.id.chat_recycler_view);
 
 
-        dataList = new ArrayList<>();
-        dataList.add(new Chat_DataItem("데모 2022년 12월 02일",null,chat_code.Chat_ViewType.CENTER_CONTENT));
-        dataList.add(new Chat_DataItem("안녕하세요","상대방",chat_code.Chat_ViewType.LEFT_CONTENT));
+        btn_send =findViewById(R.id.Btn_send);
+        EditText_chat = findViewById(R.id.Edit_msg);
 
         btn_send.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                msg = edit_msg.getText().toString();
-                dataList.add(new Chat_DataItem(msg,"ME",chat_code.Chat_ViewType.RIGHT_CONTENT));
+                String msg = EditText_chat.getText().toString();
+                if(msg != null){
+                    Chat_Data chat = new Chat_Data();
+                    chat.setName(nick);
+                    chat.setMsg(msg);
+                    myRef.push().setValue(chat);
+                }
+            }
+        });
 
-                new Handler().postDelayed(new Runnable() {
-                    @Override
-                    public void run() {
-                        chat_adapter = new Chat_Adapter(dataList);
-                        recyclerView.scrollToPosition(chat_adapter.getItemCount()-1);
-                    }
-                }, 200);
+        mRecyclerView = findViewById(R.id.chat_recycler_view);
+        mRecyclerView.setHasFixedSize(true);
+        mLayoutManager = new LinearLayoutManager(this);
+        mRecyclerView.setLayoutManager(mLayoutManager);
+
+        chatList = new ArrayList<>();
+        mAdapter = new Chat_Adapter(chatList, chat_room_activity.this, nick);
+        mRecyclerView.setAdapter(mAdapter);
+
+        FirebaseDatabase database = FirebaseDatabase.getInstance();
+        myRef = database.getReference();
+
+
+        /*
+        Chat_Data chat = new Chat_Data();
+        chat.setName(nick);
+        chat.setMsg("hi");
+        myRef.setValue(chat);
+        */
+
+        myRef.addChildEventListener(new ChildEventListener() {
+            @Override
+            public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+                Chat_Data chat = snapshot.getValue(Chat_Data.class);
+                ((Chat_Adapter)mAdapter).addChat(chat);
+            }
+
+            @Override
+            public void onChildChanged(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+
+            }
+
+            @Override
+            public void onChildRemoved(@NonNull DataSnapshot snapshot) {
+
+            }
+
+            @Override
+            public void onChildMoved(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
 
             }
         });
 
-
-        LinearLayoutManager manager = new LinearLayoutManager(this,RecyclerView.VERTICAL,false);
-        recyclerView.setLayoutManager(manager);
-        recyclerView.setAdapter(new Chat_Adapter(dataList));
 
 
     }
