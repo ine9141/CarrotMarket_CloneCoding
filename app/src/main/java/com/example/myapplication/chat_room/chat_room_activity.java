@@ -1,6 +1,7 @@
 package com.example.myapplication.chat_room;
 
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -45,6 +46,17 @@ public class chat_room_activity extends AppCompatActivity {
         btn_send =findViewById(R.id.Btn_send);
         EditText_chat = findViewById(R.id.Edit_msg);
 
+
+        mRecyclerView = findViewById(R.id.chat_recycler_view);
+        mRecyclerView.setHasFixedSize(true);
+        mLayoutManager = new LinearLayoutManager(this);
+        mRecyclerView.setLayoutManager(mLayoutManager);
+
+        chatList = new ArrayList<>();
+        mAdapter = new Chat_Adapter(chatList, chat_room_activity.this, nick);
+        mRecyclerView.setAdapter(mAdapter);
+
+
         btn_send.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -55,17 +67,18 @@ public class chat_room_activity extends AppCompatActivity {
                     chat.setMsg(msg);
                     myRef.push().setValue(chat);
                 }
+                new Handler().postDelayed(new Runnable() {              //scrollToPosition 딜레이
+                    @Override
+                    public void run() {
+                        mRecyclerView.scrollToPosition(mAdapter.getItemCount()-1);
+                    }
+                }, 200);
+
             }
+
         });
 
-        mRecyclerView = findViewById(R.id.chat_recycler_view);
-        mRecyclerView.setHasFixedSize(true);
-        mLayoutManager = new LinearLayoutManager(this);
-        mRecyclerView.setLayoutManager(mLayoutManager);
 
-        chatList = new ArrayList<>();
-        mAdapter = new Chat_Adapter(chatList, chat_room_activity.this, nick);
-        mRecyclerView.setAdapter(mAdapter);
 
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         myRef = database.getReference();
