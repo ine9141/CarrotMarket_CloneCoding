@@ -10,8 +10,10 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.example.myapplication.chat_room.chat_room_activity;
+
 public class chat extends AppCompatActivity {
-    Button home, life, around, chat, my;
+    Button home, life, around, chat, my,go_chat;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -28,6 +30,14 @@ public class chat extends AppCompatActivity {
         around = (Button) findViewById(R.id.around);
         chat = (Button) findViewById(R.id.chat);
         my = (Button) findViewById(R.id.my);
+
+        go_chat = (Button) findViewById(R.id.Go_chat);
+        go_chat.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), chat_room_activity.class);
+            }
+        });
 
         home.setOnClickListener(new View.OnClickListener() {
             @Override
