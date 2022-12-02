@@ -21,7 +21,8 @@ public class MainActivity extends AppCompatActivity {
         ActionBar actionBar = getSupportActionBar();
         actionBar.hide();
 
-        Intent intent = new Intent(getApplicationContext(),login.class);
+        Intent intent = new Intent(getApplicationContext(),check_address.class);
+        //login.class
         startActivity(intent);
 
     }

@@ -110,7 +110,7 @@ public class sign_in extends AppCompatActivity {
                         if (task.isSuccessful()) {
                             // if the code is correct and the task is successful
                             // we are sending our user to new activity.
-                            Intent intent = new Intent(getApplicationContext(),home.class);
+                            Intent intent = new Intent(getApplicationContext(),check_address.class);
                             startActivity(intent);
                             finish();
                         } else {
