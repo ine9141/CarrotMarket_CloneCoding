@@ -8,6 +8,53 @@
     android:weightSum="1"
     tools:context=".chat_room.chat_room_activity">
 
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <Button
+            android:id="@+id/btn_back"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:text=""
+            android:layout_gravity="left"
+            android:gravity="center"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            android:layout_alignParentLeft="true"/>
+        <TextView
+            android:id="@+id/other"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="25dp"
+            android:text="가나다라마"
+            android:textStyle="bold"
+            android:layout_centerInParent="true"/>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true">
+
+            <Button
+                android:id="@+id/btn_call"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+
+                android:layout_gravity="right"
+                android:gravity="center"
+                android:textColor="@color/black" />
+            <Button
+                android:id="@+id/btn_dotdotdot"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_gravity="right"
+                android:gravity="center"
+                android:textColor="@color/black" />   <!-- 이미지 버튼으로 변경해야함-->
+
+        </LinearLayout>
+
+    </RelativeLayout>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/chat_recycler_view"

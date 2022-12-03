@@ -3,6 +3,7 @@ package com.example.myapplication.chat_room;
 import android.content.Context;
 import android.graphics.Color;
 import android.view.ContentInfo;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -28,6 +29,7 @@ public class Chat_Adapter extends RecyclerView.Adapter<Chat_Adapter.MyViewHolder
         public View rootView;
 
         public CircleImageView Cir_img;
+        public LinearLayout chat_linear;
 
         public MyViewHolder(View v){
             super(v);
@@ -36,6 +38,7 @@ public class Chat_Adapter extends RecyclerView.Adapter<Chat_Adapter.MyViewHolder
             rootView = v;
 
             Cir_img = v.findViewById(R.id.imgv);
+            chat_linear = v.findViewById(R.id.Chat_linear);
 
             v.setClickable(true);
             v.setEnabled(true);
@@ -69,8 +72,11 @@ public class Chat_Adapter extends RecyclerView.Adapter<Chat_Adapter.MyViewHolder
         if(chat.getName().equals(this.myNickname)){
             holder.TextView_msg.setTextAlignment(View.TEXT_ALIGNMENT_VIEW_END);
             holder.TextView_msg.setBackgroundColor(Color.parseColor("#ff5722"));
+            holder.chat_linear.setGravity(Gravity.RIGHT);
+
             holder.TextView_nickname.setVisibility(View.INVISIBLE);
             holder.Cir_img.setVisibility(View.INVISIBLE);
+
 
         }
         else{
