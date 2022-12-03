@@ -80,6 +80,7 @@ public class check_address extends AppCompatActivity {
 
                         try {
                             Address a = gCoder.getFromLocation(latitude, longitude, 1).get(0);
+                            dong.setText(a.getSubLocality()+' '+a.getThoroughfare());
                             text.setText(a.getSubLocality()+' '+a.getThoroughfare());
                             s = a.getThoroughfare();
 
