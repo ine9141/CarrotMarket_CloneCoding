@@ -18,14 +18,14 @@
             android:id="@+id/dong_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="left"
-            android:text="OO동"
-            android:gravity="center"
-            android:textColor="@color/black"
-            android:textSize="30sp"
             android:layout_alignParentLeft="true"
+            android:layout_gravity="left"
+            android:gravity="center"
             android:paddingLeft="5dp"
-            android:paddingTop="5dp"/>
+            android:paddingTop="5dp"
+            android:text="OO동"
+            android:textColor="@color/black"
+            android:textSize="30sp" />
 
         <LinearLayout
             android:layout_width="wrap_content"
@@ -36,26 +36,28 @@
                 android:id="@+id/search"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="검색"
                 android:gravity="center"
+                android:text="검색"
                 android:textColor="@color/black"
                 android:textSize="20sp" />
+
             <Button
                 android:id="@+id/menu"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="메뉴"
                 android:layout_gravity="right"
                 android:gravity="center"
+                android:text="메뉴"
                 android:textColor="@color/black"
                 android:textSize="20sp" />
+
             <Button
                 android:id="@+id/notice"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="알림"
                 android:layout_gravity="right"
                 android:gravity="center"
+                android:text="알림"
                 android:textColor="@color/black"
                 android:textSize="20sp" />
 
@@ -89,12 +91,17 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal">
 
+
         <Button
             android:id="@+id/home"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="50dp"
             android:layout_weight="1"
-            android:text="home" />
+            android:paddingTop="28dp"
+            android:text="홈"
+            android:textSize="10dp"
+            android:background="@drawable/home"/>
+
 
         <Button
             android:id="@+id/life"
@@ -114,8 +121,11 @@
             android:id="@+id/chat"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:paddingTop="28dp"
+            android:textSize="10dp"
             android:layout_weight="1"
-            android:text="chat" />
+            android:text="chat"
+            android:background="@drawable/chat"/>
 
         <Button
             android:id="@+id/my"
