@@ -3,15 +3,20 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:paddingLeft="10dp"
+    android:paddingRight="10dp">
 
     <EditText
         android:id="@+id/dong"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:paddingTop="20dp"
-        android:ems="20"
-        android:hint="동명(읍, 면)으로 검색 (ex. 서초동)"
+        android:paddingTop="30dp"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
+        android:ems="17"
+        android:layout_gravity="center"
+        android:hint="🔍동명(읍, 면)으로 검색 (ex. 서초동)"
         android:inputType="numberSigned" />
 
     <Button
@@ -19,7 +24,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:paddingTop="20dp"
-        android:text="내 위치 찾기" />
+        android:text="🔍 내 위치 찾기"
+        android:textColor="@color/white"
+        android:backgroundTint="#f27500"/>
 
     <TextView
         android:id="@+id/text"
