@@ -15,6 +15,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.myapplication.R;
 
+
 import java.util.List;
 
 import de.hdodenhof.circleimageview.CircleImageView;
@@ -71,7 +72,8 @@ public class Chat_Adapter extends RecyclerView.Adapter<Chat_Adapter.MyViewHolder
 
         if(chat.getName().equals(this.myNickname)){
             holder.TextView_msg.setTextAlignment(View.TEXT_ALIGNMENT_VIEW_END);
-            holder.TextView_msg.setBackgroundColor(Color.parseColor("#ff5722"));
+            holder.TextView_msg.setBackgroundResource(R.drawable.round_send_msg);
+            holder.TextView_msg.setTextColor(Color.WHITE);
             holder.chat_linear.setGravity(Gravity.RIGHT);
 
             holder.TextView_nickname.setVisibility(View.INVISIBLE);

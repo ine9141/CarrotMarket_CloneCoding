@@ -1,11 +1,13 @@
 package com.example.myapplication.chat_room;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.View;
-import android.widget.Button;
+
 import android.widget.EditText;
+import android.widget.ImageButton;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -22,7 +24,6 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 
-import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -33,13 +34,13 @@ public class chat_room_activity extends AppCompatActivity {
     private RecyclerView.Adapter mAdapter;
     private RecyclerView.LayoutManager mLayoutManager;
     private List<Chat_Data> chatList;
-    private  String myName = "nick1";
-
+    private  String myName = "user1";
 
 
     private EditText EditText_chat;
-    private Button btn_send;
+    private ImageButton btn_back, btn_call, btn_set,btn_send;
     private DatabaseReference myRef;
+    @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
@@ -51,7 +52,10 @@ public class chat_room_activity extends AppCompatActivity {
         Intent intent = getIntent();
         myName = intent.getStringExtra("myName");
 
-        btn_send =findViewById(R.id.Btn_send);
+        btn_send = (ImageButton) findViewById(R.id.Btn_send);
+        btn_back = (ImageButton) findViewById(R.id.btn_back);
+        btn_call = (ImageButton) findViewById(R.id.btn_call);
+        btn_set = (ImageButton) findViewById(R.id.btn_set_chat) ;
         EditText_chat = findViewById(R.id.Edit_msg);
 
 
@@ -86,18 +90,8 @@ public class chat_room_activity extends AppCompatActivity {
 
         });
 
-
-
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         myRef = database.getReference();
-
-
-        /*
-        Chat_Data chat = new Chat_Data();
-        chat.setName(nick);
-        chat.setMsg("hi");
-        myRef.setValue(chat);
-        */
 
         myRef.addChildEventListener(new ChildEventListener() {
             @Override
@@ -128,6 +122,12 @@ public class chat_room_activity extends AppCompatActivity {
         });
 
 
+        btn_back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+            }
+        });
 
     }
 }
