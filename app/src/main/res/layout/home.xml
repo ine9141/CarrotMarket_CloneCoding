@@ -112,14 +112,17 @@
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:layout_weight="1"
-            android:text="around" />
+            android:text="life" />
 
         <Button
             android:id="@+id/around"
             android:layout_width="match_parent"
             android:layout_height="50dp"
+            android:paddingTop="28dp"
             android:layout_weight="1"
-            android:text="around" />
+            android:text="내 근처"
+            android:textSize="10dp"
+            android:background="@drawable/around"/>
 
         <Button
             android:id="@+id/chat"
@@ -128,15 +131,18 @@
             android:paddingTop="28dp"
             android:textSize="10dp"
             android:layout_weight="1"
-            android:text="chat"
+            android:text="채팅"
             android:background="@drawable/chat"/>
 
         <Button
             android:id="@+id/my"
             android:layout_width="match_parent"
             android:layout_height="50dp"
+            android:paddingTop="28dp"
             android:layout_weight="1"
-            android:text="my" />
+            android:text="나의 공간"
+            android:textSize="10dp"
+            android:background="@drawable/my"/>
 
     </LinearLayout>
 </LinearLayout>
