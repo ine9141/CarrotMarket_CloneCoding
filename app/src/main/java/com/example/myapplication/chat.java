@@ -3,6 +3,7 @@ package com.example.myapplication;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -12,8 +13,9 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 public class chat extends AppCompatActivity {
-    Button home, life, around, chat, my;
+    Button home, life, around, chat, my, go_chat;
     String s;
+    @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -30,12 +32,21 @@ public class chat extends AppCompatActivity {
         around = (Button) findViewById(R.id.around);
         chat = (Button) findViewById(R.id.chat);
         my = (Button) findViewById(R.id.my);
+        go_chat = (Button)findViewById(R.id.go_chat);
 
         //동네이름 설정
         Intent secondIntent = getIntent();
         if (secondIntent.hasExtra("dong_s")) {
             s = secondIntent.getStringExtra("dong_s");
         }
+
+        go_chat.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(),com.example.myapplication.chat_room.chat_room_activity.class);
+                startActivity(intent);
+            }
+        });
 
 
         home.setOnClickListener(new View.OnClickListener() {
