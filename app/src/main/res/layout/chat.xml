@@ -58,6 +58,11 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Here is chat"/>
+            <EditText
+                android:id="@+id/myName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:hint="나의 닉네임 입력..."/>
 
 
         </LinearLayout>

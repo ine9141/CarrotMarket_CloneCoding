@@ -1,5 +1,6 @@
 package com.example.myapplication.chat_room;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.View;
@@ -32,7 +33,9 @@ public class chat_room_activity extends AppCompatActivity {
     private RecyclerView.Adapter mAdapter;
     private RecyclerView.LayoutManager mLayoutManager;
     private List<Chat_Data> chatList;
-    private final String nick = "nick1";
+    private  String myName = "nick1";
+
+
 
     private EditText EditText_chat;
     private Button btn_send;
@@ -45,7 +48,8 @@ public class chat_room_activity extends AppCompatActivity {
         ActionBar actionBar = getSupportActionBar();
         actionBar.hide();
 
-
+        Intent intent = getIntent();
+        myName = intent.getStringExtra("myName");
 
         btn_send =findViewById(R.id.Btn_send);
         EditText_chat = findViewById(R.id.Edit_msg);
@@ -57,7 +61,7 @@ public class chat_room_activity extends AppCompatActivity {
         mRecyclerView.setLayoutManager(mLayoutManager);
 
         chatList = new ArrayList<>();
-        mAdapter = new Chat_Adapter(chatList, chat_room_activity.this, nick);
+        mAdapter = new Chat_Adapter(chatList, chat_room_activity.this, myName);
         mRecyclerView.setAdapter(mAdapter);
 
 
@@ -67,7 +71,7 @@ public class chat_room_activity extends AppCompatActivity {
                 String msg = EditText_chat.getText().toString();
                 if(msg != null){
                     Chat_Data chat = new Chat_Data();
-                    chat.setName(nick);
+                    chat.setName(myName);
                     chat.setMsg(msg);
                     myRef.push().setValue(chat);
                 }

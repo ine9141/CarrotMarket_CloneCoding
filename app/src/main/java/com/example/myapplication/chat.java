@@ -8,12 +8,14 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 public class chat extends AppCompatActivity {
     Button home, life, around, chat, my, go_chat;
+    EditText myName;
     String s;
     @SuppressLint("MissingInflatedId")
     @Override
@@ -34,6 +36,10 @@ public class chat extends AppCompatActivity {
         my = (Button) findViewById(R.id.my);
         go_chat = (Button)findViewById(R.id.go_chat);
 
+        myName = findViewById(R.id.myName);
+
+
+
         //동네이름 설정
         Intent secondIntent = getIntent();
         if (secondIntent.hasExtra("dong_s")) {
@@ -44,6 +50,7 @@ public class chat extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(),com.example.myapplication.chat_room.chat_room_activity.class);
+                intent.putExtra("myName",myName.getText().toString());
                 startActivity(intent);
             }
         });
@@ -94,4 +101,5 @@ public class chat extends AppCompatActivity {
             }
         });
     }
+
 }
