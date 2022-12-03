@@ -14,16 +14,18 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-        <Button
+        <TextView
             android:id="@+id/dong_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="동네 이름"
             android:layout_gravity="left"
+            android:text="OO동"
             android:gravity="center"
             android:textColor="@color/black"
-            android:textSize="20sp"
-            android:layout_alignParentLeft="true"/>
+            android:textSize="30sp"
+            android:layout_alignParentLeft="true"
+            android:paddingLeft="5dp"
+            android:paddingTop="5dp"/>
 
         <LinearLayout
             android:layout_width="wrap_content"
@@ -62,6 +64,7 @@
     </RelativeLayout>
 
 
+    <!-- 하단바 -->
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="0dp"
@@ -75,12 +78,12 @@
             <Button
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Here is life"/>
-
+                android:text="Here is home" />
         </LinearLayout>
+
+
     </ScrollView>
 
-    <!-- 하단바 -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

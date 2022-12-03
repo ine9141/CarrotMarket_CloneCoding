@@ -34,6 +34,7 @@ public class check_address extends AppCompatActivity {
     Button search;
     EditText dong;
     TextView text;
+    String s;
 
     @SuppressLint("MissingInflatedId")
     @Override
@@ -46,10 +47,10 @@ public class check_address extends AppCompatActivity {
         ActionBar actionBar = getSupportActionBar();
         actionBar.hide();
 
+
         search = (Button) findViewById(R.id.search);
         dong = (EditText) findViewById(R.id.dong);
         text = (TextView) findViewById(R.id.text);
-
 
         // 위치 관리자 객체 참조하기
         final LocationManager lm = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
@@ -64,22 +65,24 @@ public class check_address extends AppCompatActivity {
                 } else {
                     // 가장최근 위치정보 가져오기
                     Location location = lm.getLastKnownLocation(LocationManager.GPS_PROVIDER);
+
                     if (location != null) {
                         String provider = location.getProvider();
                         double longitude = location.getLongitude();
                         double latitude = location.getLatitude();
                         double altitude = location.getAltitude();
-
                         //provider : gps
                         //longitude : 위도값
                         //latitude : 경도값
                         //altitude : 고도값
 
-                        Geocoder gCoder = new Geocoder(check_address.this, Locale.getDefault());
+                        Geocoder gCoder = new Geocoder(check_address.this, Locale.KOREA);
 
                         try {
                             Address a = gCoder.getFromLocation(latitude, longitude, 1).get(0);
-                            text.setText(a.getAdminArea()+' '+a.getLocality()+' '+a.getThoroughfare());
+                            text.setText(a.getSubLocality()+' '+a.getThoroughfare());
+                            s = a.getThoroughfare();
+
 
                         } catch (IOException e) {
                             e.printStackTrace();
@@ -87,6 +90,15 @@ public class check_address extends AppCompatActivity {
 
                     }
                 }
+            }
+        });
+
+        text.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(),home.class);
+                intent.putExtra("dong_s",s);
+                startActivity(intent);
             }
         });
     }
