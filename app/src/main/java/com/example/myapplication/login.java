@@ -26,11 +26,8 @@ public class login extends AppCompatActivity {
         join.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(),chat.class);
+                Intent intent = new Intent(getApplicationContext(),sign_in.class);
                 startActivity(intent);
-
-               // Intent intent = new Intent(getApplicationContext(),sign_in.class);
-               // startActivity(intent);
             }
         });
     }
