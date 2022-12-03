@@ -31,7 +31,7 @@ public class chat_room_activity extends AppCompatActivity {
     private RecyclerView.Adapter mAdapter;
     private RecyclerView.LayoutManager mLayoutManager;
     private List<Chat_Data> chatList;
-    private String nick = "nick1";
+    private final String nick = "nick1";
 
     private EditText EditText_chat;
     private Button btn_send;
