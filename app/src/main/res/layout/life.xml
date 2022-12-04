@@ -98,7 +98,7 @@
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:layout_weight="1"
-            android:background="@drawable/life"
+            android:background="@drawable/life_click"
             android:paddingTop="28dp"
             android:text="동네생활"
             android:textSize="10dp"/>
