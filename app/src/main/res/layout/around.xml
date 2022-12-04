@@ -112,7 +112,7 @@
             android:layout_weight="1"
             android:text="내 근처"
             android:textSize="10dp"
-            android:background="@drawable/around"/>
+            android:background="@drawable/around_click"/>
 
         <Button
             android:id="@+id/chat"

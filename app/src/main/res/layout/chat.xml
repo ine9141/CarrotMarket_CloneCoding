@@ -109,7 +109,7 @@
             android:textSize="10dp"
             android:layout_weight="1"
             android:text="채팅"
-            android:background="@drawable/chat"/>
+            android:background="@drawable/chat_click"/>
 
         <Button
             android:id="@+id/my"

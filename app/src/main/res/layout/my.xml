@@ -74,7 +74,7 @@
             android:layout_weight="1"
             android:background="@drawable/life"
             android:paddingTop="28dp"
-            android:text="내 동네생활"
+            android:text="동네생활"
             android:textSize="10dp"/>
 
         <Button
@@ -105,7 +105,7 @@
             android:layout_weight="1"
             android:text="나의 공간"
             android:textSize="10dp"
-            android:background="@drawable/my"/>
+            android:background="@drawable/my_click"/>
 
     </LinearLayout>
 </LinearLayout>
