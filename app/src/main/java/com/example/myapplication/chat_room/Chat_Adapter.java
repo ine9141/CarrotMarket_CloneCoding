@@ -91,14 +91,17 @@ public class Chat_Adapter extends RecyclerView.Adapter<Chat_Adapter.MyViewHolder
             holder.Cir_img.setVisibility(View.INVISIBLE);
             holder.TextView_time_right.setVisibility(View.INVISIBLE);
             holder.TextView_time_right.setMaxWidth(0);
+            holder.TextView_time_right.setMaxHeight(0);
 
 
         }
         else{
             holder.TextView_msg.setTextAlignment(View.TEXT_ALIGNMENT_VIEW_START);
             holder.TextView_nickname.setTextAlignment(View.TEXT_ALIGNMENT_VIEW_START);
+
             holder.TextView_time_left.setVisibility(View.INVISIBLE);
             holder.TextView_time_left.setMaxWidth(0);
+            holder.TextView_time_left.setMaxHeight(0);
         }
     }
 
