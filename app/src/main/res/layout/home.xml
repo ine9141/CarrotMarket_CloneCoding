@@ -87,7 +87,7 @@
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:layout_weight="1"
-            android:background="@drawable/home"
+            android:background="@drawable/home_click"
             android:paddingTop="28dp"
             android:text="홈"
             android:textSize="10dp" />
