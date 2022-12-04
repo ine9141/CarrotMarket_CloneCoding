@@ -59,11 +59,8 @@
                 android:gravity="center"
                 android:textColor="@color/black"
                 android:background="@drawable/notice"/>
-
         </LinearLayout>
-
     </RelativeLayout>
-
 
     <!-- 하단바 -->
     <ScrollView
@@ -81,8 +78,6 @@
                 android:layout_height="wrap_content"
                 android:text="Here is home" />
         </LinearLayout>
-
-
     </ScrollView>
 
     <LinearLayout
@@ -91,10 +86,6 @@
         android:orientation="horizontal"
         android:paddingBottom="0dp"
         android:layout_weight="1">
-
-
-
-
 
         <Button
             android:id="@+id/home"
@@ -111,7 +102,10 @@
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:layout_weight="1"
-            android:text="life" />
+            android:background="@drawable/life"
+            android:paddingTop="28dp"
+            android:text="내 동네생활"
+            android:textSize="10dp"/>
 
         <Button
             android:id="@+id/around"
