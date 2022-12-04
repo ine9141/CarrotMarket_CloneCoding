@@ -30,34 +30,30 @@
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:paddingRight="1dp"
             android:layout_alignParentRight="true">
 
             <Button
                 android:id="@+id/search"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="검색"
-                android:gravity="center"
-                android:textColor="@color/black"
-                android:textSize="20sp" />
-            <Button
-                android:id="@+id/menu"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="메뉴"
-                android:layout_gravity="right"
-                android:gravity="center"
-                android:textColor="@color/black"
-                android:textSize="20sp" />
-            <Button
-                android:id="@+id/notice"
-                android:layout_width="60dp"
+                android:layout_width="50dp"
                 android:layout_height="50dp"
                 android:layout_gravity="right"
                 android:gravity="center"
-                android:textColor="@color/black"
+                android:background="@drawable/search"/>
+            <Button
+                android:id="@+id/menu"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_gravity="right"
+                android:gravity="center"
+                android:background="@drawable/menu"/>
+            <Button
+                android:id="@+id/notice"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_gravity="right"
+                android:gravity="center"
                 android:background="@drawable/notice"/>
-
         </LinearLayout>
 
     </RelativeLayout>
@@ -105,7 +101,7 @@
             android:layout_weight="1"
             android:background="@drawable/life"
             android:paddingTop="28dp"
-            android:text="내 동네생활"
+            android:text="동네생활"
             android:textSize="10dp"/>
 
         <Button
