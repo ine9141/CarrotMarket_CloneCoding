@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="60dp"
     android:layout_marginBottom="10dp"
     android:padding="3dp">
 
@@ -9,7 +9,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
+        android:layout_marginTop="0dp"
         >
         <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/imgv"
@@ -19,26 +19,28 @@
 
             android:layout_width="35dp"
             android:layout_height="35dp"
-            android:layout_gravity="center"
+            android:layout_gravity="center_horizontal"
             />
         <LinearLayout
             android:id="@+id/Chat_linear"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
-            android:orientation="vertical">
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="10dp"
-                android:orientation="horizontal">
-            </LinearLayout>
+
+            android:orientation="horizontal">
 
             <TextView
                 android:id="@+id/tv_name"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:visibility="invisible"/>
+
+            <TextView
+                android:id="@+id/tv_time_left"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:visibility="invisible"/>
+                android:layout_marginTop="15dp"
+                android:text="12:30"/>
 
             <TextView
                 android:id="@+id/tv_msg"
@@ -52,10 +54,13 @@
                 android:textColor="#000000"
                 android:textSize="15dp" />
             <TextView
-                android:id="@+id/tv_time"
+                android:id="@+id/tv_time_right"
+                android:layout_marginTop="15dp"
                 android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:text="데모 12:30"/>
+                android:layout_height="wrap_content"
+                android:text="12:30"/>
+
+
         </LinearLayout>
 
 

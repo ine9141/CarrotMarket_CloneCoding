@@ -24,8 +24,9 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 
-
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class chat_room_activity extends AppCompatActivity {
@@ -38,7 +39,7 @@ public class chat_room_activity extends AppCompatActivity {
 
 
     private EditText EditText_chat;
-    private ImageButton btn_back, btn_call, btn_set,btn_send;
+    private ImageButton btn_back, btn_call, btn_set,btn_send,btn_add;
     private DatabaseReference myRef;
     @SuppressLint("MissingInflatedId")
     @Override
@@ -73,10 +74,13 @@ public class chat_room_activity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 String msg = EditText_chat.getText().toString();
+                String msg_time = getTime();
+
                 if(msg != null){
                     Chat_Data chat = new Chat_Data();
                     chat.setName(myName);
                     chat.setMsg(msg);
+                    chat.setTime(msg_time);
                     myRef.push().setValue(chat);
                 }
                 new Handler().postDelayed(new Runnable() {              //scrollToPosition 딜레이
@@ -129,5 +133,14 @@ public class chat_room_activity extends AppCompatActivity {
             }
         });
 
+    }
+
+    private String getTime() {
+        long now = System.currentTimeMillis();
+        Date date = new Date(now);
+        SimpleDateFormat msg_dateFormat = new SimpleDateFormat("hh:mm aa");
+        String time  = msg_dateFormat.format(date);
+
+        return time;
     }
 }
