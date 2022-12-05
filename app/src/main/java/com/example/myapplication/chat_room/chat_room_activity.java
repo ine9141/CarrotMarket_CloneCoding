@@ -89,7 +89,7 @@ public class chat_room_activity extends AppCompatActivity {
                         mRecyclerView.scrollToPosition(mAdapter.getItemCount()-1);
                     }
                 }, 200);
-
+                EditText_chat.setText("");
             }
 
         });
