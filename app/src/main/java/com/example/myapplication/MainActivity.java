@@ -1,5 +1,5 @@
 package com.example.myapplication;
-
+import com.example.myapplication.chat_room.location_share;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -9,6 +9,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Toast;
+
+
 
 public class MainActivity extends AppCompatActivity {
     @Override
@@ -21,7 +23,7 @@ public class MainActivity extends AppCompatActivity {
         ActionBar actionBar = getSupportActionBar();
         actionBar.hide();
 
-        Intent intent = new Intent(getApplicationContext(),chat.class); //default : login.class
+        Intent intent = new Intent(getApplicationContext(), location_share.class); //default : login.class
         startActivity(intent);
 
     }
