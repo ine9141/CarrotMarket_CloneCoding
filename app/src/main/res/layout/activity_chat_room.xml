@@ -74,6 +74,8 @@
         android:layout_height="0dp"
         android:layout_weight="1"
         android:scrollbars="vertical"/>
+
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="47dp"
@@ -89,7 +91,6 @@
             android:src="@drawable/chat_add_btn"
             android:layout_width="50dp"
             android:layout_height="match_parent"/>
-
         <EditText
             android:id="@+id/Edit_msg"
             android:layout_width="0dp"

@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.view.View;
 
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 
@@ -29,13 +30,14 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-public class chat_room_activity extends AppCompatActivity {
+public class chat_room_activity extends AppCompatActivity implements BottomSheet.BottomSheetListener {
 
     private RecyclerView mRecyclerView;
     private RecyclerView.Adapter mAdapter;
     private RecyclerView.LayoutManager mLayoutManager;
     private List<Chat_Data> chatList;
     private  String myName = "user1";
+
 
 
     private EditText EditText_chat;
@@ -71,9 +73,14 @@ public class chat_room_activity extends AppCompatActivity {
         mRecyclerView.setAdapter(mAdapter);
 
 
+
+
         btn_add.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+                BottomSheet bottomSheet = new BottomSheet();
+                bottomSheet.show(getSupportFragmentManager(),"bottom sheet");
 
             }
         });
@@ -150,5 +157,10 @@ public class chat_room_activity extends AppCompatActivity {
         String time  = msg_dateFormat.format(date);
 
         return time;
+    }
+
+    @Override
+    public void onButtonClicked(){
+
     }
 }
