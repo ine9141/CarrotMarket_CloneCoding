@@ -56,7 +56,8 @@ public class chat_room_activity extends AppCompatActivity {
         btn_send = (ImageButton) findViewById(R.id.Btn_send);
         btn_back = (ImageButton) findViewById(R.id.btn_back);
         btn_call = (ImageButton) findViewById(R.id.btn_call);
-        btn_set = (ImageButton) findViewById(R.id.btn_set_chat) ;
+        btn_set = (ImageButton) findViewById(R.id.btn_set_chat);
+        btn_add = (ImageButton) findViewById(R.id.Btn_add_chat);
         EditText_chat = findViewById(R.id.Edit_msg);
 
 
@@ -69,6 +70,13 @@ public class chat_room_activity extends AppCompatActivity {
         mAdapter = new Chat_Adapter(chatList, chat_room_activity.this, myName);
         mRecyclerView.setAdapter(mAdapter);
 
+
+        btn_add.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+            }
+        });
 
         btn_send.setOnClickListener(new View.OnClickListener() {
             @Override

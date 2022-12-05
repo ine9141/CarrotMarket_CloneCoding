@@ -81,7 +81,7 @@
         android:background="@color/white"
         android:weightSum="1">
         <ImageButton
-            android:id="@+id/chat_add_btn"
+            android:id="@+id/Btn_add_chat"
             android:padding="0dp"
             android:scaleType="centerCrop"
             android:scaleX=".8"
