@@ -21,12 +21,11 @@
 
             <Button
                 android:id="@+id/setting"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="설정"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_gravity="right"
                 android:gravity="center"
-                android:textColor="@color/black"
-                android:textSize="20sp" />
+                android:background="@drawable/setting"/>
 
         </LinearLayout>
 
