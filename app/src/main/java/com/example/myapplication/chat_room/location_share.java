@@ -3,6 +3,7 @@ package com.example.myapplication.chat_room;
 import android.Manifest;
 import android.app.FragmentManager;
 import android.content.Context;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.Location;
 import android.location.LocationManager;
@@ -10,23 +11,28 @@ import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
 import com.example.myapplication.R;
-import com.example.myapplication.check_address;
+import com.example.myapplication.around;
+import com.example.myapplication.chat;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.MapFragment;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 
 public class location_share extends AppCompatActivity implements OnMapReadyCallback  {
 
     double longitude;
     double latitude;
+    Double lat;
+    Double lon;
     private GoogleMap mMap;
 
 
@@ -77,13 +83,14 @@ public class location_share extends AppCompatActivity implements OnMapReadyCallb
                 MarkerOptions mOptions = new MarkerOptions();
                 // 마커 타이틀
                 mOptions.title("마커 좌표");
-                Double lat = latLng.latitude; // 위도
-                Double lon = latLng.longitude; // 경도
+                lat = latLng.latitude; // 위도
+                lon = latLng.longitude; // 경도
                 // 마커의 스니펫(간단한 텍스트) 설정
                 mOptions.snippet(lat.toString() + ", " + lon.toString());
                 // LatLng: 위도 경도 쌍을 나타냄
                 mOptions.position(new LatLng(lat, lon));
                 // 마커(핀) 추가
+
                 mMap.addMarker(mOptions);
 
                 LatLng SET = new LatLng(lat, lon);
@@ -91,6 +98,16 @@ public class location_share extends AppCompatActivity implements OnMapReadyCallb
                 mOptions.title("공유할 위치");
                 mMap.moveCamera(CameraUpdateFactory.newLatLng(SET));
                 mMap.animateCamera(CameraUpdateFactory.zoomTo(17));
+            }
+        });
+
+        mMap.setOnMarkerClickListener(new GoogleMap.OnMarkerClickListener() {
+            @Override
+            public boolean onMarkerClick(@NonNull Marker marker) {
+                Intent intent = new Intent(getApplicationContext(), chat_room_activity.class);
+                intent.putExtra("url","https://google.co.kr/maps/@"+lat+lon+"18z");
+                startActivity(intent);
+                return false;
             }
         });
 
