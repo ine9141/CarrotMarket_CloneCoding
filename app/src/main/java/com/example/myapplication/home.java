@@ -1,16 +1,18 @@
 package com.example.myapplication;
 
+import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.app.AppCompatActivity;
+
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
-
-import androidx.appcompat.app.ActionBar;
-import androidx.appcompat.app.AppCompatActivity;
+import android.widget.Toast;
 
 public class home extends AppCompatActivity {
-    Button home, life, around, chat, my,post_button;
+    Button home, life, around, chat, my;
     TextView dong_name;
     String s;
     @Override
@@ -22,9 +24,6 @@ public class home extends AppCompatActivity {
         //상단 액션바 제거
         ActionBar actionBar = getSupportActionBar();
         actionBar.hide();
-
-        //글 올리기
-        post_button = (Button) findViewById(R.id.postButton);
 
         //하단 액션바
         home = (Button) findViewById(R.id.home);
@@ -82,15 +81,6 @@ public class home extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(),my.class);
-                intent.putExtra("dong_s",s);
-                startActivity(intent);
-            }
-        });
-
-        post_button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(),write_post.class);
                 intent.putExtra("dong_s",s);
                 startActivity(intent);
             }
