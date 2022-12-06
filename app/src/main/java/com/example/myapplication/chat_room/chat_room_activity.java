@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -60,6 +61,11 @@ public class chat_room_activity extends AppCompatActivity implements BottomSheet
         myName = intent.getStringExtra("myName");
         otherName = intent.getStringExtra("otherName");
 
+
+        if(myName == null || otherName == null){
+            Toast.makeText(getApplicationContext(), "아이디 필요", Toast.LENGTH_SHORT).show();
+            finish();
+        }
         //데이터 베이스에 유저 둘을 묶기 위함
         chat_room_name = myName.compareTo(otherName) < 0 ? myName + otherName : otherName + myName;
 
