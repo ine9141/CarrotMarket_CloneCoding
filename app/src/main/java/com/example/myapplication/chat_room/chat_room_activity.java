@@ -82,23 +82,6 @@ public class chat_room_activity extends AppCompatActivity implements BottomSheet
 
         if (url != null) {
             EditText_chat.setText(url);
-            String msg = EditText_chat.getText().toString();
-            String msg_time = getTime();
-
-            if (msg != null) {
-                Chat_Data chat = new Chat_Data();
-                chat.setName(myName);
-                chat.setMsg(msg);
-                chat.setTime(msg_time);
-                myRef.child(chat_room_name).push().setValue(chat);
-            }
-            new Handler().postDelayed(new Runnable() {              //scrollToPosition 딜레이
-                @Override
-                public void run() {
-                    mRecyclerView.scrollToPosition(mAdapter.getItemCount() - 1);
-                }
-            }, 200);
-            EditText_chat.setText("");
         }
 
         mRecyclerView = findViewById(R.id.chat_recycler_view);
