@@ -81,7 +81,6 @@ public class chat extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(),com.example.myapplication.chat_room.chat_room_activity.class);
-
                 intent.putExtra("myName",myName.getText().toString());
                 intent.putExtra("otherName",otherName.getText().toString());
                 startActivity(intent);

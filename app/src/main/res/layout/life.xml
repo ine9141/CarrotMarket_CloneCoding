@@ -81,7 +81,8 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:paddingBottom="0dp"
-        android:layout_weight="1">
+        android:layout_weight="1"
+        android:background="@drawable/my_border">
 
         <Button
             android:id="@+id/home"

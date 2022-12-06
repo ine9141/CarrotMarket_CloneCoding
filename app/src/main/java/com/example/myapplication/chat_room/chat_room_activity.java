@@ -37,20 +37,20 @@ public class chat_room_activity extends AppCompatActivity implements BottomSheet
     private RecyclerView.Adapter mAdapter;
     private RecyclerView.LayoutManager mLayoutManager;
     private List<Chat_Data> chatList;
-    private  String myName = "user1";
-    private  String otherName;
-    private  String chat_room_name;
-
+    private String myName = "user1";
+    private String otherName;
+    private String url;
+    private String chat_room_name;
 
 
     private EditText EditText_chat;
-    private ImageButton btn_back, btn_call, btn_set,btn_send,btn_add;
+    private ImageButton btn_back, btn_call, btn_set, btn_send, btn_add;
     private DatabaseReference myRef;
 
 
     @SuppressLint("MissingInflatedId")
     @Override
-    protected void onCreate(Bundle savedInstanceState){
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_chat_room);
 
@@ -60,12 +60,16 @@ public class chat_room_activity extends AppCompatActivity implements BottomSheet
         Intent intent = getIntent();
         myName = intent.getStringExtra("myName");
         otherName = intent.getStringExtra("otherName");
+        url = intent.getStringExtra("URL");
 
 
-        if(myName == null || otherName == null){
+        if (myName == null || otherName == null) {
             Toast.makeText(getApplicationContext(), "아이디 필요", Toast.LENGTH_SHORT).show();
             finish();
+
         }
+
+
         //데이터 베이스에 유저 둘을 묶기 위함
         chat_room_name = myName.compareTo(otherName) < 0 ? myName + otherName : otherName + myName;
 
@@ -76,6 +80,9 @@ public class chat_room_activity extends AppCompatActivity implements BottomSheet
         btn_add = (ImageButton) findViewById(R.id.Btn_add_chat);
         EditText_chat = findViewById(R.id.Edit_msg);
 
+        if (url != null) {
+            EditText_chat.setText(url);
+        }
 
         mRecyclerView = findViewById(R.id.chat_recycler_view);
         mRecyclerView.setHasFixedSize(true);
@@ -90,9 +97,12 @@ public class chat_room_activity extends AppCompatActivity implements BottomSheet
         btn_add.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
                 BottomSheet bottomSheet = new BottomSheet();
-                bottomSheet.show(getSupportFragmentManager(),"bottom sheet");
+                Bundle bundle = new Bundle();
+                bundle.putString("myName", myName);
+                bundle.putString("otherName", otherName);
+                bottomSheet.setArguments(bundle);
+                bottomSheet.show(getSupportFragmentManager(), "bottom sheet");
 
             }
         });
@@ -103,7 +113,7 @@ public class chat_room_activity extends AppCompatActivity implements BottomSheet
                 String msg = EditText_chat.getText().toString();
                 String msg_time = getTime();
 
-                if(msg != null){
+                if (msg != null) {
                     Chat_Data chat = new Chat_Data();
                     chat.setName(myName);
                     chat.setMsg(msg);
@@ -113,7 +123,7 @@ public class chat_room_activity extends AppCompatActivity implements BottomSheet
                 new Handler().postDelayed(new Runnable() {              //scrollToPosition 딜레이
                     @Override
                     public void run() {
-                        mRecyclerView.scrollToPosition(mAdapter.getItemCount()-1);
+                        mRecyclerView.scrollToPosition(mAdapter.getItemCount() - 1);
                     }
                 }, 200);
                 EditText_chat.setText("");
@@ -128,7 +138,7 @@ public class chat_room_activity extends AppCompatActivity implements BottomSheet
             @Override
             public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
                 Chat_Data chat = snapshot.getValue(Chat_Data.class);
-                ((Chat_Adapter)mAdapter).addChat(chat);
+                ((Chat_Adapter) mAdapter).addChat(chat);
             }
 
             @Override
@@ -166,13 +176,13 @@ public class chat_room_activity extends AppCompatActivity implements BottomSheet
         long now = System.currentTimeMillis();
         Date date = new Date(now);
         SimpleDateFormat msg_dateFormat = new SimpleDateFormat("hh:mm aa");
-        String time  = msg_dateFormat.format(date);
+        String time = msg_dateFormat.format(date);
 
         return time;
     }
 
     @Override
-    public void onButtonClicked(){
+    public void onButtonClicked() {
 
     }
 }

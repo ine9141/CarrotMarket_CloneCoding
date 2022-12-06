@@ -10,6 +10,7 @@ import android.location.LocationManager;
 import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -27,19 +28,31 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 
-public class location_share extends AppCompatActivity implements OnMapReadyCallback  {
+public class location_share extends AppCompatActivity implements OnMapReadyCallback {
 
     double longitude;
     double latitude;
-    Double lat;
-    Double lon;
+    double lat;
+    double lon;
     private GoogleMap mMap;
+    private String myName;
+    private String otherName;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.location_share);
+
+        Intent secondIntent = getIntent();
+        if (secondIntent.hasExtra("myName")) {
+            myName = secondIntent.getStringExtra("myName");
+        }
+
+        if (secondIntent.hasExtra("otherName")) {
+            otherName = secondIntent.getStringExtra("otherName");
+        }
+
 
         final LocationManager lm = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
 
@@ -77,6 +90,7 @@ public class location_share extends AppCompatActivity implements OnMapReadyCallb
         map.moveCamera(CameraUpdateFactory.newLatLng(NOW));
         map.animateCamera(CameraUpdateFactory.zoomTo(17));
 
+
         map.setOnMapClickListener(new GoogleMap.OnMapClickListener() {
             @Override
             public void onMapClick(LatLng latLng) {
@@ -86,7 +100,7 @@ public class location_share extends AppCompatActivity implements OnMapReadyCallb
                 lat = latLng.latitude; // 위도
                 lon = latLng.longitude; // 경도
                 // 마커의 스니펫(간단한 텍스트) 설정
-                mOptions.snippet(lat.toString() + ", " + lon.toString());
+                mOptions.snippet(lat + ", " + lon);
                 // LatLng: 위도 경도 쌍을 나타냄
                 mOptions.position(new LatLng(lat, lon));
                 // 마커(핀) 추가
@@ -101,19 +115,18 @@ public class location_share extends AppCompatActivity implements OnMapReadyCallb
             }
         });
 
-        mMap.setOnMarkerClickListener(new GoogleMap.OnMarkerClickListener() {
-            @Override
-            public boolean onMarkerClick(@NonNull Marker marker) {
-                Intent intent = new Intent(getApplicationContext(), chat_room_activity.class);
-                intent.putExtra("url","https://google.co.kr/maps/@"+lat+lon+"18z");
+        map.setOnMarkerClickListener(new GoogleMap.OnMarkerClickListener() {
+            public boolean onMarkerClick(Marker marker) {
+                String url = "https://google.co.kr/maps/@"+marker.getPosition().latitude+","+marker.getPosition().longitude+",18z";
+                Intent intent = new Intent(getApplicationContext(),chat_room_activity.class);
+                intent.putExtra("myName",myName);
+                intent.putExtra("otherName",otherName);
+                intent.putExtra("URL",url);
                 startActivity(intent);
                 return false;
             }
         });
 
-        //mOptions.OnMarkerClickListener
 
     }
 }
-
-//f"https://google.co.kr/maps/@{lat},{lon},{mag}z"

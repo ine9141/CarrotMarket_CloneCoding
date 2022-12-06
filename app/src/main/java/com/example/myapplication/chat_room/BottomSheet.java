@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -33,8 +34,9 @@ public class BottomSheet extends BottomSheetDialogFragment {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getActivity().getApplicationContext(), location_share.class);
+                intent.putExtra("myName",getArguments().getString("myName"));
+                intent.putExtra("otherName",getArguments().getString("otherName"));
                 startActivity(intent);
-
             }
         });
 
