@@ -9,8 +9,12 @@ import android.widget.TextView;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+
 public class home extends AppCompatActivity {
-    Button home, life, around, chat, my,post_button;
+    Button home, life, around, chat, my;
+    FloatingActionButton post_button;
+
     TextView dong_name;
     String s;
     @Override
@@ -23,9 +27,6 @@ public class home extends AppCompatActivity {
         ActionBar actionBar = getSupportActionBar();
         actionBar.hide();
 
-        //글 올리기
-        post_button = (Button) findViewById(R.id.postButton);
-
         //하단 액션바
         home = (Button) findViewById(R.id.home);
         life = (Button) findViewById(R.id.life);
@@ -33,6 +34,7 @@ public class home extends AppCompatActivity {
         chat = (Button) findViewById(R.id.chat);
         my = (Button) findViewById(R.id.my);
         dong_name = (TextView) findViewById(R.id.dong_name);
+        post_button = (FloatingActionButton) findViewById(R.id.postButton);
 
         //동네이름 설정
         Intent secondIntent = getIntent();

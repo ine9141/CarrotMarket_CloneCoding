@@ -87,5 +87,4 @@ public class write_post extends AppCompatActivity {
     { Toast.makeText(this, msg, Toast.LENGTH_SHORT).show();}
 
 
-
 }
