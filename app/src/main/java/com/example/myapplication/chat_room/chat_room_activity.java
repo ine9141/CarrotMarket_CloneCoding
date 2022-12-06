@@ -37,12 +37,16 @@ public class chat_room_activity extends AppCompatActivity implements BottomSheet
     private RecyclerView.LayoutManager mLayoutManager;
     private List<Chat_Data> chatList;
     private  String myName = "user1";
+    private  String otherName;
+    private  String chat_room_name;
 
 
 
     private EditText EditText_chat;
     private ImageButton btn_back, btn_call, btn_set,btn_send,btn_add;
     private DatabaseReference myRef;
+
+
     @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState){
@@ -54,6 +58,10 @@ public class chat_room_activity extends AppCompatActivity implements BottomSheet
 
         Intent intent = getIntent();
         myName = intent.getStringExtra("myName");
+        otherName = intent.getStringExtra("otherName");
+
+        //데이터 베이스에 유저 둘을 묶기 위함
+        chat_room_name = myName.compareTo(otherName) < 0 ? myName + otherName : otherName + myName;
 
         btn_send = (ImageButton) findViewById(R.id.Btn_send);
         btn_back = (ImageButton) findViewById(R.id.btn_back);
@@ -71,8 +79,6 @@ public class chat_room_activity extends AppCompatActivity implements BottomSheet
         chatList = new ArrayList<>();
         mAdapter = new Chat_Adapter(chatList, chat_room_activity.this, myName);
         mRecyclerView.setAdapter(mAdapter);
-
-
 
 
         btn_add.setOnClickListener(new View.OnClickListener() {
@@ -96,7 +102,7 @@ public class chat_room_activity extends AppCompatActivity implements BottomSheet
                     chat.setName(myName);
                     chat.setMsg(msg);
                     chat.setTime(msg_time);
-                    myRef.push().setValue(chat);
+                    myRef.child(chat_room_name).push().setValue(chat);
                 }
                 new Handler().postDelayed(new Runnable() {              //scrollToPosition 딜레이
                     @Override
@@ -112,7 +118,7 @@ public class chat_room_activity extends AppCompatActivity implements BottomSheet
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         myRef = database.getReference();
 
-        myRef.addChildEventListener(new ChildEventListener() {
+        myRef.child(chat_room_name).addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
                 Chat_Data chat = snapshot.getValue(Chat_Data.class);
