@@ -35,24 +35,24 @@
 
             <Button
                 android:id="@+id/search"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
                 android:layout_gravity="right"
                 android:background="@drawable/search"
                 android:gravity="center" />
 
             <Button
                 android:id="@+id/menu"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
                 android:layout_gravity="right"
                 android:background="@drawable/menu"
                 android:gravity="center" />
 
             <Button
                 android:id="@+id/notice"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
                 android:layout_gravity="right"
                 android:background="@drawable/notice"
                 android:gravity="center" />
