@@ -81,6 +81,7 @@ public class chat extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(),com.example.myapplication.chat_room.chat_room_activity.class);
+
                 intent.putExtra("myName",myName.getText().toString());
                 intent.putExtra("otherName",otherName.getText().toString());
                 startActivity(intent);
@@ -136,13 +137,14 @@ public class chat extends AppCompatActivity {
             }
         });
 
+
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         lRef = database.getReference();
         lRef.addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
-                chat_list_data chat = snapshot.getValue(chat_list_data.class);
-                ((chat_list_Adapter)lAdapter).addChatList(chat);
+               chat_list_data chat = snapshot.getValue(chat_list_data.class);
+               ((chat_list_Adapter)lAdapter).addChatList(chat);
             }
 
             @Override
@@ -165,6 +167,8 @@ public class chat extends AppCompatActivity {
 
             }
         });
+
+
     }
 
 }
