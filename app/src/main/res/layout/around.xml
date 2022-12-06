@@ -18,46 +18,46 @@
             android:id="@+id/dong_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="left"
-            android:text="OO동"
-            android:gravity="center"
-            android:textColor="@color/black"
-            android:textSize="30sp"
             android:layout_alignParentLeft="true"
+            android:layout_gravity="left"
+            android:gravity="center"
             android:paddingLeft="5dp"
-            android:paddingTop="5dp"/>
+            android:paddingTop="5dp"
+            android:text="OO동"
+            android:textColor="@color/black"
+            android:textSize="30sp" />
 
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:paddingRight="1dp"
-            android:layout_alignParentRight="true">
+            android:layout_alignParentRight="true"
+            android:paddingRight="1dp">
 
             <Button
                 android:id="@+id/search"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 android:layout_gravity="right"
-                android:gravity="center"
-                android:background="@drawable/search"/>
+                android:background="@drawable/search"
+                android:gravity="center" />
+
             <Button
                 android:id="@+id/menu"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 android:layout_gravity="right"
-                android:gravity="center"
-                android:background="@drawable/menu"/>
+                android:background="@drawable/menu"
+                android:gravity="center" />
+
             <Button
                 android:id="@+id/notice"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 android:layout_gravity="right"
-                android:gravity="center"
-                android:background="@drawable/notice"/>
+                android:background="@drawable/notice"
+                android:gravity="center" />
         </LinearLayout>
-
     </RelativeLayout>
-
 
     <!-- 하단바 -->
     <ScrollView
@@ -66,23 +66,341 @@
         android:layout_weight="100">
 
         <LinearLayout
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <Button
-                android:layout_width="wrap_content"
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TableLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingBottom="10dp"
+                    android:stretchColumns="*">
+
+                    <TableRow>
+
+                        <Button
+                            android:layout_width="70dp"
+                            android:layout_height="70dp"
+                            android:gravity="center"
+                            android:text="알바" />
+
+                        <Button
+                            android:layout_width="70dp"
+                            android:layout_height="70dp"
+                            android:gravity="center"
+                            android:text="중고차직거래" />
+
+                        <Button
+                            android:layout_width="70dp"
+                            android:layout_height="70dp"
+                            android:gravity="center"
+                            android:text="부동산직거래" />
+
+                        <Button
+                            android:layout_width="70dp"
+                            android:layout_height="70dp"
+                            android:gravity="center"
+                            android:text="당근미니" />
+                    </TableRow>
+
+                    <TableRow>
+
+                        <Button
+                            android:layout_width="70dp"
+                            android:layout_height="70dp"
+                            android:text="농수산물" />
+
+                        <Button
+                            android:layout_width="70dp"
+                            android:layout_height="70dp"
+                            android:text="쿠폰북" />
+
+                        <Button
+                            android:layout_width="70dp"
+                            android:layout_height="70dp"
+                            android:text="과외클래스" />
+
+                        <Button
+                            android:layout_width="70dp"
+                            android:layout_height="70dp"
+                            android:text="당근지도" />
+                    </TableRow>
+                </TableLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Here is AROUND" />
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="우리동네 가게 소식"
+                    android:textColor="#000000"
+                    android:textSize="20dp" />
+
+                <com.google.android.material.tabs.TabLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:tabGravity="fill"
+                    app:tabMaxWidth="0dp"
+                    app:tabMode="scrollable">
+
+                    <com.google.android.material.tabs.TabItem
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="단골ˑ추천" />
+
+                    <com.google.android.material.tabs.TabItem
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="최근 본 소식" />
+
+                    <com.google.android.material.tabs.TabItem
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="먹거리" />
+
+                    <com.google.android.material.tabs.TabItem
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="생활" />
+
+                    <com.google.android.material.tabs.TabItem
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="건강" />
+
+                    <com.google.android.material.tabs.TabItem
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="미용" />
+
+                    <com.google.android.material.tabs.TabItem
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="교육" />
+
+                    <com.google.android.material.tabs.TabItem
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="전체" />
+                </com.google.android.material.tabs.TabLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="ㅇㅇ동 이웃들은 어디로 갈까?"
+                    android:textColor="#000000"
+                    android:textSize="20dp" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="고민될 땐 이웃들이 추천한 곳을 먼저 살펴보세요." />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:orientation="horizontal">
+
+                    <Button
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="점심 먹으러" />
+
+                    <Button
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="커피 마시러" />
+
+                    <Button
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="가꾸고 싶을 때" />
+                </LinearLayout>
+
+                <Button
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="#ffffff"
+                    android:text="소식 더보기 >"
+                    android:textAlignment="center" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="9"
+                        android:text="우리동네 인기쿠폰"
+                        android:textColor="#000000"
+                        android:textSize="20dp" />
+
+                    <Button
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:background="#ffffff"
+                        android:text="받은 쿠폰 보기>" />
+
+                </LinearLayout>
+
+                <Button
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="#ffffff"
+                    android:text="쿠폰 더보기 >"
+                    android:textAlignment="center" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="걸어서 갈 수 있는 우리동네 알바"
+                    android:textColor="#000000"
+                    android:textSize="20dp" />
+
+                <Button
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="#ffffff"
+                    android:text="소식 더보기 >"
+                    android:textAlignment="center" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="걸어서 갈 수 있는 가게 소식"
+                    android:textColor="#000000"
+                    android:textSize="20dp" />
+
+                <Button
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="#ffffff"
+                    android:text="소식 더보기 >"
+                    android:textAlignment="center" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="이웃들의 추천가게"
+                    android:textColor="#000000"
+                    android:textSize="20dp" />
+
+                <Button
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="#ffffff"
+                    android:text="소식 더보기 >"
+                    android:textAlignment="center" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="설치없이 바로 이용하는 당근미니"
+                    android:textColor="#000000"
+                    android:textSize="20dp" />
+
+                <Button
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="#ffffff"
+                    android:text="소식 더보기 >"
+                    android:textAlignment="center" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="이런상품은 어떠세요?"
+                    android:textColor="#000000"
+                    android:textSize="20dp" />
+
+                <Button
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="#ffffff"
+                    android:text="소식 더보기 >"
+                    android:textAlignment="center" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="나의 당근 이야기"
+                    android:textColor="#000000"
+                    android:textSize="20dp" />
+
+                <Button
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="#ffffff"
+                    android:text="소식 더보기 >"
+                    android:textAlignment="center" />
+            </LinearLayout>
         </LinearLayout>
     </ScrollView>
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_weight="1"
         android:orientation="horizontal"
-        android:paddingBottom="0dp"
-        android:layout_weight="1">
+        android:paddingBottom="0dp">
 
         <Button
             android:id="@+id/home"
@@ -102,37 +420,36 @@
             android:background="@drawable/life"
             android:paddingTop="28dp"
             android:text="동네생활"
-            android:textSize="10dp"/>
+            android:textSize="10dp" />
 
         <Button
             android:id="@+id/around"
             android:layout_width="match_parent"
             android:layout_height="50dp"
-            android:paddingTop="28dp"
             android:layout_weight="1"
+            android:background="@drawable/around_click"
+            android:paddingTop="28dp"
             android:text="내 근처"
-            android:textSize="10dp"
-            android:background="@drawable/around_click"/>
+            android:textSize="10dp" />
 
         <Button
             android:id="@+id/chat"
             android:layout_width="match_parent"
             android:layout_height="50dp"
-            android:paddingTop="28dp"
-            android:textSize="10dp"
             android:layout_weight="1"
+            android:background="@drawable/chat"
+            android:paddingTop="28dp"
             android:text="채팅"
-            android:background="@drawable/chat"/>
+            android:textSize="10dp" />
 
         <Button
             android:id="@+id/my"
             android:layout_width="match_parent"
             android:layout_height="50dp"
-            android:paddingTop="28dp"
             android:layout_weight="1"
+            android:background="@drawable/my"
+            android:paddingTop="28dp"
             android:text="나의 공간"
-            android:textSize="10dp"
-            android:background="@drawable/my"/>
-
+            android:textSize="10dp" />
     </LinearLayout>
 </LinearLayout>
