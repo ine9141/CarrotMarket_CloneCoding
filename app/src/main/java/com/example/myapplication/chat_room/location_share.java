@@ -23,11 +23,11 @@ import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 
-public class location_share extends AppCompatActivity implements OnMapReadyCallback {
+public class location_share extends AppCompatActivity implements OnMapReadyCallback  {
 
     double longitude;
     double latitude;
-    GoogleMap map;
+    private GoogleMap mMap;
 
 
     @Override
@@ -60,16 +60,43 @@ public class location_share extends AppCompatActivity implements OnMapReadyCallb
 
     @Override
     public void onMapReady(final GoogleMap map) {
-
-
-        LatLng SEOUL = new LatLng(latitude, longitude);
+        mMap = map;
+        LatLng NOW = new LatLng(latitude, longitude);
 
         MarkerOptions markerOptions = new MarkerOptions();
-        markerOptions.position(SEOUL);
-        markerOptions.title("내 위치");
+        markerOptions.position(NOW);
+        markerOptions.title("현재 위치");
         map.addMarker(markerOptions);
 
-        map.moveCamera(CameraUpdateFactory.newLatLng(SEOUL));
-        map.animateCamera(CameraUpdateFactory.zoomTo(10));
+        map.moveCamera(CameraUpdateFactory.newLatLng(NOW));
+        map.animateCamera(CameraUpdateFactory.zoomTo(17));
+
+        map.setOnMapClickListener(new GoogleMap.OnMapClickListener() {
+            @Override
+            public void onMapClick(LatLng latLng) {
+                MarkerOptions mOptions = new MarkerOptions();
+                // 마커 타이틀
+                mOptions.title("마커 좌표");
+                Double lat = latLng.latitude; // 위도
+                Double lon = latLng.longitude; // 경도
+                // 마커의 스니펫(간단한 텍스트) 설정
+                mOptions.snippet(lat.toString() + ", " + lon.toString());
+                // LatLng: 위도 경도 쌍을 나타냄
+                mOptions.position(new LatLng(lat, lon));
+                // 마커(핀) 추가
+                mMap.addMarker(mOptions);
+
+                LatLng SET = new LatLng(lat, lon);
+                mOptions.position(SET);
+                mOptions.title("공유할 위치");
+                mMap.moveCamera(CameraUpdateFactory.newLatLng(SET));
+                mMap.animateCamera(CameraUpdateFactory.zoomTo(17));
+            }
+        });
+
+        //mOptions.OnMarkerClickListener
+
     }
 }
+
+//f"https://google.co.kr/maps/@{lat},{lon},{mag}z"
