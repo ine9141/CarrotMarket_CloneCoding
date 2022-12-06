@@ -1,7 +1,11 @@
 package com.example.myapplication;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
@@ -13,10 +17,27 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.myapplication.chat_room.Chat_Data;
+import com.google.firebase.database.ChildEventListener;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
+import java.util.ArrayList;
+import java.util.List;
+
 public class chat extends AppCompatActivity {
     Button home, life, around, chat, my, go_chat;
     EditText myName, otherName;
     String s;
+    private RecyclerView lRecyclerView;
+    private RecyclerView.Adapter lAdapter;
+    private RecyclerView.LayoutManager lLayoutManager;
+    private List<chat_list_data> chat_data;
+    private DatabaseReference lRef;
+
+
     @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,6 +61,16 @@ public class chat extends AppCompatActivity {
         otherName = findViewById(R.id.otherName);
 
 
+
+        lRecyclerView = findViewById(R.id.chat_list_recycler);
+        lRecyclerView.setHasFixedSize(true);
+        lLayoutManager = new LinearLayoutManager(this);
+        lRecyclerView.setLayoutManager(lLayoutManager);
+        chat_data = new ArrayList<>();
+        lAdapter = new chat_list_Adapter(chat_data, chat.this);
+        lRecyclerView.setAdapter(lAdapter);
+
+
         //동네이름 설정
         Intent secondIntent = getIntent();
         if (secondIntent.hasExtra("dong_s")) {
@@ -53,6 +84,9 @@ public class chat extends AppCompatActivity {
                 intent.putExtra("myName",myName.getText().toString());
                 intent.putExtra("otherName",otherName.getText().toString());
                 startActivity(intent);
+
+
+
             }
         });
 
@@ -99,6 +133,36 @@ public class chat extends AppCompatActivity {
                 Intent intent = new Intent(getApplicationContext(),my.class);
                 intent.putExtra("dong_s",s);
                 startActivity(intent);
+            }
+        });
+
+        FirebaseDatabase database = FirebaseDatabase.getInstance();
+        lRef = database.getReference();
+        lRef.addChildEventListener(new ChildEventListener() {
+            @Override
+            public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+                chat_list_data chat = snapshot.getValue(chat_list_data.class);
+                ((chat_list_Adapter)lAdapter).addChatList(chat);
+            }
+
+            @Override
+            public void onChildChanged(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+
+            }
+
+            @Override
+            public void onChildRemoved(@NonNull DataSnapshot snapshot) {
+
+            }
+
+            @Override
+            public void onChildMoved(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
             }
         });
     }
