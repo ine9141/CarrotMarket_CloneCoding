@@ -8,6 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -27,19 +28,26 @@ public class Chat_Adapter extends RecyclerView.Adapter<Chat_Adapter.MyViewHolder
     public static class MyViewHolder extends RecyclerView.ViewHolder{
         public TextView TextView_nickname;
         public TextView TextView_msg;
+        public TextView TextView_time_left, TextView_time_right;
         public View rootView;
 
         public CircleImageView Cir_img;
         public LinearLayout chat_linear;
 
+
         public MyViewHolder(View v){
             super(v);
             TextView_nickname = v.findViewById(R.id.tv_name);
             TextView_msg = v.findViewById(R.id.tv_msg);
+
+            TextView_time_left = v.findViewById(R.id.tv_time_left);
+            TextView_time_right = v.findViewById(R.id.tv_time_right);
+
             rootView = v;
 
             Cir_img = v.findViewById(R.id.imgv);
             chat_linear = v.findViewById(R.id.Chat_linear);
+
 
             v.setClickable(true);
             v.setEnabled(true);
@@ -55,8 +63,6 @@ public class Chat_Adapter extends RecyclerView.Adapter<Chat_Adapter.MyViewHolder
        LinearLayout v = (LinearLayout) LayoutInflater.from(parent.getContext())
             .inflate(R.layout.chat_room_left_item_list, parent, false);
 
-
-
         MyViewHolder vh = new MyViewHolder(v);
         return vh;
 
@@ -70,20 +76,32 @@ public class Chat_Adapter extends RecyclerView.Adapter<Chat_Adapter.MyViewHolder
         holder.TextView_nickname.setText(chat.getName());
         holder.TextView_msg.setText(chat.getMsg());
 
+        holder.TextView_time_left.setText(chat.getTime());
+        holder.TextView_time_right.setText(chat.getTime());
+
+
         if(chat.getName().equals(this.myNickname)){
             holder.TextView_msg.setTextAlignment(View.TEXT_ALIGNMENT_VIEW_END);
             holder.TextView_msg.setBackgroundResource(R.drawable.round_send_msg);
             holder.TextView_msg.setTextColor(Color.WHITE);
             holder.chat_linear.setGravity(Gravity.RIGHT);
 
+
             holder.TextView_nickname.setVisibility(View.INVISIBLE);
             holder.Cir_img.setVisibility(View.INVISIBLE);
+            holder.TextView_time_right.setVisibility(View.INVISIBLE);
+            holder.TextView_time_right.setMaxWidth(0);
+            holder.TextView_time_right.setMaxHeight(0);
 
 
         }
         else{
             holder.TextView_msg.setTextAlignment(View.TEXT_ALIGNMENT_VIEW_START);
             holder.TextView_nickname.setTextAlignment(View.TEXT_ALIGNMENT_VIEW_START);
+
+            holder.TextView_time_left.setVisibility(View.INVISIBLE);
+            holder.TextView_time_left.setMaxWidth(0);
+            holder.TextView_time_left.setMaxHeight(0);
         }
     }
 
@@ -106,19 +124,7 @@ public class Chat_Adapter extends RecyclerView.Adapter<Chat_Adapter.MyViewHolder
     }
 
 
-    public class LeftViewHolder extends RecyclerView.ViewHolder{
-        CircleImageView imgv;
-        TextView tv_name;
-        TextView tv_msg;
-        TextView tv_time;
-        public LeftViewHolder(@NonNull View itemView){
-            super(itemView);
-            imgv =(CircleImageView) itemView.findViewById(R.id.imgv);
-            tv_name = (TextView) itemView.findViewById(R.id.tv_name);
-            tv_msg = (TextView) itemView.findViewById(R.id.tv_msg);
-            tv_time = (TextView) itemView.findViewById(R.id.tv_time);
-        }
-    }
+
 
 
 

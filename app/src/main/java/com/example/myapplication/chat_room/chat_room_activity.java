@@ -6,8 +6,10 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.view.View;
 
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -24,22 +26,28 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 
-
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
-public class chat_room_activity extends AppCompatActivity {
+public class chat_room_activity extends AppCompatActivity implements BottomSheet.BottomSheetListener {
 
     private RecyclerView mRecyclerView;
     private RecyclerView.Adapter mAdapter;
     private RecyclerView.LayoutManager mLayoutManager;
     private List<Chat_Data> chatList;
     private  String myName = "user1";
+    private  String otherName;
+    private  String chat_room_name;
+
 
 
     private EditText EditText_chat;
-    private ImageButton btn_back, btn_call, btn_set,btn_send;
+    private ImageButton btn_back, btn_call, btn_set,btn_send,btn_add;
     private DatabaseReference myRef;
+
+
     @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState){
@@ -51,11 +59,21 @@ public class chat_room_activity extends AppCompatActivity {
 
         Intent intent = getIntent();
         myName = intent.getStringExtra("myName");
+        otherName = intent.getStringExtra("otherName");
+
+
+        if(myName == null || otherName == null){
+            Toast.makeText(getApplicationContext(), "아이디 필요", Toast.LENGTH_SHORT).show();
+            finish();
+        }
+        //데이터 베이스에 유저 둘을 묶기 위함
+        chat_room_name = myName.compareTo(otherName) < 0 ? myName + otherName : otherName + myName;
 
         btn_send = (ImageButton) findViewById(R.id.Btn_send);
         btn_back = (ImageButton) findViewById(R.id.btn_back);
         btn_call = (ImageButton) findViewById(R.id.btn_call);
-        btn_set = (ImageButton) findViewById(R.id.btn_set_chat) ;
+        btn_set = (ImageButton) findViewById(R.id.btn_set_chat);
+        btn_add = (ImageButton) findViewById(R.id.Btn_add_chat);
         EditText_chat = findViewById(R.id.Edit_msg);
 
 
@@ -69,15 +87,28 @@ public class chat_room_activity extends AppCompatActivity {
         mRecyclerView.setAdapter(mAdapter);
 
 
+        btn_add.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                BottomSheet bottomSheet = new BottomSheet();
+                bottomSheet.show(getSupportFragmentManager(),"bottom sheet");
+
+            }
+        });
+
         btn_send.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 String msg = EditText_chat.getText().toString();
+                String msg_time = getTime();
+
                 if(msg != null){
                     Chat_Data chat = new Chat_Data();
                     chat.setName(myName);
                     chat.setMsg(msg);
-                    myRef.push().setValue(chat);
+                    chat.setTime(msg_time);
+                    myRef.child(chat_room_name).push().setValue(chat);
                 }
                 new Handler().postDelayed(new Runnable() {              //scrollToPosition 딜레이
                     @Override
@@ -85,7 +116,7 @@ public class chat_room_activity extends AppCompatActivity {
                         mRecyclerView.scrollToPosition(mAdapter.getItemCount()-1);
                     }
                 }, 200);
-
+                EditText_chat.setText("");
             }
 
         });
@@ -93,7 +124,7 @@ public class chat_room_activity extends AppCompatActivity {
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         myRef = database.getReference();
 
-        myRef.addChildEventListener(new ChildEventListener() {
+        myRef.child(chat_room_name).addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
                 Chat_Data chat = snapshot.getValue(Chat_Data.class);
@@ -128,6 +159,20 @@ public class chat_room_activity extends AppCompatActivity {
                 finish();
             }
         });
+
+    }
+
+    private String getTime() {
+        long now = System.currentTimeMillis();
+        Date date = new Date(now);
+        SimpleDateFormat msg_dateFormat = new SimpleDateFormat("hh:mm aa");
+        String time  = msg_dateFormat.format(date);
+
+        return time;
+    }
+
+    @Override
+    public void onButtonClicked(){
 
     }
 }

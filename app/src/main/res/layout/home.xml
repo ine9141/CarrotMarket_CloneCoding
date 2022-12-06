@@ -30,40 +30,32 @@
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:paddingRight="1dp"
             android:layout_alignParentRight="true">
 
             <Button
                 android:id="@+id/search"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:text="검색"
-                android:textColor="@color/black"
-                android:textSize="20sp" />
-
-            <Button
-                android:id="@+id/menu"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="right"
-                android:gravity="center"
-                android:text="메뉴"
-                android:textColor="@color/black"
-                android:textSize="20sp" />
-
-            <Button
-                android:id="@+id/notice"
-                android:layout_width="60dp"
+                android:layout_width="50dp"
                 android:layout_height="50dp"
                 android:layout_gravity="right"
                 android:gravity="center"
-                android:textColor="@color/black"
+                android:background="@drawable/search"/>
+            <Button
+                android:id="@+id/menu"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_gravity="right"
+                android:gravity="center"
+                android:background="@drawable/menu"/>
+            <Button
+                android:id="@+id/notice"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_gravity="right"
+                android:gravity="center"
                 android:background="@drawable/notice"/>
-
         </LinearLayout>
-
     </RelativeLayout>
-
 
     <!-- 하단바 -->
     <ScrollView
@@ -82,8 +74,6 @@
                 android:text="Here is home" />
 
         </LinearLayout>
-
-
     </ScrollView>
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
@@ -107,16 +97,12 @@
         android:paddingBottom="0dp"
         android:layout_weight="1">
 
-
-
-
-
         <Button
             android:id="@+id/home"
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:layout_weight="1"
-            android:background="@drawable/home"
+            android:background="@drawable/home_click"
             android:paddingTop="28dp"
             android:text="홈"
             android:textSize="10dp" />
@@ -126,7 +112,10 @@
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:layout_weight="1"
-            android:text="life" />
+            android:background="@drawable/life"
+            android:paddingTop="28dp"
+            android:text="동네생활"
+            android:textSize="10dp"/>
 
         <Button
             android:id="@+id/around"

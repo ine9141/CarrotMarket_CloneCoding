@@ -30,37 +30,31 @@
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:paddingRight="1dp"
             android:layout_alignParentRight="true">
 
             <Button
                 android:id="@+id/search"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="검색"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_gravity="right"
                 android:gravity="center"
-                android:textColor="@color/black"
-                android:textSize="20sp" />
+                android:background="@drawable/search"/>
             <Button
                 android:id="@+id/menu"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="메뉴"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
                 android:layout_gravity="right"
                 android:gravity="center"
-                android:textColor="@color/black"
-                android:textSize="20sp" />
+                android:background="@drawable/menu"/>
             <Button
                 android:id="@+id/notice"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="알림"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
                 android:layout_gravity="right"
                 android:gravity="center"
-                android:textColor="@color/black"
-                android:textSize="20sp" />
-
+                android:background="@drawable/notice"/>
         </LinearLayout>
-
     </RelativeLayout>
 
 
@@ -68,7 +62,7 @@
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1">
+        android:layout_weight="100">
 
         <LinearLayout
             android:layout_width="wrap_content"
@@ -78,51 +72,66 @@
             <Button
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Here is home" />
+                android:text="Here is LIFE" />
         </LinearLayout>
-
-
     </ScrollView>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:paddingBottom="0dp"
+        android:layout_weight="1">
 
         <Button
             android:id="@+id/home"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="50dp"
             android:layout_weight="1"
-            android:text="home" />
+            android:background="@drawable/home"
+            android:paddingTop="28dp"
+            android:text="홈"
+            android:textSize="10dp" />
 
         <Button
             android:id="@+id/life"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="50dp"
             android:layout_weight="1"
-            android:text="life" />
+            android:background="@drawable/life_click"
+            android:paddingTop="28dp"
+            android:text="동네생활"
+            android:textSize="10dp"/>
 
         <Button
             android:id="@+id/around"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="50dp"
+            android:paddingTop="28dp"
             android:layout_weight="1"
-            android:text="around" />
+            android:text="내 근처"
+            android:textSize="10dp"
+            android:background="@drawable/around"/>
 
         <Button
             android:id="@+id/chat"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="50dp"
+            android:paddingTop="28dp"
+            android:textSize="10dp"
             android:layout_weight="1"
-            android:text="chat" />
+            android:text="채팅"
+            android:background="@drawable/chat"/>
 
         <Button
             android:id="@+id/my"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="50dp"
+            android:paddingTop="28dp"
             android:layout_weight="1"
-            android:text="my" />
+            android:text="나의 공간"
+            android:textSize="10dp"
+            android:background="@drawable/my"/>
 
     </LinearLayout>
 </LinearLayout>

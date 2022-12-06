@@ -10,7 +10,8 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:background="@drawable/border_layout">
 
         <ImageButton
             android:layout_margin="10dp"
@@ -73,13 +74,23 @@
         android:layout_height="0dp"
         android:layout_weight="1"
         android:scrollbars="vertical"/>
+
+
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="50dp"
+        android:layout_height="47dp"
         android:orientation="horizontal"
         android:background="@color/white"
         android:weightSum="1">
-
+        <ImageButton
+            android:id="@+id/Btn_add_chat"
+            android:padding="0dp"
+            android:scaleType="centerCrop"
+            android:scaleX=".8"
+            android:scaleY=".8"
+            android:src="@drawable/chat_add_btn"
+            android:layout_width="50dp"
+            android:layout_height="match_parent"/>
         <EditText
             android:id="@+id/Edit_msg"
             android:layout_width="0dp"
