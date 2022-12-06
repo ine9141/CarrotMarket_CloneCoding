@@ -22,7 +22,8 @@
             app:fabSize="auto"
             app:rippleColor="#00FFFFFF"
             app:srcCompat="@drawable/ic_baseline_clear_24"
-            tools:ignore="SpeakableTextPresentCheck,SpeakableTextPresentCheck" />
+            tools:ignore="SpeakableTextPresentCheck,SpeakableTextPresentCheck"
+            android:contentDescription="@null" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -111,4 +112,5 @@
 
         </LinearLayout>
     </ScrollView>
+
 </LinearLayout>
