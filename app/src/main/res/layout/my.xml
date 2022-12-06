@@ -58,7 +58,7 @@
                         android:layout_height="30dp"
                         android:paddingLeft="10dp"
                         android:layout_gravity="left"
-                        android:background="#f27500"
+                        android:background="#f27500"/>
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
