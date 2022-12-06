@@ -6,10 +6,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
-
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
@@ -85,6 +83,7 @@ public class write_post extends AppCompatActivity {
 
     private void startToast(String msg)
     { Toast.makeText(this, msg, Toast.LENGTH_SHORT).show();}
+
 
 
 }
