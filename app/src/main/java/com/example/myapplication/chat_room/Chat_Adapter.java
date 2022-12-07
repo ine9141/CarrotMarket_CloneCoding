@@ -54,13 +54,15 @@ public class Chat_Adapter extends RecyclerView.Adapter<Chat_Adapter.MyViewHolder
             v.setEnabled(true);
 
 
-            //채팅 클릭 이벤트ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ입니다
+            //장소공유 채팅 클릭 이벤트 입니다 ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ
             v.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    if(TextView_msg.getText().toString().contains("google.co.kr/maps/")==true)
+                    if(TextView_msg.getText().toString().contains("google.co.kr/maps/")==true){
+
                         Toast.makeText(v.getContext().getApplicationContext(), "Clicked",Toast.LENGTH_SHORT).show();
 
+                    }
                 }
             });
 
