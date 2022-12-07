@@ -52,8 +52,6 @@ public class check_address extends AppCompatActivity {
         dong = (EditText) findViewById(R.id.dong);
         text = (TextView) findViewById(R.id.text);
 
-
-
         // 위치 관리자 객체 참조하기
         final LocationManager lm = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
 
@@ -99,7 +97,7 @@ public class check_address extends AppCompatActivity {
         text.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(),set_name.class);
+                Intent intent = new Intent(getApplicationContext(),home.class);
                 intent.putExtra("dong_s",s);
                 startActivity(intent);
             }

@@ -10,6 +10,7 @@ import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -51,6 +52,19 @@ public class Chat_Adapter extends RecyclerView.Adapter<Chat_Adapter.MyViewHolder
 
             v.setClickable(true);
             v.setEnabled(true);
+
+
+            //채팅 클릭 이벤트ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ입니다
+            v.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+
+                    if(TextView_nickname.getText().toString().equals("유저1")==true)
+                        Toast.makeText(v.getContext().getApplicationContext(), "Clicked",Toast.LENGTH_SHORT).show();
+
+                }
+            });
+
         }
     }
     public Chat_Adapter(List<Chat_Data> myDataset, Context context, String myNickName){
@@ -86,12 +100,13 @@ public class Chat_Adapter extends RecyclerView.Adapter<Chat_Adapter.MyViewHolder
             holder.TextView_msg.setTextColor(Color.WHITE);
             holder.chat_linear.setGravity(Gravity.RIGHT);
 
-
             holder.TextView_nickname.setVisibility(View.INVISIBLE);
             holder.Cir_img.setVisibility(View.INVISIBLE);
             holder.TextView_time_right.setVisibility(View.INVISIBLE);
             holder.TextView_time_right.setMaxWidth(0);
             holder.TextView_time_right.setMaxHeight(0);
+
+
 
 
         }

@@ -30,7 +30,7 @@ import java.util.List;
 public class chat extends AppCompatActivity {
     Button home, life, around, chat, my, go_chat;
     EditText myName, otherName;
-    String s,nick_name;
+    String s;
     private RecyclerView lRecyclerView;
     private RecyclerView.Adapter lAdapter;
     private RecyclerView.LayoutManager lLayoutManager;
@@ -77,11 +77,6 @@ public class chat extends AppCompatActivity {
             s = secondIntent.getStringExtra("dong_s");
         }
 
-        //닉네임 설정
-        if (secondIntent.hasExtra("nick_name")) {
-            nick_name = secondIntent.getStringExtra("nick_name");
-        }
-
         go_chat.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -99,9 +94,8 @@ public class chat extends AppCompatActivity {
         home.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), home.class);
-                intent.putExtra("dong_s", s);
-                intent.putExtra("nick_name", nick_name);
+                Intent intent = new Intent(getApplicationContext(),home.class);
+                intent.putExtra("dong_s",s);
                 startActivity(intent);
             }
         });
@@ -109,9 +103,8 @@ public class chat extends AppCompatActivity {
         life.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), life.class);
-                intent.putExtra("dong_s", s);
-                intent.putExtra("nick_name", nick_name);
+                Intent intent = new Intent(getApplicationContext(),life.class);
+                intent.putExtra("dong_s",s);
                 startActivity(intent);
             }
         });
@@ -119,9 +112,8 @@ public class chat extends AppCompatActivity {
         around.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), around.class);
-                intent.putExtra("dong_s", s);
-                intent.putExtra("nick_name", nick_name);
+                Intent intent = new Intent(getApplicationContext(),around.class);
+                intent.putExtra("dong_s",s);
                 startActivity(intent);
             }
         });
@@ -129,9 +121,8 @@ public class chat extends AppCompatActivity {
         chat.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), chat.class);
-                intent.putExtra("dong_s", s);
-                intent.putExtra("nick_name", nick_name);
+                Intent intent = new Intent(getApplicationContext(),chat.class);
+                intent.putExtra("dong_s",s);
                 startActivity(intent);
             }
         });
@@ -139,9 +130,8 @@ public class chat extends AppCompatActivity {
         my.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), my.class);
-                intent.putExtra("dong_s", s);
-                intent.putExtra("nick_name", nick_name);
+                Intent intent = new Intent(getApplicationContext(),my.class);
+                intent.putExtra("dong_s",s);
                 startActivity(intent);
             }
         });

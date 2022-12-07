@@ -3,7 +3,6 @@ package com.example.myapplication;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -14,9 +13,7 @@ import android.widget.Toast;
 
 public class my extends AppCompatActivity {
     Button home, life, around, chat, my;
-    TextView user_name;
-    String s,nick_name;
-    @SuppressLint("MissingInflatedId")
+    String s;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -33,7 +30,6 @@ public class my extends AppCompatActivity {
         around = (Button) findViewById(R.id.around);
         chat = (Button) findViewById(R.id.chat);
         my = (Button) findViewById(R.id.my);
-        user_name = (TextView) findViewById(R.id.user_name);
 
         //동네이름 설정
         Intent secondIntent = getIntent();
@@ -41,18 +37,12 @@ public class my extends AppCompatActivity {
             s = secondIntent.getStringExtra("dong_s");
         }
 
-        //닉네임 설정
-        if (secondIntent.hasExtra("nick_name")) {
-            nick_name = secondIntent.getStringExtra("nick_name");
-            user_name.setText(nick_name);
-        }
 
         home.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), home.class);
-                intent.putExtra("dong_s", s);
-                intent.putExtra("nick_name", nick_name);
+                Intent intent = new Intent(getApplicationContext(),home.class);
+                intent.putExtra("dong_s",s);
                 startActivity(intent);
             }
         });
@@ -60,9 +50,8 @@ public class my extends AppCompatActivity {
         life.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), life.class);
-                intent.putExtra("dong_s", s);
-                intent.putExtra("nick_name", nick_name);
+                Intent intent = new Intent(getApplicationContext(),life.class);
+                intent.putExtra("dong_s",s);
                 startActivity(intent);
             }
         });
@@ -70,9 +59,8 @@ public class my extends AppCompatActivity {
         around.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), around.class);
-                intent.putExtra("dong_s", s);
-                intent.putExtra("nick_name", nick_name);
+                Intent intent = new Intent(getApplicationContext(),around.class);
+                intent.putExtra("dong_s",s);
                 startActivity(intent);
             }
         });
@@ -80,9 +68,8 @@ public class my extends AppCompatActivity {
         chat.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), chat.class);
-                intent.putExtra("dong_s", s);
-                intent.putExtra("nick_name", nick_name);
+                Intent intent = new Intent(getApplicationContext(),chat.class);
+                intent.putExtra("dong_s",s);
                 startActivity(intent);
             }
         });
@@ -90,9 +77,8 @@ public class my extends AppCompatActivity {
         my.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), my.class);
-                intent.putExtra("dong_s", s);
-                intent.putExtra("nick_name", nick_name);
+                Intent intent = new Intent(getApplicationContext(),my.class);
+                intent.putExtra("dong_s",s);
                 startActivity(intent);
             }
         });
