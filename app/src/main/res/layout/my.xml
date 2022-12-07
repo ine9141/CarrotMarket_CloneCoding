@@ -59,10 +59,11 @@
                         android:background="#f27500" />
 
                     <TextView
+                        android:id="@+id/user_name"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:paddingLeft="10dp"
-                        android:text="프로필"
+                        android:text="사용자"
                         android:textSize="20dp" />
                 </LinearLayout>
 
