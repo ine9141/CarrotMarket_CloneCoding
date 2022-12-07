@@ -58,8 +58,7 @@ public class Chat_Adapter extends RecyclerView.Adapter<Chat_Adapter.MyViewHolder
             v.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-
-                    if(TextView_nickname.getText().toString().equals("유저1")==true)
+                    if(TextView_msg.getText().toString().contains("google.co.kr/maps/")==true)
                         Toast.makeText(v.getContext().getApplicationContext(), "Clicked",Toast.LENGTH_SHORT).show();
 
                 }
