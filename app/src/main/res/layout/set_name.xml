@@ -4,28 +4,72 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <EditText
-        android:id="@+id/nickname"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="10dp"
-        android:padding="10dp"
-        android:gravity="center_horizontal"
-        android:hint="닉네임을 입력해주세요."
-        android:background="@drawable/set_name_bord"/>
-
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:background="@drawable/my_border"
-        android:orientation="horizontal"
-        android:paddingBottom="0dp">
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
-        <Button
-            android:id="@+id/next"
+        <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="확인" />
+            android:layout_gravity="center"
+            android:background="@drawable/profile_bord"
+            android:gravity="center"
+            android:paddingTop="15dp"
+            android:paddingBottom="15dp"
+            android:text="프로필 설정"
+            android:textColor="#000000"
+            android:textSize="18dp"
+            android:textStyle="bold" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="100"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_gravity="center"
+                android:layout_margin="15dp"
+                android:background="@drawable/base_profile" />
+
+            <EditText
+                android:id="@+id/nickname"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:background="@drawable/set_name_bord"
+                android:gravity="center_horizontal"
+                android:hint="닉네임을 입력해주세요."
+                android:padding="10dp"
+                android:textColor="#bdbebd"
+                android:textSize="16dp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="프로필 사진과 닉네임을 입력해주세요."
+                android:textSize="13dp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="#e3e3e3"
+            android:orientation="vertical"
+            android:paddingBottom="0dp">
+
+            <Button
+                android:id="@+id/next"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#00ff0000"
+                android:text="다음"
+                android:textColor="#ffffff" />
+
+        </LinearLayout>
     </LinearLayout>
 </LinearLayout>
