@@ -13,6 +13,7 @@ import android.util.Log;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
@@ -43,6 +44,10 @@ public class location_share extends AppCompatActivity implements OnMapReadyCallb
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.location_share);
+
+        //상단 액션바 제거
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.hide();
 
         Intent secondIntent = getIntent();
         if (secondIntent.hasExtra("myName")) {

@@ -7,6 +7,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -24,6 +25,10 @@ public class write_post extends AppCompatActivity {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.write_post);
+
+        //상단 액션바 제거
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.hide();
 
         done_button = findViewById(R.id.done_button);
 
