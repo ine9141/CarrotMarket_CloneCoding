@@ -1,6 +1,9 @@
 package com.example.myapplication;
 
+import static android.content.Intent.getIntent;
+
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,6 +22,7 @@ import de.hdodenhof.circleimageview.CircleImageView;
 public class chat_list_Adapter extends RecyclerView.Adapter<chat_list_Adapter.ListViewHolder> {
 
     public List<chat_list_data> lDataset;
+
 
 
 
@@ -47,7 +51,7 @@ public class chat_list_Adapter extends RecyclerView.Adapter<chat_list_Adapter.Li
 
     @NonNull
     @Override
-    public ListViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public chat_list_Adapter.ListViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         LinearLayout v = (LinearLayout) LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.chat_list,parent,false);
         ListViewHolder lh = new ListViewHolder(v);
@@ -57,6 +61,7 @@ public class chat_list_Adapter extends RecyclerView.Adapter<chat_list_Adapter.Li
     @Override
     public void onBindViewHolder(@NonNull ListViewHolder holder, int position) {
         chat_list_data chatD = lDataset.get(position);
+
         holder.chat_list_id.setText(chatD.getChat_id());
         holder.chat_last_msg.setText(chatD.getLast_msg());
 
@@ -71,7 +76,12 @@ public class chat_list_Adapter extends RecyclerView.Adapter<chat_list_Adapter.Li
     }
     public void addChatList(chat_list_data chat){
         lDataset.add(chat);
-        notifyItemInserted(lDataset.size()-1);
+        notifyDataSetChanged();
+        //notifyItemInserted(lDataset.size()-1);
+    }
+    public void setChatList(chat_list_data chat){
+        lDataset.set(0,chat);
+        notifyDataSetChanged();
     }
 
     @Override

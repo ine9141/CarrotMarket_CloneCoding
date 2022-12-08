@@ -19,6 +19,9 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.myapplication.R;
+import com.example.myapplication.chat;
+import com.example.myapplication.chat_list_Adapter;
+import com.example.myapplication.chat_list_data;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -37,6 +40,7 @@ public class chat_room_activity extends AppCompatActivity implements BottomSheet
     private RecyclerView.Adapter mAdapter;
     private RecyclerView.LayoutManager mLayoutManager;
     private List<Chat_Data> chatList;
+    private List<chat_list_data> chatListData;
     private String myName = "user1";
     private String otherName;
     private String url;
@@ -113,11 +117,18 @@ public class chat_room_activity extends AppCompatActivity implements BottomSheet
                 String msg_time = getTime();
 
                 if (msg != null) {
+
                     Chat_Data chat = new Chat_Data();
                     chat.setName(myName);
                     chat.setMsg(msg);
                     chat.setTime(msg_time);
-                    myRef.child(chat_room_name).push().setValue(chat);
+
+                    chat_list_data chatL= new chat_list_data();
+                    chatL.setChat_id(myName);
+                    chatL.setLast_msg(msg);
+                    myRef.child(chat_room_name).child("chat_info").setValue(chatL);
+                    myRef.child(chat_room_name).child("chat_log").push().setValue(chat);
+
                 }
                 new Handler().postDelayed(new Runnable() {              //scrollToPosition 딜레이
                     @Override
@@ -130,10 +141,13 @@ public class chat_room_activity extends AppCompatActivity implements BottomSheet
 
         });
 
+
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         myRef = database.getReference();
 
-        myRef.child(chat_room_name).addChildEventListener(new ChildEventListener() {
+
+
+        myRef.child(chat_room_name).child("chat_log").addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
                 Chat_Data chat = snapshot.getValue(Chat_Data.class);

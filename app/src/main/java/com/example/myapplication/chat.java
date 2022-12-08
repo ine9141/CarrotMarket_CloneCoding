@@ -23,6 +23,7 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -90,8 +91,6 @@ public class chat extends AppCompatActivity {
                 intent.putExtra("otherName",otherName.getText().toString());
                 startActivity(intent);
 
-
-
             }
         });
 
@@ -147,13 +146,22 @@ public class chat extends AppCompatActivity {
         });
 
 
+
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         lRef = database.getReference();
-        lRef.addChildEventListener(new ChildEventListener() {
+        lRef.child("init").setValue("null");
+
+
+
+
+
+        lRef.child("q1q2").addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
                 chat_list_data chat = snapshot.getValue(chat_list_data.class);
-                ((chat_list_Adapter)lAdapter).addChatList(chat);
+               ((chat_list_Adapter)lAdapter).addChatList(chat);
+
+
             }
 
             @Override

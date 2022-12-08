@@ -1,6 +1,7 @@
 package com.example.myapplication.chat_room;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Color;
 import android.view.ContentInfo;
 import android.view.Gravity;
@@ -93,6 +94,7 @@ public class Chat_Adapter extends RecyclerView.Adapter<Chat_Adapter.MyViewHolder
 
         holder.TextView_time_left.setText(chat.getTime());
         holder.TextView_time_right.setText(chat.getTime());
+
 
 
         if(chat.getName().equals(this.myNickname)){
