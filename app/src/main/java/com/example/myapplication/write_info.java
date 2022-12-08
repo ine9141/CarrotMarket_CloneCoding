@@ -6,6 +6,7 @@ public class write_info {
     private String contents;
     private String publisher;
 
+
     public write_info(String title, String price, String contents,String publisher){
         this.title=title;
         this.price=price;

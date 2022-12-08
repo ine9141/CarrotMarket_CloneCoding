@@ -15,7 +15,7 @@ public class home extends AppCompatActivity {
     Button home, life, around, chat, my;
     FloatingActionButton post_button;
     TextView dong_name;
-    String s;
+    String s, nick_name;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -45,12 +45,18 @@ public class home extends AppCompatActivity {
             dong_name.setText(s);
         }
 
+        //닉네임 설정
+        if (secondIntent.hasExtra("nick_name")) {
+            nick_name = secondIntent.getStringExtra("nick_name");
+        }
+
 
         home.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(),home.class);
                 intent.putExtra("dong_s",s);
+                intent.putExtra("nick_name",nick_name);
                 startActivity(intent);
             }
         });
@@ -60,6 +66,7 @@ public class home extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(),life.class);
                 intent.putExtra("dong_s",s);
+                intent.putExtra("nick_name",nick_name);
                 startActivity(intent);
             }
         });
@@ -69,6 +76,7 @@ public class home extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(),around.class);
                 intent.putExtra("dong_s",s);
+                intent.putExtra("nick_name",nick_name);
                 startActivity(intent);
             }
         });
@@ -78,6 +86,7 @@ public class home extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(),chat.class);
                 intent.putExtra("dong_s",s);
+                intent.putExtra("nick_name",nick_name);
                 startActivity(intent);
             }
         });
@@ -87,6 +96,7 @@ public class home extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(),my.class);
                 intent.putExtra("dong_s",s);
+                intent.putExtra("nick_name",nick_name);
                 startActivity(intent);
             }
         });
@@ -96,6 +106,7 @@ public class home extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(),write_post.class);
                 intent.putExtra("dong_s",s);
+                intent.putExtra("nick_name",nick_name);
                 startActivity(intent);
             }
         });
