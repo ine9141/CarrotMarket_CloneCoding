@@ -107,9 +107,6 @@ public class Chat_Adapter extends RecyclerView.Adapter<Chat_Adapter.MyViewHolder
             holder.TextView_time_right.setMaxWidth(0);
             holder.TextView_time_right.setMaxHeight(0);
 
-
-
-
         }
         else{
             holder.TextView_msg.setTextAlignment(View.TEXT_ALIGNMENT_VIEW_START);

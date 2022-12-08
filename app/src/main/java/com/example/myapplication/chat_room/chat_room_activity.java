@@ -69,7 +69,6 @@ public class chat_room_activity extends AppCompatActivity implements BottomSheet
 
         }
 
-
         //데이터 베이스에 유저 둘을 묶기 위함
         chat_room_name = myName.compareTo(otherName) < 0 ? myName + otherName : otherName + myName;
 
