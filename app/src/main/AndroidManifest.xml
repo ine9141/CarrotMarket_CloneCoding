@@ -82,6 +82,9 @@
             android:name=".chat_room.location_share"
             android:label="" />
         <activity
+            android:name=".chat_room.location_join"
+            android:label="" />
+        <activity
             android:name=".write_post"
             android:label="" />
         <activity
