@@ -1,5 +1,6 @@
 package com.example.myapplication;
 import com.example.myapplication.chat_room.chat_room_activity;
+import com.example.myapplication.chat_room.location_join;
 import com.example.myapplication.chat_room.location_share;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
@@ -24,7 +25,7 @@ public class MainActivity extends AppCompatActivity {
         ActionBar actionBar = getSupportActionBar();
         actionBar.hide();
 
-        Intent intent = new Intent(getApplicationContext(), set_name.class); //default : login.class
+        Intent intent = new Intent(getApplicationContext(), chat.class); //default : login.class
         startActivity(intent);
 
     }

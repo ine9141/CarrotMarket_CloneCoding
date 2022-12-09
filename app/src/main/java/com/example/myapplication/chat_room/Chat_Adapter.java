@@ -17,6 +17,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.myapplication.R;
+import com.example.myapplication.home;
 
 
 import java.util.List;
@@ -26,6 +27,13 @@ import de.hdodenhof.circleimageview.CircleImageView;
 public class Chat_Adapter extends RecyclerView.Adapter<Chat_Adapter.MyViewHolder> {
     private List<Chat_Data> mDataset;
     private String myNickname;
+    private static Context context;
+
+    public Chat_Adapter(List<Chat_Data> myDataset, Context context, String myNickName){
+        mDataset = myDataset;
+        this.myNickname =myNickName;
+        this.context = context;
+    }
 
     public static class MyViewHolder extends RecyclerView.ViewHolder{
         public TextView TextView_nickname;
@@ -35,7 +43,6 @@ public class Chat_Adapter extends RecyclerView.Adapter<Chat_Adapter.MyViewHolder
 
         public CircleImageView Cir_img;
         public LinearLayout chat_linear;
-
 
         public MyViewHolder(View v){
             super(v);
@@ -61,7 +68,14 @@ public class Chat_Adapter extends RecyclerView.Adapter<Chat_Adapter.MyViewHolder
                 public void onClick(View v) {
                     if(TextView_msg.getText().toString().contains("google.co.kr/maps/")==true){
 
-                        Toast.makeText(v.getContext().getApplicationContext(), "Clicked",Toast.LENGTH_SHORT).show();
+                        String s = TextView_msg.getText().toString();
+                        String[] token = s.split("@");
+                        String[] token2 = token[1].split(",");
+
+                        Intent intent = new Intent(context, location_join.class);
+                        intent.putExtra("x",token2[0]);
+                        intent.putExtra("y",token2[1]);
+                        context.startActivity(intent);
 
                     }
                 }
@@ -69,10 +83,7 @@ public class Chat_Adapter extends RecyclerView.Adapter<Chat_Adapter.MyViewHolder
 
         }
     }
-    public Chat_Adapter(List<Chat_Data> myDataset, Context context, String myNickName){
-        mDataset = myDataset;
-        this.myNickname =myNickName;
-    }
+
 
     public Chat_Adapter.MyViewHolder onCreateViewHolder(ViewGroup parent, int ViewType){
 
