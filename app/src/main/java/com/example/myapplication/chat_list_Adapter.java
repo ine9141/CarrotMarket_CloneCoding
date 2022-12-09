@@ -77,10 +77,7 @@ public class chat_list_Adapter extends RecyclerView.Adapter<chat_list_Adapter.Li
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(v.getContext(), myNickName, Toast.LENGTH_SHORT).show();
-
                 Intent intent = new Intent(v.getContext(), com.example.myapplication.chat_room.chat_room_activity.class);
-
                 intent.putExtra("myName",myNickName);
                 intent.putExtra("otherName",holder.chat_list_id_2.getText().toString());
                 v.getContext().startActivity(intent);

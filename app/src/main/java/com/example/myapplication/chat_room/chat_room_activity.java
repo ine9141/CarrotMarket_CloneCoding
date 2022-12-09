@@ -128,8 +128,8 @@ public class chat_room_activity extends AppCompatActivity implements BottomSheet
                     chatL.setID_1(myName);
                     chatL.setID_2(otherName);
                     chatL.setLast_msg(msg);
-                    myRef.child(chat_room_name).child("chat_info").setValue(chatL);
-                    myRef.child(chat_room_name).child("chat_log").push().setValue(chat);
+                    myRef.child("chat").child(chat_room_name).child("chat_info").setValue(chatL);
+                    myRef.child("chat").child(chat_room_name).child("chat_log").push().setValue(chat);
 
                 }
                 new Handler().postDelayed(new Runnable() {              //scrollToPosition 딜레이
@@ -149,7 +149,7 @@ public class chat_room_activity extends AppCompatActivity implements BottomSheet
 
 
 
-        myRef.child(chat_room_name).child("chat_log").addChildEventListener(new ChildEventListener() {
+        myRef.child("chat").child(chat_room_name).child("chat_log").addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
                 Chat_Data chat = snapshot.getValue(Chat_Data.class);
