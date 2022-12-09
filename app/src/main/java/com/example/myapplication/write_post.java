@@ -41,7 +41,7 @@ public class write_post extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.write_post);
 
-        done_button = findViewById(R.id.done_button);
+        done_button = (Button) findViewById(R.id.done_button);
         add_image_button = (ImageButton) findViewById(R.id.add_image_button);
         imageView = (ImageView)findViewById(R.id.imageView);
 
@@ -76,11 +76,11 @@ public class write_post extends AppCompatActivity {
         final String contents = ((EditText) findViewById(R.id.contentsEditText)).getText().toString();
 
         if (title.length() > 0 && contents.length() > 0) {
-            FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+           // FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
             FirebaseFirestore db = FirebaseFirestore.getInstance();
-
+//, user.getUid()
             write_info writeInfo;
-            writeInfo = new write_info(title,price,contents, user.getUid());
+            writeInfo = new write_info(title,price,contents);
             storeUpload(writeInfo);
         }
 

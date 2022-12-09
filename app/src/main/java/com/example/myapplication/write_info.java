@@ -4,14 +4,14 @@ public class write_info {
     private String title;
     private String price;
     private String contents;
-    private String publisher;
+    //private String publisher;
 
 
-    public write_info(String title, String price, String contents,String publisher){
+    public write_info(String title, String price, String contents){
         this.title=title;
-        this.price=price;
+        this.price=price;       //String publisher
         this.contents=contents;
-        this.publisher=publisher;
+       // this.publisher=publisher;
     }
 
     public String getTitle() { return this.title;}
@@ -20,8 +20,8 @@ public class write_info {
     public void setPrice(String price) {this.price=price;}
     public String getContents() { return this.contents;}
     public void setContents(String contents) {this.contents=contents;}
-    public String getPublisher() { return this.publisher;}
-    public void setPublisher(String publisher) {this.publisher=publisher;}
+    //public String getPublisher() { return this.publisher;}
+    //public void setPublisher(String publisher) {this.publisher=publisher;}
 
 
 }
