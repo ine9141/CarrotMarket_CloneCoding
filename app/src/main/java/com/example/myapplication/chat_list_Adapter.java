@@ -23,13 +23,11 @@ import de.hdodenhof.circleimageview.CircleImageView;
 public class chat_list_Adapter extends RecyclerView.Adapter<chat_list_Adapter.ListViewHolder> {
 
     public List<chat_list_data> lDataset;
-
-
-
-
+    private String myNickName;
 
     public static class ListViewHolder extends RecyclerView.ViewHolder{
-        public TextView chat_list_id;
+        public TextView chat_list_id_1;
+        public TextView chat_list_id_2;
         public TextView chat_last_msg;
         public View list_rootView;
 
@@ -37,17 +35,21 @@ public class chat_list_Adapter extends RecyclerView.Adapter<chat_list_Adapter.Li
 
         public ListViewHolder(View v){
             super(v);
-            chat_list_id = v.findViewById(R.id.chat_list_id);
+            chat_list_id_1 = v.findViewById(R.id.chat_list_id_1);
+            chat_list_id_2 = v.findViewById(R.id.chat_list_id_2);
             chat_last_msg = v.findViewById(R.id.chat_last_msg);
             list_rootView = v;
             circle_imgv = v.findViewById(R.id.circle_imgv);
             v.setClickable(true);
             v.setEnabled(true);
 
+
         }
     }
-    public chat_list_Adapter(List<chat_list_data> myDataset, Context context){
+    public chat_list_Adapter(List<chat_list_data> myDataset, Context context, String myNickName){
         lDataset = myDataset;
+        this.myNickName = myNickName;
+
     }
 
     @NonNull
@@ -63,9 +65,27 @@ public class chat_list_Adapter extends RecyclerView.Adapter<chat_list_Adapter.Li
     public void onBindViewHolder(@NonNull ListViewHolder holder, int position) {
         chat_list_data chatD = lDataset.get(position);
 
-        holder.chat_list_id.setText(chatD.getChat_id());
+        if(myNickName.equals(chatD.getID_1())){
+            holder.chat_list_id_2.setText(chatD.getID_2());
+        }
+        else{
+            holder.chat_list_id_2.setText(chatD.getID_1());
+        }
+
         holder.chat_last_msg.setText(chatD.getLast_msg());
 
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(v.getContext(), myNickName, Toast.LENGTH_SHORT).show();
+
+                Intent intent = new Intent(v.getContext(), com.example.myapplication.chat_room.chat_room_activity.class);
+
+                intent.putExtra("myName","q1");
+                intent.putExtra("otherName","q2");
+                v.getContext().startActivity(intent);
+            }
+        });
 
 
     }
@@ -78,14 +98,19 @@ public class chat_list_Adapter extends RecyclerView.Adapter<chat_list_Adapter.Li
         return lDataset != null ? lDataset.get(position) : null;
     }
     public void addChatList(chat_list_data chat){
-        if(chat.getChat_id() == null) return;
+        if(chat.getID_1() == null) return;
         lDataset.add(chat);
         notifyDataSetChanged();
         //notifyItemInserted(lDataset.size()-1);
     }
     public void setChatList(chat_list_data chat){
-        if(chat.getChat_id() == null) return;
-        lDataset.set(0,chat);
+        if(chat.getID_1() == null) return;
+        int i;
+        for(i=0; i<lDataset.size()-1;i++){
+            if(chat.getID_2().equals(lDataset.get(i).getID_2()))
+                break;
+        }
+        lDataset.set(i,chat);
         notifyDataSetChanged();
     }
 

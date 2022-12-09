@@ -124,7 +124,9 @@ public class chat_room_activity extends AppCompatActivity implements BottomSheet
                     chat.setTime(msg_time);
 
                     chat_list_data chatL= new chat_list_data();
-                    chatL.setChat_id(myName);
+
+                    chatL.setID_1(myName);
+                    chatL.setID_2(otherName);
                     chatL.setLast_msg(msg);
                     myRef.child(chat_room_name).child("chat_info").setValue(chatL);
                     myRef.child(chat_room_name).child("chat_log").push().setValue(chat);

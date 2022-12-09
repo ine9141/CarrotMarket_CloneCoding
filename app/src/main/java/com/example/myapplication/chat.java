@@ -70,7 +70,7 @@ public class chat extends AppCompatActivity {
         lLayoutManager = new LinearLayoutManager(this);
         lRecyclerView.setLayoutManager(lLayoutManager);
         chat_data = new ArrayList<>();
-        lAdapter = new chat_list_Adapter(chat_data, chat.this);
+        lAdapter = new chat_list_Adapter(chat_data, chat.this, "user2");
         lRecyclerView.setAdapter(lAdapter);
 
 
