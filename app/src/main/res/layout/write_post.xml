@@ -4,112 +4,144 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:backgroundTint="#57000000"
-    android:orientation="vertical">
+    android:backgroundTint="#57717171"
+    android:orientation="vertical"
+    app:statusBarBackground="#FFFFFF"
+    tools:context=".write_post">
 
     <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
-        <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:id="@+id/floatingActionButton2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="0"
-            android:tint="#000000"
-            app:backgroundTint="#00FF0000"
-            app:elevation="0dp"
-            app:fabSize="auto"
-            app:rippleColor="#00FFFFFF"
-            app:srcCompat="@drawable/ic_baseline_clear_24"
-            tools:ignore="SpeakableTextPresentCheck,SpeakableTextPresentCheck"
-            android:contentDescription="@null" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:text="중고거래 글쓰기"
-            android:textColor="#000000"
-            android:textStyle="bold" />
-
-        <Button
-            android:id="@+id/done_button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="0"
-            android:background="#00FFFFFF"
-            android:backgroundTint="#00FFFFFF"
-            android:elevation="0dp"
-            android:text="완료"
-            android:textColor="#FF5722"
-            android:textSize="16sp" />
-
-    </LinearLayout>
-
-    <View style="@style/Divider" />
-
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:layout_marginLeft="5dp"
-            android:layout_marginRight="5dp">
+            android:layout_height="wrap_content">
 
-            <EditText
-                android:id="@+id/titleEditText"
-                android:layout_width="match_parent"
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/floatingActionButton2"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:backgroundTint="#285C5C5C"
-                android:gravity="center_vertical"
-                android:hint="글 제목"
-                android:minHeight="48dp"
-                android:singleLine="false"
-                android:importantForAutofill="no"
-                android:inputType="text" />
+                android:layout_weight="0"
+                android:contentDescription="@null"
+                android:tint="#000000"
+                app:backgroundTint="#00FF0000"
+                app:elevation="0dp"
+                app:fabSize="auto"
+                app:rippleColor="#00FFFFFF"
+                app:srcCompat="@drawable/ic_baseline_clear_24"
+                tools:ignore="SpeakableTextPresentCheck,SpeakableTextPresentCheck" />
 
-            <EditText
-                android:id="@+id/priceEditText"
-                android:layout_width="match_parent"
+            <TextView
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:backgroundTint="#285C5C5C"
-                android:gravity="center_vertical"
-                android:hint="₩가격(선택사항)"
-                android:inputType="number"
-                android:minHeight="48dp"
-                android:importantForAutofill="no" />
-
-            <CheckBox
-                android:id="@+id/checkBox"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:clickable="false"
-                android:text="가격 제안받기" />
-
-            <EditText
-                android:id="@+id/contentsEditText"
-                android:layout_width="match_parent"
-                android:layout_height="200dp"
-                android:backgroundTint="#285C5C5C"
-                android:gravity="top"
-                android:inputType="text"
-                android:hint="올린 게시글 내용을 작성해주세요. (판매 금지 물품은 게시가 제한될 수 있어요.)"
-                android:importantForAutofill="no" />
+                android:layout_gravity="center_vertical"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="중고거래 글쓰기"
+                android:textColor="#000000"
+                android:textStyle="bold" />
 
             <Button
-                android:id="@+id/button5"
-                android:layout_width="match_parent"
+                android:id="@+id/done_button"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_weight="0"
                 android:background="#00FFFFFF"
-                android:gravity="start|center_vertical"
-                android:text="거래 희망 장소" />
-
+                android:backgroundTint="#00FFFFFF"
+                android:elevation="0dp"
+                android:text="완료"
+                android:textColor="#FF5722"
+                android:textSize="16sp" />
 
         </LinearLayout>
-    </ScrollView>
+
+        <View style="@style/Divider" />
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <ImageButton
+                        android:id="@+id/add_image_button"
+                        android:layout_width="62dp"
+                        android:layout_height="62dp"
+                        android:layout_margin="10dp"
+                        android:background="@drawable/et_link_back2"
+                        app:srcCompat="@drawable/ic_baseline_photo_camera_24" />
+
+                    <ImageView
+                        android:layout_width="62dp"
+                        android:layout_height="62dp"
+                        android:layout_margin="10dp"
+                        android:id="@+id/imageView"/>
+
+
+                </LinearLayout>
+
+                <EditText
+                    android:id="@+id/titleEditText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="#285C5C5C"
+                    android:gravity="center_vertical"
+                    android:hint="글 제목"
+                    android:importantForAutofill="no"
+                    android:inputType="text"
+                    android:minHeight="48dp"
+                    android:singleLine="false" />
+
+                <EditText
+                    android:id="@+id/priceEditText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="#285C5C5C"
+                    android:gravity="center_vertical"
+                    android:hint="₩가격(선택사항)"
+                    android:importantForAutofill="no"
+                    android:inputType="number"
+                    android:minHeight="48dp" />
+
+                <CheckBox
+                    android:id="@+id/checkBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:clickable="false"
+                    android:text="가격 제안받기" />
+
+                <EditText
+                    android:id="@+id/contentsEditText"
+                    android:layout_width="match_parent"
+                    android:layout_height="200dp"
+                    android:backgroundTint="#285C5C5C"
+                    android:gravity="top"
+                    android:hint="올린 게시글 내용을 작성해주세요. (판매 금지 물품은 게시가 제한될 수 있어요.)"
+                    android:importantForAutofill="no"
+                    android:inputType="text" />
+
+                <Button
+                    android:id="@+id/button5"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="#00FFFFFF"
+                    android:gravity="start|center_vertical"
+                    android:text="거래 희망 장소" />
+
+
+            </LinearLayout>
+        </ScrollView>
+    </LinearLayout>
+
+
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

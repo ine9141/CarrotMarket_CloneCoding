@@ -27,7 +27,7 @@ public class home extends AppCompatActivity {
         actionBar.hide();
 
         //글 올리기
-        post_button = (FloatingActionButton) findViewById(R.id.postButton);
+        post_button = findViewById(R.id.postButton);
 
         //하단 액션바
         home = (Button) findViewById(R.id.home);
