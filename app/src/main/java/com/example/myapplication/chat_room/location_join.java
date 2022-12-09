@@ -33,9 +33,6 @@ public class location_join extends AppCompatActivity implements OnMapReadyCallba
 
     double longitude;
     double latitude;
-    double lat;
-    double lon;
-    private GoogleMap mMap;
     private String x;
     private String y;
 
@@ -49,6 +46,13 @@ public class location_join extends AppCompatActivity implements OnMapReadyCallba
         ActionBar actionBar = getSupportActionBar();
         actionBar.hide();
 
+        FragmentManager fragmentManager = getFragmentManager();
+        MapFragment mapFragment = (MapFragment) fragmentManager.findFragmentById(R.id.map);
+        mapFragment.getMapAsync(this);
+    }
+
+    @Override
+    public void onMapReady(final GoogleMap map) {
         Intent secondIntent = getIntent();
         if (secondIntent.hasExtra("x")) {
             x = secondIntent.getStringExtra("x");
@@ -59,15 +63,6 @@ public class location_join extends AppCompatActivity implements OnMapReadyCallba
             y = secondIntent.getStringExtra("y");
             latitude = Double.parseDouble(String.valueOf(y));
         }
-
-        FragmentManager fragmentManager = getFragmentManager();
-        MapFragment mapFragment = (MapFragment) fragmentManager.findFragmentById(R.id.map);
-        mapFragment.getMapAsync(this);
-    }
-
-    @Override
-    public void onMapReady(final GoogleMap map) {
-        mMap = map;
         LatLng NOW = new LatLng(longitude, latitude);
 
         MarkerOptions markerOptions = new MarkerOptions();

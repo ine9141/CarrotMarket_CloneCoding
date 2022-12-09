@@ -17,6 +17,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.myapplication.R;
+import com.example.myapplication.home;
 
 
 import java.util.List;
@@ -26,7 +27,7 @@ import de.hdodenhof.circleimageview.CircleImageView;
 public class Chat_Adapter extends RecyclerView.Adapter<Chat_Adapter.MyViewHolder> {
     private List<Chat_Data> mDataset;
     private String myNickname;
-    private Context context;
+    private static Context context;
 
     public Chat_Adapter(List<Chat_Data> myDataset, Context context, String myNickName){
         mDataset = myDataset;
@@ -71,10 +72,10 @@ public class Chat_Adapter extends RecyclerView.Adapter<Chat_Adapter.MyViewHolder
                         String[] token = s.split("@");
                         String[] token2 = token[1].split(",");
 
-                        Intent intent = new Intent(v.getContext().getApplicationContext(),location_join.class);
+                        Intent intent = new Intent(context, location_join.class);
                         intent.putExtra("x",token2[0]);
                         intent.putExtra("y",token2[1]);
-                        v.getContext().getApplicationContext().startActivity(intent);
+                        context.startActivity(intent);
 
                     }
                 }
