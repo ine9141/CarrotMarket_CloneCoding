@@ -81,8 +81,8 @@ public class chat_list_Adapter extends RecyclerView.Adapter<chat_list_Adapter.Li
 
                 Intent intent = new Intent(v.getContext(), com.example.myapplication.chat_room.chat_room_activity.class);
 
-                intent.putExtra("myName","q1");
-                intent.putExtra("otherName","q2");
+                intent.putExtra("myName",myNickName);
+                intent.putExtra("otherName",holder.chat_list_id_2.getText().toString());
                 v.getContext().startActivity(intent);
             }
         });

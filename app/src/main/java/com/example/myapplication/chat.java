@@ -32,7 +32,7 @@ import java.util.List;
 
 public class chat extends AppCompatActivity {
     Button home, life, around, chat, my, go_chat;
-    EditText myName, otherName;
+    EditText otherName;
     String s,nick_name;
     private RecyclerView lRecyclerView;
     private RecyclerView.Adapter lAdapter;
@@ -60,9 +60,8 @@ public class chat extends AppCompatActivity {
         my = (Button) findViewById(R.id.my);
         go_chat = (Button)findViewById(R.id.go_chat);
 
-        myName = findViewById(R.id.myName);
+       // myName = findViewById(R.id.myName);
         otherName = findViewById(R.id.otherName);
-
 
 
         lRecyclerView = findViewById(R.id.chat_list_recycler);
@@ -70,8 +69,6 @@ public class chat extends AppCompatActivity {
         lLayoutManager = new LinearLayoutManager(this);
         lRecyclerView.setLayoutManager(lLayoutManager);
         chat_data = new ArrayList<>();
-        lAdapter = new chat_list_Adapter(chat_data, chat.this, "user2");
-        lRecyclerView.setAdapter(lAdapter);
 
 
         //동네이름 설정
@@ -84,12 +81,14 @@ public class chat extends AppCompatActivity {
         if (secondIntent.hasExtra("nick_name")) {
             nick_name = secondIntent.getStringExtra("nick_name");
         }
+        lAdapter = new chat_list_Adapter(chat_data, chat.this, nick_name);
+        lRecyclerView.setAdapter(lAdapter);
 
         go_chat.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(),com.example.myapplication.chat_room.chat_room_activity.class);
-                intent.putExtra("myName",myName.getText().toString());
+                intent.putExtra("myName",nick_name);
                 intent.putExtra("otherName",otherName.getText().toString());
                 startActivity(intent);
 
