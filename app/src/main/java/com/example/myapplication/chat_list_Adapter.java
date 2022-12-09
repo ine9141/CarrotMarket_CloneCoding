@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -65,6 +66,8 @@ public class chat_list_Adapter extends RecyclerView.Adapter<chat_list_Adapter.Li
         holder.chat_list_id.setText(chatD.getChat_id());
         holder.chat_last_msg.setText(chatD.getLast_msg());
 
+
+
     }
 
     @Override
@@ -75,11 +78,13 @@ public class chat_list_Adapter extends RecyclerView.Adapter<chat_list_Adapter.Li
         return lDataset != null ? lDataset.get(position) : null;
     }
     public void addChatList(chat_list_data chat){
+        if(chat.getChat_id() == null) return;
         lDataset.add(chat);
         notifyDataSetChanged();
         //notifyItemInserted(lDataset.size()-1);
     }
     public void setChatList(chat_list_data chat){
+        if(chat.getChat_id() == null) return;
         lDataset.set(0,chat);
         notifyDataSetChanged();
     }

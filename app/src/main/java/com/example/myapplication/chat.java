@@ -25,6 +25,8 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import org.checkerframework.checker.units.qual.C;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -149,24 +151,21 @@ public class chat extends AppCompatActivity {
 
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         lRef = database.getReference();
-        lRef.child("init").setValue("null");
 
 
 
 
-
-        lRef.child("q1q2").addChildEventListener(new ChildEventListener() {
+        lRef.child("user1user2").addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
-                chat_list_data chat = snapshot.getValue(chat_list_data.class);
-               ((chat_list_Adapter)lAdapter).addChatList(chat);
-
-
+                chat_list_data chat_D = snapshot.getValue(chat_list_data.class);
+                ((chat_list_Adapter)lAdapter).addChatList(chat_D);
             }
 
             @Override
             public void onChildChanged(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
-
+               chat_list_data chat_D = snapshot.getValue(chat_list_data.class);
+               ((chat_list_Adapter)lAdapter).setChatList(chat_D);
             }
 
             @Override
@@ -184,6 +183,40 @@ public class chat extends AppCompatActivity {
 
             }
         });
+
+        lRef.child("q1q2").addChildEventListener(new ChildEventListener() {
+            @Override
+            public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+                chat_list_data chat_D = snapshot.getValue(chat_list_data.class);
+                ((chat_list_Adapter)lAdapter).addChatList(chat_D);
+            }
+
+            @Override
+            public void onChildChanged(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+                chat_list_data chat_D = snapshot.getValue(chat_list_data.class);
+                ((chat_list_Adapter)lAdapter).setChatList(chat_D);
+            }
+
+            @Override
+            public void onChildRemoved(@NonNull DataSnapshot snapshot) {
+
+            }
+
+            @Override
+            public void onChildMoved(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+
+
+
+
+
 
 
     }
