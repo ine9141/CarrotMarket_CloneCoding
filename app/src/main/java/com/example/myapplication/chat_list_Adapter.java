@@ -96,19 +96,23 @@ public class chat_list_Adapter extends RecyclerView.Adapter<chat_list_Adapter.Li
     }
     public void addChatList(chat_list_data chat){
         if(chat.getID_1() == null) return;
-        lDataset.add(chat);
-        notifyDataSetChanged();
-        //notifyItemInserted(lDataset.size()-1);
+        if(chat.getID_1().equals(myNickName) || chat.getID_2().equals(myNickName)) {
+            lDataset.add(chat);
+            notifyDataSetChanged();
+        }
+
     }
     public void setChatList(chat_list_data chat){
         if(chat.getID_1() == null) return;
-        int i;
-        for(i=0; i<lDataset.size()-1;i++){
-            if(chat.getID_2().equals(lDataset.get(i).getID_2()))
-                break;
+        if(chat.getID_1().equals(myNickName) || chat.getID_2().equals(myNickName)) {
+            int i;
+            for (i = 0; i < lDataset.size() - 1; i++) {
+                if (chat.getID_2().equals(lDataset.get(i).getID_2()))
+                    break;
+            }
+            lDataset.set(i, chat);
+            notifyDataSetChanged();
         }
-        lDataset.set(i,chat);
-        notifyDataSetChanged();
     }
 
     @Override
