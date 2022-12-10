@@ -1,8 +1,12 @@
 package com.example.myapplication;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
+import android.text.Editable;
 import android.text.TextUtils;
+import android.text.TextWatcher;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -38,6 +42,8 @@ public class sign_in extends AppCompatActivity {
     // string for storing our verification ID
     private String verificationId;
 
+    EditText idEdtPhoneNumber;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -58,6 +64,53 @@ public class sign_in extends AppCompatActivity {
         generateOTPBtn = findViewById(R.id.idBtnGetOtp);
         idEdtOtp = findViewById(R.id.idEdtOtp);
         idBtnVerify = findViewById(R.id.idBtnVerify);
+        idEdtPhoneNumber = findViewById(R.id.idEdtPhoneNumber);
+
+        edtPhone.addTextChangedListener(new TextWatcher() {
+
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                if (edtPhone.getText().toString().trim().length() == 10) {
+                    generateOTPBtn.setBackgroundResource(R.drawable.round_button_change);
+                    generateOTPBtn.setTextColor(Color.parseColor("#FFFFFF"));
+                }
+                else {
+                    generateOTPBtn.setBackgroundResource(R.drawable.round_button);
+                    generateOTPBtn.setTextColor(Color.parseColor("#CACACA"));
+                }
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+            }
+        });
+
+        idEdtOtp.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                if (idEdtOtp.getText().toString().trim().length() == 6) {
+                    idBtnVerify.setBackgroundResource(R.drawable.round_button_change);
+                    idBtnVerify.setTextColor(Color.parseColor("#FFFFFF"));
+                }
+                else {
+                    idBtnVerify.setBackgroundResource(R.drawable.round_button);
+                    idBtnVerify.setTextColor(Color.parseColor("#CACACA"));
+                }
+
+            }
+            @Override
+            public void afterTextChanged(Editable s) {}
+        });
 
         // setting onclick listener for generate OTP button.
         generateOTPBtn.setOnClickListener(new View.OnClickListener() {
@@ -76,6 +129,8 @@ public class sign_in extends AppCompatActivity {
                     sendVerificationCode(phone);
                     idEdtOtp.setVisibility(View.VISIBLE);
                     idBtnVerify.setVisibility(View.VISIBLE);
+                    idEdtPhoneNumber.setVisibility(View.GONE);
+                    generateOTPBtn.setVisibility(View.GONE);
                 }
             }
         });
@@ -109,7 +164,7 @@ public class sign_in extends AppCompatActivity {
                         if (task.isSuccessful()) {
                             // if the code is correct and the task is successful
                             // we are sending our user to new activity.
-                            Intent intent = new Intent(getApplicationContext(),check_address.class);
+                            Intent intent = new Intent(getApplicationContext(),set_name.class);
                             startActivity(intent);
                             finish();
                         } else {
