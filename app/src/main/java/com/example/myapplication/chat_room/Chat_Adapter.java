@@ -3,21 +3,16 @@ package com.example.myapplication.chat_room;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
-import android.view.ContentInfo;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.myapplication.R;
-import com.example.myapplication.home;
 
 
 import java.util.List;
@@ -88,7 +83,7 @@ public class Chat_Adapter extends RecyclerView.Adapter<Chat_Adapter.MyViewHolder
     public Chat_Adapter.MyViewHolder onCreateViewHolder(ViewGroup parent, int ViewType){
 
        LinearLayout v = (LinearLayout) LayoutInflater.from(parent.getContext())
-            .inflate(R.layout.chat_room_left_item_list, parent, false);
+            .inflate(R.layout.chat_room_item, parent, false);
 
         MyViewHolder vh = new MyViewHolder(v);
         return vh;
