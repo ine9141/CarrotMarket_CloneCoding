@@ -34,7 +34,7 @@ public class check_address extends AppCompatActivity {
     Button search;
     EditText dong;
     TextView text;
-    String s;
+    String s,nickname;
 
     @SuppressLint("MissingInflatedId")
     @Override
@@ -47,6 +47,11 @@ public class check_address extends AppCompatActivity {
         ActionBar actionBar = getSupportActionBar();
         actionBar.hide();
 
+        //닉네임 받아오기
+        Intent secondIntent = getIntent();
+        if (secondIntent.hasExtra("nick_name")) {
+            nickname = secondIntent.getStringExtra("nick_name");
+        }
 
         search = (Button) findViewById(R.id.search);
         dong = (EditText) findViewById(R.id.dong);
@@ -62,6 +67,7 @@ public class check_address extends AppCompatActivity {
                         ContextCompat.checkSelfPermission(getApplicationContext(), Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
                     ActivityCompat.requestPermissions(check_address.this, new String[]{
                             Manifest.permission.ACCESS_FINE_LOCATION}, 0);
+
                 } else {
                     // 가장최근 위치정보 가져오기
                     Location location = lm.getLastKnownLocation(LocationManager.GPS_PROVIDER);
@@ -70,11 +76,10 @@ public class check_address extends AppCompatActivity {
                         String provider = location.getProvider();
                         double longitude = location.getLongitude();
                         double latitude = location.getLatitude();
-                        double altitude = location.getAltitude();
+
                         //provider : gps
                         //longitude : 위도값
                         //latitude : 경도값
-                        //altitude : 고도값
 
                         Geocoder gCoder = new Geocoder(check_address.this, Locale.KOREA);
 
@@ -99,6 +104,7 @@ public class check_address extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(),home.class);
                 intent.putExtra("dong_s",s);
+                intent.putExtra("nick_name",nickname);
                 startActivity(intent);
             }
         });
