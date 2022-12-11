@@ -18,42 +18,44 @@
             android:id="@+id/dong_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="left"
-            android:text="OO동"
-            android:gravity="center"
-            android:textColor="@color/black"
-            android:textSize="30sp"
             android:layout_alignParentLeft="true"
+            android:layout_gravity="left"
+            android:gravity="center"
             android:paddingLeft="5dp"
-            android:paddingTop="5dp"/>
+            android:paddingTop="5dp"
+            android:text="OO동"
+            android:textColor="@color/black"
+            android:textSize="30sp" />
 
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:paddingRight="1dp"
-            android:layout_alignParentRight="true">
+            android:layout_alignParentRight="true"
+            android:paddingRight="1dp">
 
             <Button
                 android:id="@+id/search"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
                 android:layout_gravity="right"
-                android:gravity="center"
-                android:background="@drawable/search"/>
+                android:background="@drawable/search"
+                android:gravity="center" />
+
             <Button
                 android:id="@+id/menu"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
                 android:layout_gravity="right"
-                android:gravity="center"
-                android:background="@drawable/menu"/>
+                android:background="@drawable/menu"
+                android:gravity="center" />
+
             <Button
                 android:id="@+id/notice"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
                 android:layout_gravity="right"
-                android:gravity="center"
-                android:background="@drawable/notice"/>
+                android:background="@drawable/notice"
+                android:gravity="center" />
         </LinearLayout>
     </RelativeLayout>
 
@@ -64,25 +66,159 @@
         android:layout_height="0dp"
         android:layout_weight="100">
 
-        <LinearLayout
+        <HorizontalScrollView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:background="@drawable/life_border"
+            android:paddingTop="20dp"
+            android:paddingBottom="10dp"
+            android:scrollbarSize="0dp">
 
-            <Button
+            <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Here is LIFE" />
-        </LinearLayout>
+                android:paddingLeft="10dp">
+
+                <FrameLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp">
+
+                    <ImageView
+                        android:layout_width="75dp"
+                        android:layout_height="35dp"
+                        android:background="@drawable/life_title_bord"
+                        android:gravity="center_vertical"
+                        android:paddingTop="11dp"
+                        android:paddingRight="27dp"
+                        android:paddingBottom="11dp"
+                        android:src="@drawable/title"
+                        app:tint="#808080" />
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:paddingLeft="30dp"
+                            android:paddingTop="0.5dp"
+                            android:text="  주제"
+                            android:textColor="#545454"
+                            android:textSize="12dp"
+                            android:textStyle="bold" />
+                    </LinearLayout>
+                </FrameLayout>
+
+                <TextView
+                    android:layout_width="75dp"
+                    android:layout_height="match_parent"
+                    android:layout_margin="5dp"
+                    android:background="@drawable/life_title_bord"
+                    android:gravity="center"
+                    android:paddingTop="0.5dp"
+                    android:text=" 동네소식 "
+                    android:textColor="#545454"
+                    android:textSize="12dp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="75dp"
+                    android:layout_height="match_parent"
+                    android:layout_margin="5dp"
+                    android:background="@drawable/life_title_bord"
+                    android:gravity="center"
+                    android:paddingTop="0.5dp"
+                    android:text=" 육아생활 "
+                    android:textColor="#545454"
+                    android:textSize="12dp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="75dp"
+                    android:layout_height="match_parent"
+                    android:layout_margin="5dp"
+                    android:background="@drawable/life_title_bord"
+                    android:gravity="center"
+                    android:paddingTop="0.5dp"
+                    android:text=" 반려동물 "
+                    android:textColor="#545454"
+                    android:textSize="12dp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="75dp"
+                    android:layout_height="match_parent"
+                    android:layout_margin="5dp"
+                    android:background="@drawable/life_title_bord"
+                    android:gravity="center"
+                    android:paddingTop="0.5dp"
+                    android:text=" 운동생활 "
+                    android:textColor="#545454"
+                    android:textSize="12dp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="75dp"
+                    android:layout_height="match_parent"
+                    android:layout_margin="5dp"
+                    android:background="@drawable/life_title_bord"
+                    android:gravity="center"
+                    android:paddingTop="0.5dp"
+                    android:text=" 동네가게 "
+                    android:textColor="#545454"
+                    android:textSize="12dp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="75dp"
+                    android:layout_height="match_parent"
+                    android:layout_margin="5dp"
+                    android:background="@drawable/life_title_bord"
+                    android:gravity="center"
+                    android:paddingTop="0.5dp"
+                    android:text=" 동네맛집 "
+                    android:textColor="#545454"
+                    android:textSize="12dp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="50dp"
+                    android:layout_height="match_parent"
+                    android:layout_margin="5dp"
+                    android:background="@drawable/life_title_bord"
+                    android:gravity="center"
+                    android:paddingTop="0.5dp"
+                    android:text=" 일상 "
+                    android:textColor="#545454"
+                    android:textSize="12dp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="100dp"
+                    android:layout_height="match_parent"
+                    android:layout_margin="5dp"
+                    android:background="@drawable/life_title_bord"
+                    android:gravity="center"
+                    android:paddingTop="0.5dp"
+                    android:text=" 분실/실종센터 "
+                    android:textColor="#545454"
+                    android:textSize="12dp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+        </HorizontalScrollView>
     </ScrollView>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:paddingBottom="0dp"
         android:layout_weight="1"
-        android:background="@drawable/my_border">
+        android:background="@drawable/my_border"
+        android:orientation="horizontal"
+        android:paddingBottom="0dp">
 
         <Button
             android:id="@+id/home"
@@ -102,37 +238,37 @@
             android:background="@drawable/life_click"
             android:paddingTop="28dp"
             android:text="동네생활"
-            android:textSize="10dp"/>
+            android:textSize="10dp" />
 
         <Button
             android:id="@+id/around"
             android:layout_width="match_parent"
             android:layout_height="50dp"
-            android:paddingTop="28dp"
             android:layout_weight="1"
+            android:background="@drawable/around"
+            android:paddingTop="28dp"
             android:text="내 근처"
-            android:textSize="10dp"
-            android:background="@drawable/around"/>
+            android:textSize="10dp" />
 
         <Button
             android:id="@+id/chat"
             android:layout_width="match_parent"
             android:layout_height="50dp"
-            android:paddingTop="28dp"
-            android:textSize="10dp"
             android:layout_weight="1"
+            android:background="@drawable/chat"
+            android:paddingTop="28dp"
             android:text="채팅"
-            android:background="@drawable/chat"/>
+            android:textSize="10dp" />
 
         <Button
             android:id="@+id/my"
             android:layout_width="match_parent"
             android:layout_height="50dp"
-            android:paddingTop="28dp"
             android:layout_weight="1"
+            android:background="@drawable/my"
+            android:paddingTop="28dp"
             android:text="나의 공간"
-            android:textSize="10dp"
-            android:background="@drawable/my"/>
+            android:textSize="10dp" />
 
     </LinearLayout>
 </LinearLayout>

@@ -53,11 +53,11 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@drawable/round_button"
-        android:paddingTop="5dp"
+        android:paddingTop="10dp"
         android:paddingBottom="10dp"
         android:text="인증문자 받기"
-        android:textStyle="bold"
-        android:textColor="#cacaca" />
+        android:textColor="#bdbebd"
+        android:textStyle="bold" />
 
     <EditText
         android:id="@+id/idEdtOtp"
@@ -80,7 +80,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@drawable/round_button"
-        android:paddingTop="5dp"
+        android:paddingTop="10dp"
         android:paddingBottom="10dp"
         android:text="인증하기"
         android:textColor="#cacaca"
