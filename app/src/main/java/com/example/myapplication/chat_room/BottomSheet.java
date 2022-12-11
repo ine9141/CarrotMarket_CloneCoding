@@ -103,8 +103,7 @@ public class BottomSheet extends BottomSheetDialogFragment {
 
                         uploadToFirebase(imgUri);
 
-                        imgv.setImageURI(imgUri);
-                        imgv.setVisibility(View.VISIBLE);
+
                     }
                 }
             }
