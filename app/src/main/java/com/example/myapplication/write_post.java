@@ -18,6 +18,7 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.loader.content.CursorLoader;
 
@@ -60,7 +61,9 @@ public class write_post extends AppCompatActivity {
         imageView = (ImageView)findViewById(R.id.imageView);
         storage = FirebaseStorage.getInstance();
 
-
+        //상단 액션바 제거
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.hide();
 
 
 

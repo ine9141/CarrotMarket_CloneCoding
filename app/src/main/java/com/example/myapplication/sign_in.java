@@ -78,11 +78,11 @@ public class sign_in extends AppCompatActivity {
             public void onTextChanged(CharSequence s, int start, int before, int count) {
                 if (edtPhone.getText().toString().trim().length() == 10) {
                     generateOTPBtn.setBackgroundResource(R.drawable.round_button_change);
-                    generateOTPBtn.setTextColor(Color.parseColor("#FFFFFF"));
+                    generateOTPBtn.setTextColor(Color.parseColor("#000000"));
                 }
                 else {
                     generateOTPBtn.setBackgroundResource(R.drawable.round_button);
-                    generateOTPBtn.setTextColor(Color.parseColor("#CACACA"));
+                    generateOTPBtn.setTextColor(Color.parseColor("#bdbebd"));
                 }
 
             }
@@ -100,11 +100,11 @@ public class sign_in extends AppCompatActivity {
             public void onTextChanged(CharSequence s, int start, int before, int count) {
                 if (idEdtOtp.getText().toString().trim().length() == 6) {
                     idBtnVerify.setBackgroundResource(R.drawable.round_button_change);
-                    idBtnVerify.setTextColor(Color.parseColor("#FFFFFF"));
+                    idBtnVerify.setTextColor(Color.parseColor("#000000"));
                 }
                 else {
                     idBtnVerify.setBackgroundResource(R.drawable.round_button);
-                    idBtnVerify.setTextColor(Color.parseColor("#CACACA"));
+                    idBtnVerify.setTextColor(Color.parseColor("#bdbebd"));
                 }
 
             }

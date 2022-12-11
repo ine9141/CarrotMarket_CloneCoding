@@ -76,6 +76,8 @@ public class Chat_Adapter extends RecyclerView.Adapter<Chat_Adapter.MyViewHolder
                 }
             });
 
+
+
         }
     }
 
