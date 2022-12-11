@@ -106,6 +106,7 @@ public class write_post extends AppCompatActivity {
                     public void onFailure(@NonNull Exception e) {
                         Toast.makeText(write_post.this,"사진 업로드 실패",Toast.LENGTH_SHORT).show();
                     }
+
                 }).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                     @Override
                     public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
