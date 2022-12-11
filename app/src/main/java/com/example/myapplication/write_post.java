@@ -16,6 +16,7 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.loader.content.CursorLoader;
 
@@ -45,7 +46,9 @@ public class write_post extends AppCompatActivity {
         add_image_button = (ImageButton) findViewById(R.id.add_image_button);
         imageView = (ImageView)findViewById(R.id.imageView);
 
-
+        //상단 액션바 제거
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.hide();
 
 
 

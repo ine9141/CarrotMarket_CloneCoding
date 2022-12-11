@@ -4,35 +4,38 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:paddingLeft="10dp"
-    android:paddingRight="10dp">
+    android:paddingLeft="20dp"
+    android:paddingRight="20dp">
 
     <EditText
         android:id="@+id/dong"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:paddingTop="30dp"
-        android:paddingLeft="20dp"
-        android:paddingRight="20dp"
+        android:layout_marginTop="30dp"
+        android:gravity="center"
         android:ems="17"
         android:layout_gravity="center"
+        android:padding="10dp"
         android:hint="🔍동명(읍, 면)으로 검색 (ex. 서초동)"
+        android:background="@drawable/edittext_bord"
         android:inputType="numberSigned" />
 
     <Button
         android:id="@+id/search"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingTop="20dp"
-        android:text="🔍 내 위치 찾기"
+        android:text="내 위치 찾기"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
         android:textColor="@color/white"
+        android:background="@drawable/round_button_change"
         android:backgroundTint="#f27500"/>
 
     <TextView
         android:id="@+id/text"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="30dp"
+        android:textSize="25dp"
         android:textColor="@color/black"
         android:gravity="center"
         android:text=""/>
