@@ -70,74 +70,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
-
-                <TableLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:paddingBottom="10dp"
-                    android:stretchColumns="*">
-
-                    <TableRow>
-
-                        <Button
-                            android:layout_width="70dp"
-                            android:layout_height="70dp"
-                            android:gravity="center"
-                            android:text="알바" />
-
-                        <Button
-                            android:layout_width="70dp"
-                            android:layout_height="70dp"
-                            android:gravity="center"
-                            android:text="중고차거래" />
-
-                        <Button
-                            android:layout_width="70dp"
-                            android:layout_height="70dp"
-                            android:gravity="center"
-                            android:text="부동산거래" />
-
-                        <Button
-                            android:layout_width="70dp"
-                            android:layout_height="70dp"
-                            android:gravity="center"
-                            android:text="당근미니" />
-                    </TableRow>
-
-                    <TableRow>
-
-                        <Button
-                            android:layout_width="70dp"
-                            android:layout_height="70dp"
-                            android:text="농수산물" />
-
-                        <Button
-                            android:layout_width="70dp"
-                            android:layout_height="70dp"
-                            android:text="쿠폰북" />
-
-                        <Button
-                            android:layout_width="70dp"
-                            android:layout_height="70dp"
-                            android:text="과외클래스" />
-
-                        <Button
-                            android:layout_width="70dp"
-                            android:layout_height="70dp"
-                            android:text="당근지도" />
-                    </TableRow>
-                </TableLayout>
-                <FrameLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/frame1">
-                </FrameLayout>
-            </LinearLayout>
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -222,11 +154,10 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="ㅇㅇ님 근처에서 할 수 있는 알바를 모았어요" />
-                <HorizontalScrollView
+                <ListView
+                    android:id="@+id/jop_list"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
-
-                </HorizontalScrollView>
+                    android:layout_height="210dp" />
                 <Button
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -243,34 +174,13 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="걸어서 갈 수 있는 가게 소식"
-                    android:textColor="#000000"
-                    android:textSize="20dp" />
-                <HorizontalScrollView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
-
-                </HorizontalScrollView>
-
-                <Button
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="#ffffff"
-                    android:text="소식 더보기 >"
-                    android:textAlignment="center" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
                     android:text="이웃들의 추천가게"
                     android:textColor="#000000"
                     android:textSize="20dp" />
+                <androidx.recyclerview.widget.RecyclerView
+                    android:layout_width="match_parent"
+                    android:layout_height="300dp"
+                    android:id="@+id/shop_list" />
 
                 <Button
                     android:layout_width="match_parent"
@@ -291,12 +201,10 @@
                     android:text="설치없이 바로 이용하는 당근미니"
                     android:textColor="#000000"
                     android:textSize="20dp" />
-                <HorizontalScrollView
+                <androidx.recyclerview.widget.RecyclerView
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
-
-                </HorizontalScrollView>
-
+                    android:layout_height="300dp"
+                    android:id="@+id/mini_list" />
                 <Button
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -316,11 +224,10 @@
                     android:text="이런상품은 어떠세요?"
                     android:textColor="#000000"
                     android:textSize="20dp" />
-                <HorizontalScrollView
+                <androidx.recyclerview.widget.RecyclerView
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
-
-                </HorizontalScrollView>
+                    android:layout_height="300dp"
+                    android:id="@+id/product_list" />
 
                 <Button
                     android:layout_width="match_parent"
@@ -340,11 +247,10 @@
                     android:text="나의 당근 이야기"
                     android:textColor="#000000"
                     android:textSize="20dp" />
-                <HorizontalScrollView
+                <androidx.recyclerview.widget.RecyclerView
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
-
-                </HorizontalScrollView>
+                    android:layout_height="300dp"
+                    android:id="@+id/carrot_list" />
 
                 <Button
                     android:layout_width="match_parent"
