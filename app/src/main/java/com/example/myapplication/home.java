@@ -14,10 +14,14 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.myapplication.post.post_adapter;
+import com.example.myapplication.post.write_info;
+import com.example.myapplication.post.write_post;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.firestore.DocumentChange;
+import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.FirebaseFirestoreException;
 import com.google.firebase.firestore.Query;
@@ -26,19 +30,21 @@ import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.EventListener;
 
 public class home extends AppCompatActivity {
+
+    //파이어베이스
+    private RecyclerView recyclerView;
+    private RecyclerView.Adapter adapter;
+    private ArrayList<write_info> arrayList;
+    private FirebaseFirestore db;
+
+
     private static final String TAG = "home";
     Button home, life, around, chat, my;
     FloatingActionButton post_button;
     TextView dong_name;
     String s, nick_name;
-
-
-    RecyclerView recyclerView;
-    post_adapter postAdapter;
-    FirebaseFirestore db = FirebaseFirestore.getInstance();
 
 
     @Override
@@ -137,78 +143,79 @@ public class home extends AppCompatActivity {
             }
         });
 
-
-        recyclerView = findViewById(R.id.recyclerView);
+        recyclerView=findViewById(R.id.recyclerView);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         db = FirebaseFirestore.getInstance();
+        arrayList = new ArrayList<write_info>();
+        adapter = new post_adapter(arrayList,home.this);
 
-        recyclerView.setAdapter(postAdapter);
-        //EventChangeListener();
+        recyclerView.setAdapter(adapter);
 
-
-    //}
-
-
+        EventChangeListener();
 
 
 
-    ArrayList<write_info> mDataset =  new ArrayList<>();
-        postAdapter = new post_adapter(home.this, mDataset);
+
+
+}
+
+    private void EventChangeListener() {
+        db.collection("post")//.orderBy("createAt", Query.Direction.DESCENDING)
+                .addSnapshotListener(new EventListener<QuerySnapshot>() {
+                    @Override
+                    public void onEvent(@Nullable QuerySnapshot value, @Nullable FirebaseFirestoreException error) {
+
+                        if (error!= null){
+                            Log.e("error!!",error.getMessage());
+                            return;
+                        }
+                        for(DocumentChange dc : value.getDocumentChanges()){
+
+                            if(dc.getType() == DocumentChange.Type.ADDED){
+                                arrayList.add(dc.getDocument().toObject(write_info.class) );
+                            }
+                            adapter.notifyDataSetChanged();
+                        }
+                    }
+                });
+    }
+    }
+
+
+
+/*recyclerView = findViewById(R.id.recyclerView);
+        recyclerView.setHasFixedSize(true);
+        layoutManager = new LinearLayoutManager(this);
+        recyclerView.setLayoutManager(layoutManager);
+        arrayList = new ArrayList<write_info>(); //write객체 담을 어레이 리스트 - 어탭터로
+        db = FirebaseFirestore.getInstance(); //파이어베이스 연동
 
         db.collection("post")
                 .get()
                 .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                     @Override
                     public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                        arrayList.clear();
                         if (task.isSuccessful()) {
-                            ArrayList<write_info> mDataset= new ArrayList<write_info>();
                             for (QueryDocumentSnapshot document : task.getResult()) {
                                 //Log.d(TAG, document.getId() + " => " + document.getData());
-                                mDataset.add(new write_info(
+                                arrayList.add(new write_info(
                                         document.getData().get("title").toString(),
-                                        Integer.parseInt(document.getData().get("price").toString()),
+                                        //.get("price").toString(),
                                         document.getData().get("contents").toString(),
-                                        new Date(document.getDate("createdAt").getTime()),
-                                        document.getData().get("uri").toString()));
-                                        //document.getData().get("publisher").toString()));
-                            }
-                            RecyclerView recyclerView = findViewById(R.id.recyclerView);
-                            recyclerView.setHasFixedSize(true);
-                            recyclerView.setLayoutManager(new LinearLayoutManager(home.this));
+                                        //new Date(document.getDate("createdAt").getTime()),
+                                        document.getData().get("uri").toString()
 
-                            RecyclerView.Adapter mAdapter = new post_adapter(home.this, mDataset);
-                            recyclerView.setAdapter(mAdapter);
+                                ));
+
+                            }
+                            adapter = new post_adapter(arrayList, home.this);//어탭터에 리스트 보내기
+                            recyclerView.setAdapter(adapter);//리사이클러뷰 어뎁터 연결
+
                         } else {
                             Log.d(TAG, "Error getting documents: ", task.getException());
                         }
                     }
                 });
-
-    }
-}
-/*
-    private void EventChangeListener() {
-        db.collection("post").orderBy("createAt", Query.Direction.DESCENDING)
-                .addSnapshotListener(new com.google.firebase.firestore.EventListener<QuerySnapshot>() {
-                    @Override
-                    public void onEvent(@Nullable QuerySnapshot value, @Nullable FirebaseFirestoreException error) {
-                        if (error != null) {
-                            Log.w("Firestore error", error);
-                            return;
-                        }
-                        for (DocumentChange dc : value.getDocumentChanges()) {
-                            if (dc.getType() == DocumentChange.Type.ADDED) {
-                                Log.d(TAG, "New :" + dc.getDocument().getData());
-                                mDataset.add(dc.getDocument().toObject(write_info.class));
-
-                            }
-                            postAdapter.notifyDataSetChanged();
-                        }
-                    }
-                });
-
-    }
-}*/
-
-
+    }*/

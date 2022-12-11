@@ -7,7 +7,7 @@
     android:backgroundTint="#57717171"
     android:orientation="vertical"
     app:statusBarBackground="#FFFFFF"
-    tools:context=".write_post">
+    tools:context=".post.write_post">
 
     <LinearLayout
         android:layout_width="wrap_content"

@@ -1,4 +1,4 @@
-package com.example.myapplication;
+package com.example.myapplication.post;
 
 import java.util.Date;
 import java.util.zip.DataFormatException;
@@ -16,7 +16,7 @@ public class write_info {
         this.title=title;
         this.price=price;
         this.contents=contents;
-        this.createAt=createAt;
+        //this.createAt=createAt;
         this.uri=uri;
         //this.publisher=publisher;
     }
