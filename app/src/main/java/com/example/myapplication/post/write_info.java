@@ -9,16 +9,16 @@ public class write_info {
     private String contents;
     private Date createAt;
     private String uri;
-    //private String publisher;
+    private String publisher;
 
 
-    public write_info(String title, Number price, String contents,Date createAt,String uri/*,String publisher*/){
+    public write_info(String title, Number price, String contents,Date createAt,String uri,String publisher){
         this.title=title;
         this.price=price;
         this.contents=contents;
-        //this.createAt=createAt;
+        this.createAt=createAt;
         this.uri=uri;
-        //this.publisher=publisher;
+        this.publisher=publisher;
     }
 
     public String getTitle() { return this.title;}
@@ -31,8 +31,8 @@ public class write_info {
     public void setCreateAt(Date createAt) {this.createAt=createAt;}
     public String getUri() { return this.uri;}
     public void setUri(String uri) {this.uri=uri;}
-    /*public String getPublisher() { return this.publisher;}
-    public void setPublisher(String publisher) {this.publisher=publisher;}*/
+    public String getPublisher() { return this.publisher;}
+    public void setPublisher(String publisher) {this.publisher=publisher;}
 
 
 }

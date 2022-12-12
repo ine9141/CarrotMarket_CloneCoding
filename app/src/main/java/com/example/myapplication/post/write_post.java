@@ -126,7 +126,7 @@ public class write_post extends AppCompatActivity {
 
 
             write_info writeInfo;
-            writeInfo = new write_info(title,price,contents,new Date(),uri.toString()/*,user.getUid()*/);
+            writeInfo = new write_info(title,price,contents,new Date(),uri.toString(),user.getUid());
             storeUpload(documentReference,writeInfo);
         }
 

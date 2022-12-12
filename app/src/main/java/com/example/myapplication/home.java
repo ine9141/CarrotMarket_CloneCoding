@@ -6,6 +6,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -143,23 +144,20 @@ public class home extends AppCompatActivity {
             }
         });
 
-        recyclerView=findViewById(R.id.recyclerView);
-        recyclerView.setHasFixedSize(true);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        db = FirebaseFirestore.getInstance();
-        arrayList = new ArrayList<write_info>();
-        adapter = new post_adapter(arrayList,home.this);
+        //recyclerView=findViewById(R.id.recyclerView);
+        //recyclerView.setHasFixedSize(true);
+        //recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        //db = FirebaseFirestore.getInstance();
+        //arrayList = new ArrayList<write_info>();
+        //adapter = new post_adapter(arrayList,home.this);
 
-        recyclerView.setAdapter(adapter);
+        //recyclerView.setAdapter(adapter);
 
-        EventChangeListener();
-
-
+        //EventChangeListener();
 
 
-
-}
-
+//}
+/*
     private void EventChangeListener() {
         db.collection("post")//.orderBy("createAt", Query.Direction.DESCENDING)
                 .addSnapshotListener(new EventListener<QuerySnapshot>() {
@@ -178,15 +176,15 @@ public class home extends AppCompatActivity {
                             adapter.notifyDataSetChanged();
                         }
                     }
-                });
+                });*
     }
-    }
+}
+*/
 
 
-
-/*recyclerView = findViewById(R.id.recyclerView);
+        recyclerView = findViewById(R.id.recyclerView);
         recyclerView.setHasFixedSize(true);
-        layoutManager = new LinearLayoutManager(this);
+        LinearLayoutManager layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
         arrayList = new ArrayList<write_info>(); //write객체 담을 어레이 리스트 - 어탭터로
         db = FirebaseFirestore.getInstance(); //파이어베이스 연동
@@ -199,13 +197,15 @@ public class home extends AppCompatActivity {
                         arrayList.clear();
                         if (task.isSuccessful()) {
                             for (QueryDocumentSnapshot document : task.getResult()) {
+                                Toast.makeText(home.this, Integer.parseInt(document.get("price").toString()), Toast.LENGTH_SHORT).show();
                                 //Log.d(TAG, document.getId() + " => " + document.getData());
                                 arrayList.add(new write_info(
-                                        document.getData().get("title").toString(),
-                                        //.get("price").toString(),
+                                                document.getData().get("title").toString(),
+                                                Integer.parseInt(document.get("price").toString()),
                                         document.getData().get("contents").toString(),
-                                        //new Date(document.getDate("createdAt").getTime()),
-                                        document.getData().get("uri").toString()
+                                        new Date(document.getDate("createdAt").getTime()),
+                                        document.getData().get("uri").toString(),
+                                        document.getData().get("publisher").toString()
 
                                 ));
 
@@ -218,4 +218,5 @@ public class home extends AppCompatActivity {
                         }
                     }
                 });
-    }*/
+    }
+}
