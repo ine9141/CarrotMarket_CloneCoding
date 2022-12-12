@@ -52,11 +52,11 @@ public class post_adapter extends RecyclerView.Adapter<post_adapter.postViewHold
 
     @Override
     public int getItemCount() {
-        return arrayList.size();
+        return (arrayList != null ? arrayList.size() : 0);
     }
 
 
-    public class postViewHolder extends RecyclerView.ViewHolder {
+    public static class postViewHolder extends RecyclerView.ViewHolder {
         ImageView goods_img;
         TextView titleTextView;
         //TextView localTextVIew;
@@ -70,14 +70,6 @@ public class post_adapter extends RecyclerView.Adapter<post_adapter.postViewHold
         }
     }
 }
-
-
-
-
-
-
-
-
 
 
 

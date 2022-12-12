@@ -1,12 +1,12 @@
 package com.example.myapplication;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -39,6 +39,7 @@ public class home extends AppCompatActivity {
     private RecyclerView.Adapter adapter;
     private ArrayList<write_info> arrayList;
     private FirebaseFirestore db;
+    ProgressDialog progressDialog;
 
 
     private static final String TAG = "home";
@@ -51,9 +52,25 @@ public class home extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
-
         super.onCreate(savedInstanceState);
         setContentView(R.layout.home);
+
+        progressDialog = new ProgressDialog(this);
+        progressDialog.setCancelable(false);
+        progressDialog.setMessage("Fetching Data...");
+        progressDialog.show();
+
+        recyclerView = findViewById(R.id.recyclerView);
+        recyclerView.setHasFixedSize(true);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+
+        db = FirebaseFirestore.getInstance();
+        arrayList = new ArrayList<write_info>();
+        adapter = new post_adapter(arrayList, home.this);
+
+        recyclerView.setAdapter(adapter);
+
+        EventChangeListener();
 
         //상단 액션바 제거
         ActionBar actionBar = getSupportActionBar();
@@ -143,78 +160,28 @@ public class home extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+    }
 
-        //recyclerView=findViewById(R.id.recyclerView);
-        //recyclerView.setHasFixedSize(true);
-        //recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        //db = FirebaseFirestore.getInstance();
-        //arrayList = new ArrayList<write_info>();
-        //adapter = new post_adapter(arrayList,home.this);
-
-        //recyclerView.setAdapter(adapter);
-
-        //EventChangeListener();
-
-
-//}
-/*
     private void EventChangeListener() {
-        db.collection("post")//.orderBy("createAt", Query.Direction.DESCENDING)
+        db.collection("post").orderBy("createAt", Query.Direction.DESCENDING)
                 .addSnapshotListener(new EventListener<QuerySnapshot>() {
                     @Override
                     public void onEvent(@Nullable QuerySnapshot value, @Nullable FirebaseFirestoreException error) {
 
-                        if (error!= null){
-                            Log.e("error!!",error.getMessage());
+                        if (error != null) {
+                            if (progressDialog.isShowing())
+                                progressDialog.dismiss();
+                            Log.e("error!!", error.getMessage());
                             return;
                         }
-                        for(DocumentChange dc : value.getDocumentChanges()){
+                        for (DocumentChange dc : value.getDocumentChanges()) {
 
-                            if(dc.getType() == DocumentChange.Type.ADDED){
-                                arrayList.add(dc.getDocument().toObject(write_info.class) );
+                            if (dc.getType() == DocumentChange.Type.ADDED) {
+                                arrayList.add(dc.getDocument().toObject(write_info.class));
                             }
                             adapter.notifyDataSetChanged();
-                        }
-                    }
-                });*
-    }
-}
-*/
-
-
-        recyclerView = findViewById(R.id.recyclerView);
-        recyclerView.setHasFixedSize(true);
-        LinearLayoutManager layoutManager = new LinearLayoutManager(this);
-        recyclerView.setLayoutManager(layoutManager);
-        arrayList = new ArrayList<write_info>(); //write객체 담을 어레이 리스트 - 어탭터로
-        db = FirebaseFirestore.getInstance(); //파이어베이스 연동
-
-        db.collection("post")
-                .get()
-                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
-                    @Override
-                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
-                        arrayList.clear();
-                        if (task.isSuccessful()) {
-                            for (QueryDocumentSnapshot document : task.getResult()) {
-                                Toast.makeText(home.this, Integer.parseInt(document.get("price").toString()), Toast.LENGTH_SHORT).show();
-                                //Log.d(TAG, document.getId() + " => " + document.getData());
-                                arrayList.add(new write_info(
-                                                document.getData().get("title").toString(),
-                                                Integer.parseInt(document.get("price").toString()),
-                                        document.getData().get("contents").toString(),
-                                        new Date(document.getDate("createdAt").getTime()),
-                                        document.getData().get("uri").toString(),
-                                        document.getData().get("publisher").toString()
-
-                                ));
-
-                            }
-                            adapter = new post_adapter(arrayList, home.this);//어탭터에 리스트 보내기
-                            recyclerView.setAdapter(adapter);//리사이클러뷰 어뎁터 연결
-
-                        } else {
-                            Log.d(TAG, "Error getting documents: ", task.getException());
+                            if (progressDialog.isShowing())
+                                progressDialog.dismiss();
                         }
                     }
                 });

@@ -88,11 +88,11 @@ public class write_post extends AppCompatActivity {
 
     private void storageUpload() throws FileNotFoundException {
         final String title = ((EditText) findViewById(R.id.titleEditText)).getText().toString();
-        final Number price = Integer.parseInt(((EditText)findViewById(R.id.priceEditText)).getText().toString());
+        final int price = Integer.parseInt(((EditText)findViewById(R.id.priceEditText)).getText().toString());
         final String contents = ((EditText) findViewById(R.id.contentsEditText)).getText().toString();
 
 
-        if (title.length() > 0 && contents.length() > 0 && price!=null) {
+        if (title.length() > 0 && contents.length() > 0) {
             FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
             FirebaseFirestore db = FirebaseFirestore.getInstance();
             final DocumentReference documentReference = db.collection("post").document();

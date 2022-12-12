@@ -463,7 +463,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:paddingLeft="20dp"
-                    android:text="전기판넬&필름 공사 견적\n5x5m인데요 자재비와공사비용\n어느정도면 될까요"
+                    android:text="전기판넬&amp;필름 공사 견적\n5x5m인데요 자재비와공사비용\n어느정도면 될까요"
                     android:textColor="#000000" />
 
                 <RelativeLayout
