@@ -6,6 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="#D5D5D5"
     map:cameraTargetLat="37.541"
     map:cameraTargetLng="126.986"
     map:cameraZoom="10">
@@ -13,7 +14,8 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/layout1">
+        android:id="@+id/layout1"
+        android:background="#ffffff">
 
         <TextView
             android:id="@+id/dong_name"
@@ -73,7 +75,9 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                android:background="#ffffff"
+                android:layout_marginBottom="7dp">
 
                 <TextView
                     android:layout_width="match_parent"
@@ -103,7 +107,9 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                android:background="#ffffff"
+                android:layout_marginBottom="7dp">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -129,8 +135,6 @@
                    android:layout_width="match_parent"
                    android:layout_height="300dp"
                    android:id="@+id/coupon_list" />
-
-
                 <Button
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -142,7 +146,9 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                android:background="#ffffff"
+                android:layout_marginBottom="7dp">
 
                 <TextView
                     android:layout_width="match_parent"
@@ -169,7 +175,9 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                android:background="#ffffff"
+                android:layout_marginBottom="7dp">
 
                 <TextView
                     android:layout_width="match_parent"
@@ -193,7 +201,9 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                android:background="#ffffff"
+                android:layout_marginBottom="7dp">
 
                 <TextView
                     android:layout_width="match_parent"
@@ -216,7 +226,9 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                android:background="#ffffff"
+                android:layout_marginBottom="7dp">
 
                 <TextView
                     android:layout_width="match_parent"
@@ -240,7 +252,9 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                android:background="#ffffff"
+                android:layout_marginBottom="7dp">
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"

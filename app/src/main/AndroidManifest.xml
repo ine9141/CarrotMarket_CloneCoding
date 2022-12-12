@@ -85,14 +85,15 @@
             android:name=".chat_room.location_join"
             android:label="" />
         <activity
-            android:name=".write_post"
+            android:name=".post.write_post"
             android:label="" />
         <activity
-            android:name=".write_info"
+            android:name=".post.write_info"
             android:label="" />
         <activity
             android:name=".set_name"
             android:label="" />
+
         <meta-data
             android:name="com.google.android.maps.v2.API_KEY"
             android:value="AIzaSyBkkHBo0ZrnNuI7IFKmpr1wIL4UTsLxfbU" />

@@ -1,11 +1,9 @@
-package com.example.myapplication;
+package com.example.myapplication.post;
 
 
 import android.content.Intent;
-import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
-import android.provider.MediaStore;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -18,20 +16,27 @@ import androidx.annotation.NonNull;
 
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.loader.content.CursorLoader;
 
+import com.example.myapplication.R;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
+import com.google.firebase.storage.UploadTask;
 
+import java.io.FileNotFoundException;
+import java.util.Date;
 
 
 public class write_post extends AppCompatActivity {
+
+    private FirebaseStorage storage;
     private static final String TAG = "write_post";
-    private String path;
+    private Uri uri;
     Button done_button;
     ImageButton add_image_button;
     ImageView imageView;
@@ -45,6 +50,7 @@ public class write_post extends AppCompatActivity {
         done_button = (Button) findViewById(R.id.done_button);
         add_image_button = (ImageButton) findViewById(R.id.add_image_button);
         imageView = (ImageView)findViewById(R.id.imageView);
+        storage = FirebaseStorage.getInstance();
 
         //상단 액션바 제거
         ActionBar actionBar = getSupportActionBar();
@@ -55,7 +61,14 @@ public class write_post extends AppCompatActivity {
         done_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                storageUpload();
+                try {
+                    storageUpload();
+                } catch (FileNotFoundException e) {
+                    Toast.makeText(write_post.this, "실패",Toast.LENGTH_SHORT).show();
+                }
+
+
+
 
             }
         });
@@ -73,18 +86,48 @@ public class write_post extends AppCompatActivity {
 
     }
 
-    private void storageUpload() {
+    private void storageUpload() throws FileNotFoundException {
         final String title = ((EditText) findViewById(R.id.titleEditText)).getText().toString();
-        final String price = String.valueOf(findViewById(R.id.priceEditText));
+        final Number price = Integer.parseInt(((EditText)findViewById(R.id.priceEditText)).getText().toString());
         final String contents = ((EditText) findViewById(R.id.contentsEditText)).getText().toString();
 
-        if (title.length() > 0 && contents.length() > 0) {
-           // FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+
+        if (title.length() > 0 && contents.length() > 0 && price!=null) {
+            FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
             FirebaseFirestore db = FirebaseFirestore.getInstance();
-//, user.getUid()
+            final DocumentReference documentReference = db.collection("post").document();
+
+            if(uri != null){
+                StorageReference storageRef = storage.getReference();
+                StorageReference mountainsRef = storageRef.child("posts/"+documentReference.getId()+".jpg");
+                UploadTask uploadTask = mountainsRef.putFile(uri);
+                uploadTask.addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        Toast.makeText(write_post.this,"사진 업로드 실패",Toast.LENGTH_SHORT).show();
+                    }
+
+                }).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                    @Override
+                    public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                        Toast.makeText(write_post.this,"사진 업로드 완료",Toast.LENGTH_SHORT).show();
+
+                        mountainsRef.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                            @Override
+                            public void onSuccess(Uri uri) {
+                                Log.e("로그",uri.toString());
+                            }
+                        });
+                    }
+                });
+            }
+
+
+
+
             write_info writeInfo;
-            writeInfo = new write_info(title,price,contents);
-            storeUpload(writeInfo);
+            writeInfo = new write_info(title,price,contents,new Date(),uri.toString(),user.getUid());
+            storeUpload(documentReference,writeInfo);
         }
 
         else{
@@ -92,8 +135,22 @@ public class write_post extends AppCompatActivity {
         }
     }
 
-    private void storeUpload(write_info writeInfo){
-        FirebaseFirestore db = FirebaseFirestore.getInstance();
+    private void storeUpload(DocumentReference documentReference,write_info writeInfo){
+        documentReference.set(writeInfo)
+                .addOnSuccessListener(new OnSuccessListener<Void>() {
+                    @Override
+                    public void onSuccess(Void aVoid) {
+                        Log.d(TAG, "DocumentSnapshot successfully written!");
+                    }
+                })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        Log.w(TAG, "Error writing document", e);
+                    }
+                });
+
+        /*FirebaseFirestore db = FirebaseFirestore.getInstance();
         db.collection("post")
                 .add(writeInfo)
                 .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
@@ -107,8 +164,7 @@ public class write_post extends AppCompatActivity {
                     public void onFailure(@NonNull Exception e) {
                         Log.w(TAG, "Error adding document", e);
                     }
-                });
-
+                });  날리기 */
 
     }
 
@@ -123,25 +179,15 @@ public class write_post extends AppCompatActivity {
         switch(requestCode) {
             case 1:
                 if (resultCode == RESULT_OK) {
-                    Uri uri = data.getData();
-
-                    imageView.setImageURI(uri);
+                    uri = data.getData();
+                   imageView.setImageURI(uri);
                 }
                 break;
         }
     }
 
-    public String getPath(Uri uri){
-        String [] proj = {MediaStore.Images.Media.DATA};
-        CursorLoader cursorLoader = new CursorLoader(this,uri,proj,null,null,null);
 
-        Cursor cursor = cursorLoader.loadInBackground();
-        int index=cursor.getColumnIndexOrThrow(MediaStore.Images.Media.DATA);
 
-        cursor.moveToFirst();
-
-        return cursor.getString(index);
-    }
 
 
 }

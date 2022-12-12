@@ -55,8 +55,8 @@ public class around extends AppCompatActivity {
 
 
         coupon_list = (RecyclerView) findViewById(R.id.coupon_list) ;
-        shop_list = (RecyclerView) findViewById(R.id.coupon_list) ;
-        mini_list = (RecyclerView) findViewById(R.id.coupon_list) ;
+        shop_list = (RecyclerView) findViewById(R.id.shop_list) ;
+        mini_list = (RecyclerView) findViewById(R.id.mini_list) ;
         carrot_list = (RecyclerView) findViewById(R.id.carrot_list) ;
         product_list = (RecyclerView) findViewById(R.id.product_list) ;
 
