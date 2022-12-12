@@ -33,6 +33,8 @@ import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 
 import java.io.InputStream;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 public class BottomSheet extends BottomSheetDialogFragment {
 
@@ -44,8 +46,11 @@ public class BottomSheet extends BottomSheetDialogFragment {
     private ImageButton chat_add_location;
     private ImageButton chat_add_img;
     private Uri imgUri;
-    private final DatabaseReference root = FirebaseDatabase.getInstance().getReference("Image");
+
+
+    private final DatabaseReference root = FirebaseDatabase.getInstance().getReference("chat");
     private final StorageReference reference = FirebaseStorage.getInstance().getReference();
+
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState){
@@ -56,6 +61,8 @@ public class BottomSheet extends BottomSheetDialogFragment {
         chat_add_img = view.findViewById(R.id.Btn_chat_img);
 
         imgv = view.findViewById(R.id.sample_img);
+
+
 
 
         chat_add_img.setOnClickListener(new View.OnClickListener() {
@@ -116,9 +123,15 @@ public class BottomSheet extends BottomSheetDialogFragment {
                 fileRef.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
                     @Override
                     public void onSuccess(Uri uri) {
-                        chat_img img = new chat_img(uri.toString());
-                        String imgId = root.push().getKey();
-                        root.child(imgId).setValue(img);
+                        String name = getArguments().getString("myName");
+                        String room_name = getArguments().getString("room_name");
+                        String time = getTime();
+                        Chat_Data chat = new Chat_Data();
+                        chat.setMsg(uri.toString());
+                        chat.setName(name);
+                        chat.setTime(time);
+                        root.child(room_name).child("chat_log").push().setValue(chat);
+
 
                     }
                 });
@@ -127,7 +140,14 @@ public class BottomSheet extends BottomSheetDialogFragment {
     }
 
 
+    private String getTime() {
+        long now = System.currentTimeMillis();
+        Date date = new Date(now);
+        SimpleDateFormat msg_dateFormat = new SimpleDateFormat("hh:mm aa");
+        String time = msg_dateFormat.format(date);
 
+        return time;
+    }
 
 
 

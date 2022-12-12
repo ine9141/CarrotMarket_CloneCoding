@@ -104,6 +104,7 @@ public class chat_room_activity extends AppCompatActivity implements BottomSheet
                 Bundle bundle = new Bundle();
                 bundle.putString("myName", myName);
                 bundle.putString("otherName", otherName);
+                bundle.putString("room_name",chat_room_name);
                 bottomSheet.setArguments(bundle);
                 bottomSheet.show(getSupportFragmentManager(), "bottom sheet");
 

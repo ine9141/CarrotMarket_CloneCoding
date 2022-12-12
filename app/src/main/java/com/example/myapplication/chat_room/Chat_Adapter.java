@@ -7,6 +7,7 @@ import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -34,6 +35,7 @@ public class Chat_Adapter extends RecyclerView.Adapter<Chat_Adapter.MyViewHolder
         public TextView TextView_nickname;
         public TextView TextView_msg;
         public TextView TextView_time_left, TextView_time_right;
+        public ImageView chat_imgv;
         public View rootView;
 
         public CircleImageView Cir_img;
@@ -46,7 +48,7 @@ public class Chat_Adapter extends RecyclerView.Adapter<Chat_Adapter.MyViewHolder
 
             TextView_time_left = v.findViewById(R.id.tv_time_left);
             TextView_time_right = v.findViewById(R.id.tv_time_right);
-
+            chat_imgv = v.findViewById(R.id.chat_img);
             rootView = v;
 
             Cir_img = v.findViewById(R.id.imgv);
@@ -75,8 +77,6 @@ public class Chat_Adapter extends RecyclerView.Adapter<Chat_Adapter.MyViewHolder
                     }
                 }
             });
-
-
 
         }
     }
