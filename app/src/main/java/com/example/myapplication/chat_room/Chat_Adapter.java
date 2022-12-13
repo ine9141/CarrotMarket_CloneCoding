@@ -122,6 +122,7 @@ public class Chat_Adapter extends RecyclerView.Adapter<Chat_Adapter.MyViewHolder
             holder.TextView_time_right.setMaxHeight(0);
             if(chat.getMsg().contains("firebasestorage")){
                 Glide.with(context).load(chat.getMsg()).into(holder.chat_imgv);
+                holder.chat_imgv.setClipToOutline(true);
                 holder.chat_imgv.setVisibility(View.VISIBLE);
                 holder.chat_imgv.setMaxHeight(150);
                 holder.chat_imgv.setMaxWidth(150);

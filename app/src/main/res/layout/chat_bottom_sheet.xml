@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
+    android:background="@drawable/round_imgv"
     android:layout_height="300dp"
     android:orientation="vertical">
 
@@ -13,6 +14,7 @@
 
         <ImageButton
             android:id="@+id/Btn_chat_img"
+            android:background="@drawable/round_imgv"
             android:padding="0dp"
             android:scaleType="centerInside"
             android:layout_margin="5dp"
@@ -23,6 +25,7 @@
             android:src="@drawable/chat_add_img"/>
         <ImageButton
             android:id="@+id/Btn_chat_camera"
+            android:background="@drawable/round_imgv"
             android:padding="0dp"
             android:scaleType="centerInside"
             android:layout_margin="5dp"
@@ -33,6 +36,7 @@
             android:src="@drawable/chat_add_camera"/>
         <ImageButton
             android:id="@+id/Btn_chat_word"
+            android:background="@drawable/round_imgv"
             android:padding="0dp"
             android:scaleType="centerInside"
             android:layout_margin="5dp"
@@ -43,6 +47,7 @@
             android:src="@drawable/chat_add_word"/>
         <ImageButton
             android:id="@+id/Btn_chat_location"
+            android:background="@drawable/round_imgv"
             android:padding="0dp"
             android:scaleType="centerInside"
             android:layout_margin="5dp"
@@ -61,6 +66,7 @@
 
         <ImageButton
             android:id="@+id/Btn_chat_gift"
+            android:background="@drawable/round_imgv"
             android:padding="0dp"
             android:scaleType="centerInside"
             android:layout_margin="5dp"
@@ -71,6 +77,7 @@
             android:src="@drawable/chat_add_gift"/>
         <ImageButton
             android:id="@+id/Btn_chat_appointment"
+            android:background="@drawable/round_imgv"
             android:padding="0dp"
             android:scaleType="centerInside"
             android:layout_margin="5dp"
@@ -81,6 +88,7 @@
             android:src="@drawable/chat_add_appointment"/>
         <ImageButton
             android:padding="0dp"
+            android:background="@drawable/round_imgv"
             android:scaleType="centerInside"
             android:layout_margin="5dp"
             android:layout_width="80dp"
