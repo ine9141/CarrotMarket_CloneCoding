@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -46,7 +47,7 @@ public class chat_room_activity extends AppCompatActivity implements BottomSheet
     private String url;
     private String chat_room_name;
 
-
+    private TextView other_name_room;
     private EditText EditText_chat;
     private ImageButton btn_back, btn_call, btn_set, btn_send, btn_add;
     private DatabaseReference myRef;
@@ -82,6 +83,8 @@ public class chat_room_activity extends AppCompatActivity implements BottomSheet
         btn_set = (ImageButton) findViewById(R.id.btn_set_chat);
         btn_add = (ImageButton) findViewById(R.id.Btn_add_chat);
         EditText_chat = findViewById(R.id.Edit_msg);
+        other_name_room = (TextView) findViewById(R.id.other_name_room);
+        other_name_room.setText(otherName);
 
         if (url != null) {
             EditText_chat.setText(url);

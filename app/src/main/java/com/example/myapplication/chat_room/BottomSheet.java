@@ -132,7 +132,7 @@ public class BottomSheet extends BottomSheetDialogFragment {
                         chat_list_data chatL= new chat_list_data();
                         chatL.setID_1(name);
                         chatL.setID_2(name_other);
-                        chatL.setLast_msg("사진을 보냈습니다.");
+                        chatL.setLast_msg(name+"님이 사진을 보냈습니다.");
 
                         root.child(room_name).child("chat_info").setValue(chatL);
                         root.child(room_name).child("chat_log").push().setValue(chat);

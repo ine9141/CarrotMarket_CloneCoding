@@ -108,10 +108,12 @@ public class Chat_Adapter extends RecyclerView.Adapter<Chat_Adapter.MyViewHolder
 
 
         if(chat.getName().equals(this.myNickname)){
+
             holder.TextView_msg.setTextAlignment(View.TEXT_ALIGNMENT_VIEW_END);
             holder.TextView_msg.setBackgroundResource(R.drawable.round_send_msg);
             holder.TextView_msg.setTextColor(Color.WHITE);
             holder.chat_linear.setGravity(Gravity.RIGHT);
+
 
             holder.TextView_nickname.setVisibility(View.INVISIBLE);
             holder.Cir_img.setVisibility(View.INVISIBLE);
@@ -121,6 +123,8 @@ public class Chat_Adapter extends RecyclerView.Adapter<Chat_Adapter.MyViewHolder
             if(chat.getMsg().contains("firebasestorage")){
                 Glide.with(context).load(chat.getMsg()).into(holder.chat_imgv);
                 holder.chat_imgv.setVisibility(View.VISIBLE);
+                holder.chat_imgv.setMaxHeight(150);
+                holder.chat_imgv.setMaxWidth(150);
                 holder.TextView_msg.setHeight(0);
                 holder.TextView_msg.setWidth(0);
 
@@ -128,6 +132,11 @@ public class Chat_Adapter extends RecyclerView.Adapter<Chat_Adapter.MyViewHolder
 
         }
         else{
+
+            LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+            params.setMargins(0,0,0,0);
+            holder.chat_linear.setLayoutParams(params);
+
             holder.TextView_msg.setTextAlignment(View.TEXT_ALIGNMENT_VIEW_START);
             holder.TextView_nickname.setTextAlignment(View.TEXT_ALIGNMENT_VIEW_START);
 
