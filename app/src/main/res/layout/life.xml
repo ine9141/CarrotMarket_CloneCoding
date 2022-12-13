@@ -59,7 +59,6 @@
         </LinearLayout>
     </RelativeLayout>
 
-
     <!-- 하단바 -->
     <ScrollView
         android:layout_width="match_parent"
@@ -116,6 +115,7 @@
                                 android:textSize="12dp"
                                 android:textStyle="bold" />
                         </LinearLayout>
+
                     </FrameLayout>
 
                     <TextView
@@ -292,7 +292,7 @@
                             android:layout_width="14dp"
                             android:layout_height="14dp"
                             android:layout_gravity="center_vertical"
-                            android:src="@drawable/my1"
+                            android:src="@drawable/smile"
                             app:tint="#808080" />
 
                         <TextView
@@ -301,6 +301,7 @@
                             android:layout_gravity="center"
                             android:paddingLeft="5dp"
                             android:text="공감하기"
+                            android:textColor="#545454"
                             android:textSize="11dp" />
                     </LinearLayout>
 
@@ -314,7 +315,7 @@
                             android:layout_width="14dp"
                             android:layout_height="14dp"
                             android:layout_gravity="center_vertical"
-                            android:src="@drawable/my1"
+                            android:src="@drawable/life_chat"
                             app:tint="#808080" />
 
                         <TextView
@@ -323,6 +324,7 @@
                             android:layout_gravity="center"
                             android:paddingLeft="5dp"
                             android:text="댓글쓰기"
+                            android:textColor="#545454"
                             android:textSize="11dp" />
                     </LinearLayout>
                 </RelativeLayout>
@@ -404,7 +406,7 @@
                             android:layout_width="14dp"
                             android:layout_height="14dp"
                             android:layout_gravity="center_vertical"
-                            android:src="@drawable/my1"
+                            android:src="@drawable/smile"
                             app:tint="#808080" />
 
                         <TextView
@@ -413,6 +415,7 @@
                             android:layout_gravity="center"
                             android:paddingLeft="5dp"
                             android:text="공감하기"
+                            android:textColor="#545454"
                             android:textSize="11dp" />
                     </LinearLayout>
 
@@ -426,7 +429,7 @@
                             android:layout_width="14dp"
                             android:layout_height="14dp"
                             android:layout_gravity="center_vertical"
-                            android:src="@drawable/my1"
+                            android:src="@drawable/life_chat"
                             app:tint="#808080" />
 
                         <TextView
@@ -435,6 +438,7 @@
                             android:layout_gravity="center"
                             android:paddingLeft="5dp"
                             android:text="댓글쓰기"
+                            android:textColor="#545454"
                             android:textSize="11dp" />
                     </LinearLayout>
                 </RelativeLayout>
@@ -516,7 +520,7 @@
                             android:layout_width="14dp"
                             android:layout_height="14dp"
                             android:layout_gravity="center_vertical"
-                            android:src="@drawable/my1"
+                            android:src="@drawable/smile"
                             app:tint="#808080" />
 
                         <TextView
@@ -525,6 +529,7 @@
                             android:layout_gravity="center"
                             android:paddingLeft="5dp"
                             android:text="공감하기"
+                            android:textColor="#545454"
                             android:textSize="11dp" />
                     </LinearLayout>
 
@@ -538,7 +543,7 @@
                             android:layout_width="14dp"
                             android:layout_height="14dp"
                             android:layout_gravity="center_vertical"
-                            android:src="@drawable/my1"
+                            android:src="@drawable/life_chat"
                             app:tint="#808080" />
 
                         <TextView
@@ -547,6 +552,7 @@
                             android:layout_gravity="center"
                             android:paddingLeft="5dp"
                             android:text="댓글쓰기"
+                            android:textColor="#545454"
                             android:textSize="11dp" />
                     </LinearLayout>
                 </RelativeLayout>
@@ -628,7 +634,7 @@
                             android:layout_width="14dp"
                             android:layout_height="14dp"
                             android:layout_gravity="center_vertical"
-                            android:src="@drawable/my1"
+                            android:src="@drawable/smile"
                             app:tint="#808080" />
 
                         <TextView
@@ -637,6 +643,7 @@
                             android:layout_gravity="center"
                             android:paddingLeft="5dp"
                             android:text="공감하기"
+                            android:textColor="#545454"
                             android:textSize="11dp" />
                     </LinearLayout>
 
@@ -650,7 +657,7 @@
                             android:layout_width="14dp"
                             android:layout_height="14dp"
                             android:layout_gravity="center_vertical"
-                            android:src="@drawable/my1"
+                            android:src="@drawable/life_chat"
                             app:tint="#808080" />
 
                         <TextView
@@ -659,6 +666,7 @@
                             android:layout_gravity="center"
                             android:paddingLeft="5dp"
                             android:text="댓글쓰기"
+                            android:textColor="#545454"
                             android:textSize="11dp" />
                     </LinearLayout>
                 </RelativeLayout>
@@ -680,7 +688,7 @@
                     android:paddingTop="3dp"
                     android:paddingRight="7dp"
                     android:paddingBottom="3dp"
-                    android:text="동네가게"
+                    android:text="일상"
                     android:textColor="#545454"
                     android:textSize="10dp" />
 
@@ -688,7 +696,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:paddingLeft="20dp"
-                    android:text="차량실내 시트 복원해주는 업체 추천해주세여~~"
+                    android:text="졸업식 꽅다발 주문할곳 추천 좀 해주세요."
                     android:textColor="#000000" />
 
                 <RelativeLayout
@@ -703,7 +711,7 @@
                         android:layout_margin="15dp"
                         android:gravity="center"
                         android:paddingLeft="5dp"
-                        android:text="요미요미 . 북부동"
+                        android:text="알럽듀 . 봉림동"
                         android:textSize="10dp" />
 
                     <LinearLayout
@@ -718,7 +726,7 @@
                             android:layout_height="wrap_content"
                             android:layout_gravity="right"
                             android:gravity="center"
-                            android:text="9시간 전"
+                            android:text="18시간 전"
                             android:textSize="10dp" />
                     </LinearLayout>
                 </RelativeLayout>
@@ -741,7 +749,7 @@
                             android:layout_width="14dp"
                             android:layout_height="14dp"
                             android:layout_gravity="center_vertical"
-                            android:src="@drawable/my1"
+                            android:src="@drawable/smile"
                             app:tint="#808080" />
 
                         <TextView
@@ -750,6 +758,7 @@
                             android:layout_gravity="center"
                             android:paddingLeft="5dp"
                             android:text="공감하기"
+                            android:textColor="#545454"
                             android:textSize="11dp" />
                     </LinearLayout>
 
@@ -763,7 +772,7 @@
                             android:layout_width="14dp"
                             android:layout_height="14dp"
                             android:layout_gravity="center_vertical"
-                            android:src="@drawable/my1"
+                            android:src="@drawable/life_chat"
                             app:tint="#808080" />
 
                         <TextView
@@ -772,6 +781,7 @@
                             android:layout_gravity="center"
                             android:paddingLeft="5dp"
                             android:text="댓글쓰기"
+                            android:textColor="#545454"
                             android:textSize="11dp" />
                     </LinearLayout>
                 </RelativeLayout>
@@ -792,7 +802,7 @@
                     android:paddingTop="3dp"
                     android:paddingRight="7dp"
                     android:paddingBottom="3dp"
-                    android:text="동네가게"
+                    android:text="반려동물"
                     android:textColor="#545454"
                     android:textSize="10dp" />
 
@@ -800,7 +810,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:paddingLeft="20dp"
-                    android:text="차량실내 시트 복원해주는 업체 추천해주세여~~"
+                    android:text="고양이 중성화수술 잘하는 곳 추천해주세요~\n길고양이라 개의치않고 있었더니 가끔 소변을 지려놔서\n중성화하면 괜찮다고 해서요!\n가격도 오픈해주시면 좋겠습니다~"
                     android:textColor="#000000" />
 
                 <RelativeLayout
@@ -812,10 +822,13 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="left"
-                        android:layout_margin="15dp"
+                        android:layout_marginStart="15dp"
+                        android:layout_marginTop="15dp"
+                        android:layout_marginEnd="15dp"
+                        android:layout_marginBottom="15dp"
                         android:gravity="center"
                         android:paddingLeft="5dp"
-                        android:text="요미요미 . 북부동"
+                        android:text="방울아 . 중앙동"
                         android:textSize="10dp" />
 
                     <LinearLayout
@@ -830,7 +843,7 @@
                             android:layout_height="wrap_content"
                             android:layout_gravity="right"
                             android:gravity="center"
-                            android:text="9시간 전"
+                            android:text="23시간 전"
                             android:textSize="10dp" />
                     </LinearLayout>
                 </RelativeLayout>
@@ -853,7 +866,7 @@
                             android:layout_width="14dp"
                             android:layout_height="14dp"
                             android:layout_gravity="center_vertical"
-                            android:src="@drawable/my1"
+                            android:src="@drawable/smile"
                             app:tint="#808080" />
 
                         <TextView
@@ -862,6 +875,7 @@
                             android:layout_gravity="center"
                             android:paddingLeft="5dp"
                             android:text="공감하기"
+                            android:textColor="#545454"
                             android:textSize="11dp" />
                     </LinearLayout>
 
@@ -875,7 +889,7 @@
                             android:layout_width="14dp"
                             android:layout_height="14dp"
                             android:layout_gravity="center_vertical"
-                            android:src="@drawable/my1"
+                            android:src="@drawable/life_chat"
                             app:tint="#808080" />
 
                         <TextView
@@ -884,6 +898,7 @@
                             android:layout_gravity="center"
                             android:paddingLeft="5dp"
                             android:text="댓글쓰기"
+                            android:textColor="#545454"
                             android:textSize="11dp" />
                     </LinearLayout>
                 </RelativeLayout>
@@ -904,7 +919,7 @@
                     android:paddingTop="3dp"
                     android:paddingRight="7dp"
                     android:paddingBottom="3dp"
-                    android:text="동네가게"
+                    android:text="운동생활"
                     android:textColor="#545454"
                     android:textSize="10dp" />
 
@@ -912,7 +927,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:paddingLeft="20dp"
-                    android:text="차량실내 시트 복원해주는 업체 추천해주세여~~"
+                    android:text="허리디스크로 주로 런닝걷기만 하는데 대방동 저렴한 헬스장\n추천 좀 부탁드려요"
                     android:textColor="#000000" />
 
                 <RelativeLayout
@@ -927,7 +942,7 @@
                         android:layout_margin="15dp"
                         android:gravity="center"
                         android:paddingLeft="5dp"
-                        android:text="요미요미 . 북부동"
+                        android:text="이JH . 대방동"
                         android:textSize="10dp" />
 
                     <LinearLayout
@@ -942,7 +957,7 @@
                             android:layout_height="wrap_content"
                             android:layout_gravity="right"
                             android:gravity="center"
-                            android:text="9시간 전"
+                            android:text="하루 전"
                             android:textSize="10dp" />
                     </LinearLayout>
                 </RelativeLayout>
@@ -965,7 +980,7 @@
                             android:layout_width="14dp"
                             android:layout_height="14dp"
                             android:layout_gravity="center_vertical"
-                            android:src="@drawable/my1"
+                            android:src="@drawable/smile"
                             app:tint="#808080" />
 
                         <TextView
@@ -974,6 +989,7 @@
                             android:layout_gravity="center"
                             android:paddingLeft="5dp"
                             android:text="공감하기"
+                            android:textColor="#545454"
                             android:textSize="11dp" />
                     </LinearLayout>
 
@@ -987,7 +1003,7 @@
                             android:layout_width="14dp"
                             android:layout_height="14dp"
                             android:layout_gravity="center_vertical"
-                            android:src="@drawable/my1"
+                            android:src="@drawable/life_chat"
                             app:tint="#808080" />
 
                         <TextView
@@ -996,6 +1012,7 @@
                             android:layout_gravity="center"
                             android:paddingLeft="5dp"
                             android:text="댓글쓰기"
+                            android:textColor="#545454"
                             android:textSize="11dp" />
                     </LinearLayout>
                 </RelativeLayout>
