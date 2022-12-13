@@ -10,6 +10,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -18,8 +19,11 @@ import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.myapplication.R;
+import com.example.myapplication.home;
+import com.example.myapplication.my;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentReference;
@@ -40,7 +44,10 @@ public class write_post extends AppCompatActivity {
     Button done_button;
     ImageButton add_image_button;
     ImageView imageView;
+    FloatingActionButton redo_button;
+
     String s, nick_name;
+    TextView dong_name;
 
 
     @Override
@@ -49,24 +56,25 @@ public class write_post extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.write_post);
 
-        Intent secondIntent = getIntent();
-        if (secondIntent.hasExtra("dong_s")) {
-            s = secondIntent.getStringExtra("dong_s");
-        }
-
-        //닉네임 설정
-        if (secondIntent.hasExtra("nick_name")) {
-            nick_name = secondIntent.getStringExtra("nick_name");
-        }
-
         done_button = (Button) findViewById(R.id.done_button);
         add_image_button = (ImageButton) findViewById(R.id.add_image_button);
         imageView = (ImageView)findViewById(R.id.imageView);
         storage = FirebaseStorage.getInstance();
+        redo_button = (FloatingActionButton) findViewById(R.id.redoButton);
 
         //상단 액션바 제거
         ActionBar actionBar = getSupportActionBar();
         actionBar.hide();
+
+        redo_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), home.class);
+                startActivity(intent);
+            }
+        });
+
+
 
 
 
@@ -75,9 +83,14 @@ public class write_post extends AppCompatActivity {
             public void onClick(View view) {
                 try {
                     storageUpload();
+                    Intent intent = new Intent(getApplicationContext(), home.class);
+                    startActivity(intent);
+
+
                 } catch (FileNotFoundException e) {
                     Toast.makeText(write_post.this, "실패",Toast.LENGTH_SHORT).show();
                 }
+
             }
         });
 
@@ -130,8 +143,11 @@ public class write_post extends AppCompatActivity {
                 });
             }
 
+
+
+
             write_info writeInfo;
-            writeInfo = new write_info(title,price,contents,new Date(),uri.toString(),nick_name,s);
+            writeInfo = new write_info(title,price,contents,new Date(),uri.toString(),user.getUid());
             storeUpload(documentReference,writeInfo);
         }
 
@@ -154,6 +170,23 @@ public class write_post extends AppCompatActivity {
                         Log.w(TAG, "Error writing document", e);
                     }
                 });
+
+        /*FirebaseFirestore db = FirebaseFirestore.getInstance();
+        db.collection("post")
+                .add(writeInfo)
+                .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
+                    @Override
+                    public void onSuccess(DocumentReference documentReference) {
+                        Log.d(TAG, "DocumentSnapshot written with ID: " + documentReference.getId());
+                    }
+                })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        Log.w(TAG, "Error adding document", e);
+                    }
+                });  날리기 */
+
     }
 
     private void startToast(String msg)
