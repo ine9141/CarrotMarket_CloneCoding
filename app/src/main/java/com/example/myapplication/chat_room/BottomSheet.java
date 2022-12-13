@@ -75,12 +75,10 @@ public class BottomSheet extends BottomSheetDialogFragment {
                 activityResult.launch(intent);
                 if(imgUri != null)
                     uploadToFirebase(imgUri);
-                else
-                    Toast.makeText(getContext(),"취소",Toast.LENGTH_SHORT).show();
-
 
             }
         });
+
 
 
 

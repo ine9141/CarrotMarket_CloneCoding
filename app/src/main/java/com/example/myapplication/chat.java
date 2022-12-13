@@ -33,7 +33,8 @@ import java.util.List;
 public class chat extends AppCompatActivity {
     Button home, life, around, chat, my, go_chat;
     EditText otherName;
-    String s,nick_name;
+    String s;
+    String nick_name = "user1";
     private RecyclerView lRecyclerView;
     private RecyclerView.Adapter lAdapter;
     private RecyclerView.LayoutManager lLayoutManager;

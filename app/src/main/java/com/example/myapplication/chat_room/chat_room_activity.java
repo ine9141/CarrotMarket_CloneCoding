@@ -136,12 +136,7 @@ public class chat_room_activity extends AppCompatActivity implements BottomSheet
                     myRef.child("chat").child(chat_room_name).child("chat_log").push().setValue(chat);
 
                 }
-                new Handler().postDelayed(new Runnable() {              //scrollToPosition 딜레이
-                    @Override
-                    public void run() {
-                        mRecyclerView.scrollToPosition(mAdapter.getItemCount() - 1);
-                    }
-                }, 200);
+
                 EditText_chat.setText("");
             }
 
@@ -158,6 +153,12 @@ public class chat_room_activity extends AppCompatActivity implements BottomSheet
             public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
                 Chat_Data chat = snapshot.getValue(Chat_Data.class);
                 ((Chat_Adapter) mAdapter).addChat(chat);
+                new Handler().postDelayed(new Runnable() {              //scrollToPosition 딜레이
+                    @Override
+                    public void run() {
+                        mRecyclerView.scrollToPosition(mAdapter.getItemCount() - 1);
+                    }
+                }, 100);
             }
 
             @Override
