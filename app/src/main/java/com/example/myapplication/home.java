@@ -181,7 +181,7 @@ public class home extends AppCompatActivity {
                         }
                         for (DocumentChange dc : value.getDocumentChanges()) {
 
-                            if (dc.getType() == DocumentChange.Type.ADDED) {
+                            if (dc.getType() == DocumentChange.Type.ADDED && (dc.getDocument().toObject(write_info.class).getDong().equals(s))) {
                                 arrayList.add(dc.getDocument().toObject(write_info.class));
                             }
                             adapter.notifyDataSetChanged();
