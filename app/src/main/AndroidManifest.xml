@@ -93,6 +93,9 @@
         <activity
             android:name=".set_name"
             android:label="" />
+        <activity
+            android:name=".post_page"
+            android:label="" />
 
         <meta-data
             android:name="com.google.android.maps.v2.API_KEY"

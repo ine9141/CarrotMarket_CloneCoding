@@ -14,52 +14,63 @@
 
             <ImageView
                 android:layout_width="match_parent"
-                android:layout_height="400dp"/>
+                android:layout_height="400dp" />
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
-                <ImageButton
-                    android:layout_width="60dp"
-                    android:layout_height="60dp"/>
 
-                <TextView
-                    android:layout_width="70dp"
-                    android:layout_height="40dp"
-                    android:text="닉네임, 주소"/>
+                <ImageView
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    android:src="@drawable/profile" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/user_name"
+                        android:layout_width="70dp"
+                        android:layout_height="wrap_content"
+                        android:text="닉네임" />
+
+                    <TextView
+                        android:id="@+id/dong_name"
+                        android:layout_width="70dp"
+                        android:layout_height="wrap_content"
+                        android:text="주소" />
+                </LinearLayout>
 
             </LinearLayout>
 
-            <EditText
+            <TextView
+                android:id="@+id/title"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="제목"/>
-            <EditText
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="내용"/>
+                android:text="제목" />
 
+            <TextView
+                android:id="@+id/text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="내용" />
+
+            <TextView
+                android:id="@+id/price"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="가격" />
+
+
+            <Button
+                android:id="@+id/chatbtn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="채팅하기" />
         </LinearLayout>
-
-
-
-
-
-
     </ScrollView>
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

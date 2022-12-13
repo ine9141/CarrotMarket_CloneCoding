@@ -40,12 +40,24 @@ public class write_post extends AppCompatActivity {
     Button done_button;
     ImageButton add_image_button;
     ImageView imageView;
+    String s, nick_name;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.write_post);
+
+        Intent secondIntent = getIntent();
+        if (secondIntent.hasExtra("dong_s")) {
+            s = secondIntent.getStringExtra("dong_s");
+        }
+
+        //닉네임 설정
+        if (secondIntent.hasExtra("nick_name")) {
+            nick_name = secondIntent.getStringExtra("nick_name");
+        }
 
         done_button = (Button) findViewById(R.id.done_button);
         add_image_button = (ImageButton) findViewById(R.id.add_image_button);
@@ -66,10 +78,6 @@ public class write_post extends AppCompatActivity {
                 } catch (FileNotFoundException e) {
                     Toast.makeText(write_post.this, "실패",Toast.LENGTH_SHORT).show();
                 }
-
-
-
-
             }
         });
 
@@ -122,11 +130,8 @@ public class write_post extends AppCompatActivity {
                 });
             }
 
-
-
-
             write_info writeInfo;
-            writeInfo = new write_info(title,price,contents,new Date(),uri.toString(),user.getUid());
+            writeInfo = new write_info(title,price,contents,new Date(),uri.toString(),nick_name,s);
             storeUpload(documentReference,writeInfo);
         }
 
@@ -149,23 +154,6 @@ public class write_post extends AppCompatActivity {
                         Log.w(TAG, "Error writing document", e);
                     }
                 });
-
-        /*FirebaseFirestore db = FirebaseFirestore.getInstance();
-        db.collection("post")
-                .add(writeInfo)
-                .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
-                    @Override
-                    public void onSuccess(DocumentReference documentReference) {
-                        Log.d(TAG, "DocumentSnapshot written with ID: " + documentReference.getId());
-                    }
-                })
-                .addOnFailureListener(new OnFailureListener() {
-                    @Override
-                    public void onFailure(@NonNull Exception e) {
-                        Log.w(TAG, "Error adding document", e);
-                    }
-                });  날리기 */
-
     }
 
     private void startToast(String msg)

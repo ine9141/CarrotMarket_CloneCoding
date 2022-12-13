@@ -10,12 +10,14 @@ public class write_info {
     private Date createAt;
     private String uri;
     private String publisher;
+    private String dong;
 
     public write_info() {
     }
 
-    public write_info(String title, int price, String contents,Date createAt,String uri,String publisher){
+    public write_info(String title, int price, String contents,Date createAt,String uri,String publisher,String dong){
         this.title=title;
+        this.dong=dong;
         this.price=price;
         this.contents=contents;
         this.createAt=createAt;
@@ -35,6 +37,7 @@ public class write_info {
     public void setUri(String uri) {this.uri=uri;}
     public String getPublisher() { return this.publisher;}
     public void setPublisher(String publisher) {this.publisher=publisher;}
-
+    public String getDong() { return this.dong;}
+    public void setDong(String dong) {this.dong=dong;}
 
 }

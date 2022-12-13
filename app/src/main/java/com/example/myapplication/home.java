@@ -1,12 +1,14 @@
 package com.example.myapplication;
 
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -46,7 +48,9 @@ public class home extends AppCompatActivity {
     Button home, life, around, chat, my;
     FloatingActionButton post_button;
     TextView dong_name;
-    String s, nick_name;
+
+    public static Context mContext;
+    public String s, nick_name;
 
 
     @Override
@@ -54,6 +58,8 @@ public class home extends AppCompatActivity {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.home);
+
+        mContext = this;
 
         progressDialog = new ProgressDialog(this);
         progressDialog.setCancelable(false);
@@ -99,7 +105,6 @@ public class home extends AppCompatActivity {
         if (secondIntent.hasExtra("nick_name")) {
             nick_name = secondIntent.getStringExtra("nick_name");
         }
-
 
         home.setOnClickListener(new View.OnClickListener() {
             @Override
