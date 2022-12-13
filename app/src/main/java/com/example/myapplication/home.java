@@ -180,8 +180,9 @@ public class home extends AppCompatActivity {
                             return;
                         }
                         for (DocumentChange dc : value.getDocumentChanges()) {
-
-                            if (dc.getType() == DocumentChange.Type.ADDED && (dc.getDocument().toObject(write_info.class).getDong().equals(s))) {
+                            if (dc.getType() == DocumentChange.Type.ADDED &&
+                                    (dc.getDocument().toObject(write_info.class).getDong() != null) &&
+                                    (dc.getDocument().toObject(write_info.class).getDong().equals(s))) {
                                 arrayList.add(dc.getDocument().toObject(write_info.class));
                             }
                             adapter.notifyDataSetChanged();

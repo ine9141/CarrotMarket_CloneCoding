@@ -34,7 +34,7 @@ public class chat extends AppCompatActivity {
     Button home, life, around, chat, my, go_chat;
     EditText otherName;
     String s;
-    String nick_name = "user1";
+    String nick_name;
     private RecyclerView lRecyclerView;
     private RecyclerView.Adapter lAdapter;
     private RecyclerView.LayoutManager lLayoutManager;

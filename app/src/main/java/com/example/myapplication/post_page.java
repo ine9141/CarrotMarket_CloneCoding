@@ -63,6 +63,8 @@ public class post_page extends AppCompatActivity {
             view_name.setText(other_name);
         }
 
+
+
         //제목
         if (secondIntent.hasExtra("title")) {
             s = secondIntent.getStringExtra("title");
