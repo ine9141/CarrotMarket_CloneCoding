@@ -45,7 +45,8 @@
                 android:layout_margin="3dp"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:singleLine="true"
+                android:maxLines="1"
+                android:ellipsize="end"
                 android:hint="마지막 메시지"/>
         </LinearLayout>
 

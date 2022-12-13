@@ -24,6 +24,7 @@ import androidx.annotation.Nullable;
 
 import com.example.myapplication.R;
 
+import com.example.myapplication.chat_list_data;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
 import com.google.firebase.database.DatabaseReference;
@@ -106,11 +107,7 @@ public class BottomSheet extends BottomSheetDialogFragment {
                 public void onActivityResult(ActivityResult result) {
                     if(result.getResultCode() == RESULT_OK && result.getData() != null){
                         imgUri = result.getData().getData();
-
-
                         uploadToFirebase(imgUri);
-
-
                     }
                 }
             }
@@ -124,12 +121,20 @@ public class BottomSheet extends BottomSheetDialogFragment {
                     @Override
                     public void onSuccess(Uri uri) {
                         String name = getArguments().getString("myName");
+                        String name_other = getArguments().getString("otherName");
                         String room_name = getArguments().getString("room_name");
                         String time = getTime();
                         Chat_Data chat = new Chat_Data();
                         chat.setMsg(uri.toString());
                         chat.setName(name);
                         chat.setTime(time);
+
+                        chat_list_data chatL= new chat_list_data();
+                        chatL.setID_1(name);
+                        chatL.setID_2(name_other);
+                        chatL.setLast_msg("사진을 보냈습니다.");
+
+                        root.child(room_name).child("chat_info").setValue(chatL);
                         root.child(room_name).child("chat_log").push().setValue(chat);
 
 
