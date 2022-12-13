@@ -119,8 +119,11 @@ public class Chat_Adapter extends RecyclerView.Adapter<Chat_Adapter.MyViewHolder
             holder.TextView_time_right.setMaxWidth(0);
             holder.TextView_time_right.setMaxHeight(0);
             if(chat.getMsg().contains("firebasestorage")){
-                holder.chat_imgv.setVisibility(View.VISIBLE);
                 Glide.with(context).load(chat.getMsg()).into(holder.chat_imgv);
+                holder.chat_imgv.setVisibility(View.VISIBLE);
+                holder.TextView_msg.setHeight(0);
+                holder.TextView_msg.setWidth(0);
+
             }
 
         }
@@ -132,8 +135,11 @@ public class Chat_Adapter extends RecyclerView.Adapter<Chat_Adapter.MyViewHolder
             holder.TextView_time_left.setMaxWidth(0);
             holder.TextView_time_left.setMaxHeight(0);
             if(chat.getMsg().contains("firebasestorage")){
-                holder.chat_imgv.setVisibility(View.VISIBLE);
                 Glide.with(context).load(chat.getMsg()).into(holder.chat_imgv);
+                holder.chat_imgv.setVisibility(View.VISIBLE);
+                holder.TextView_msg.setHeight(0);
+                holder.TextView_msg.setWidth(0);
+
             }
         }
     }
