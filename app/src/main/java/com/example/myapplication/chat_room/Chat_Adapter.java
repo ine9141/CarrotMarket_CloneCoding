@@ -11,8 +11,10 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
 import com.example.myapplication.R;
 
 
@@ -116,6 +118,10 @@ public class Chat_Adapter extends RecyclerView.Adapter<Chat_Adapter.MyViewHolder
             holder.TextView_time_right.setVisibility(View.INVISIBLE);
             holder.TextView_time_right.setMaxWidth(0);
             holder.TextView_time_right.setMaxHeight(0);
+            if(chat.getMsg().contains("firebasestorage")){
+                holder.chat_imgv.setVisibility(View.VISIBLE);
+                Glide.with(context).load(chat.getMsg()).into(holder.chat_imgv);
+            }
 
         }
         else{
@@ -125,6 +131,10 @@ public class Chat_Adapter extends RecyclerView.Adapter<Chat_Adapter.MyViewHolder
             holder.TextView_time_left.setVisibility(View.INVISIBLE);
             holder.TextView_time_left.setMaxWidth(0);
             holder.TextView_time_left.setMaxHeight(0);
+            if(chat.getMsg().contains("firebasestorage")){
+                holder.chat_imgv.setVisibility(View.VISIBLE);
+                Glide.with(context).load(chat.getMsg()).into(holder.chat_imgv);
+            }
         }
     }
 
