@@ -92,12 +92,16 @@ public class home extends AppCompatActivity {
         chat = (Button) findViewById(R.id.chat);
         my = (Button) findViewById(R.id.my);
         dong_name = (TextView) findViewById(R.id.dong_name);
-
+        s = "봉림동";
+        dong_name.setText(s);
 
         //동네이름 설정
         Intent secondIntent = getIntent();
         if (secondIntent.hasExtra("dong_s")) {
             s = secondIntent.getStringExtra("dong_s");
+            dong_name.setText(s);
+        } else {
+            s = "봉림동";
             dong_name.setText(s);
         }
 
@@ -181,14 +185,15 @@ public class home extends AppCompatActivity {
                         }
                         for (DocumentChange dc : value.getDocumentChanges()) {
                             if (dc.getType() == DocumentChange.Type.ADDED &&
-                                    (dc.getDocument().toObject(write_info.class).getDong() != null) &&
-                                    (dc.getDocument().toObject(write_info.class).getDong().equals(s))) {
+                                    (dc.getDocument().toObject(write_info.class).getDong() != null)) {
                                 arrayList.add(dc.getDocument().toObject(write_info.class));
                             }
                             adapter.notifyDataSetChanged();
                             if (progressDialog.isShowing())
                                 progressDialog.dismiss();
                         }
+                        if (progressDialog.isShowing())
+                            progressDialog.dismiss();
                     }
                 });
     }
