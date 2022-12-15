@@ -4,12 +4,11 @@ package com.example.myapplication.post;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
-import android.net.Uri;
-import android.util.Log;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -19,13 +18,11 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
-import com.example.myapplication.MainActivity;
 import com.example.myapplication.R;
-import com.example.myapplication.chat_room.location_join;
-import com.example.myapplication.check_address;
 import com.example.myapplication.home;
 import com.example.myapplication.post_page;
 
+import java.io.ByteArrayOutputStream;
 import java.util.ArrayList;
 
 
@@ -53,7 +50,7 @@ public class post_adapter extends RecyclerView.Adapter<post_adapter.postViewHold
         writeInfo = arrayList.get(position);
 
         Glide.with(holder.itemView)
-                .load(arrayList.get(position).getUri()) //glide로 사진 로드
+                .load("https://firebasestorage.googleapis.com/v0/b/mobile-programming-978f9.appspot.com/o/posts%2F"+writeInfo.getUri()+".jpg?alt=media")
                 .into(holder.goods_img);
 
         holder.titleTextView.setText(writeInfo.getTitle());
@@ -73,6 +70,7 @@ public class post_adapter extends RecyclerView.Adapter<post_adapter.postViewHold
                 post_page.putExtra("text",arrayList.get(position).getContents());
                 post_page.putExtra("other",arrayList.get(position).getPublisher());
                 post_page.putExtra("dong",arrayList.get(position).getDong());
+                post_page.putExtra("uri",arrayList.get(position).getUri());
                 post_page.putExtra("dong_s",((home)home.mContext).s);
                 post_page.putExtra("nick_name",((home)home.mContext).nick_name);
                 post_page.putExtra("time",getLastTime(arrayList.get(position).getCreateAt().getTime()));
