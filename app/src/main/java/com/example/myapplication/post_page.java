@@ -18,7 +18,7 @@ import org.w3c.dom.Text;
 
 public class post_page extends AppCompatActivity {
     Button chatbtn;
-    TextView title, text, price,view_name, dong;
+    TextView title, text, price,view_name, dong, view_post_time;
     String num, txt, s, dong_name, nick_name, other_name, other_dong;
 
     @SuppressLint("MissingInflatedId")
@@ -38,7 +38,7 @@ public class post_page extends AppCompatActivity {
         text = (TextView) findViewById(R.id.text);
         view_name = (TextView) findViewById(R.id.user_name);
         dong = (TextView) findViewById(R.id.dong_name);
-
+        view_post_time = (TextView) findViewById(R.id.view_post_time);
         Intent secondIntent = getIntent();
 
         //동네이름 설정
@@ -61,6 +61,11 @@ public class post_page extends AppCompatActivity {
         if (secondIntent.hasExtra("other")) {
             other_name = secondIntent.getStringExtra("other");
             view_name.setText(other_name);
+        }
+
+        //시간 설정
+        if (secondIntent.hasExtra("other")) {
+            view_post_time.setText(secondIntent.getStringExtra("time"));
         }
 
 
