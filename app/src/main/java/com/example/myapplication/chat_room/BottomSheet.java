@@ -8,6 +8,7 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -46,6 +47,7 @@ public class BottomSheet extends BottomSheetDialogFragment {
 
     private ImageButton chat_add_location;
     private ImageButton chat_add_img;
+    private ImageButton chat_add_camera;
     private Uri imgUri;
 
 
@@ -60,7 +62,7 @@ public class BottomSheet extends BottomSheetDialogFragment {
 
         chat_add_location = view.findViewById(R.id.Btn_chat_location);
         chat_add_img = view.findViewById(R.id.Btn_chat_img);
-
+        chat_add_camera = view.findViewById(R.id.Btn_chat_camera);
         imgv = view.findViewById(R.id.sample_img);
 
 
@@ -78,7 +80,18 @@ public class BottomSheet extends BottomSheetDialogFragment {
 
             }
         });
+        chat_add_camera.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent();
+                intent.setAction(MediaStore.ACTION_IMAGE_CAPTURE);
+                intent.setType("image/");
+                activityResult.launch(intent);
+                if(imgUri != null)
+                    uploadToFirebase(imgUri);
 
+            }
+        });
 
 
 
