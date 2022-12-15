@@ -2,8 +2,10 @@ package com.example.myapplication.chat_room;
 
 import static android.app.Activity.RESULT_OK;
 
+import android.Manifest;
 import android.content.ContentResolver;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
@@ -22,7 +24,10 @@ import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 
+import com.example.myapplication.MainActivity;
 import com.example.myapplication.R;
 
 import com.example.myapplication.chat_list_data;
@@ -34,6 +39,7 @@ import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 
+import java.io.File;
 import java.io.InputStream;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -75,21 +81,21 @@ public class BottomSheet extends BottomSheetDialogFragment {
                 intent.setAction(Intent.ACTION_GET_CONTENT);
                 intent.setType("image/");
                 activityResult.launch(intent);
-                if(imgUri != null)
-                    uploadToFirebase(imgUri);
+
 
             }
         });
         chat_add_camera.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent();
-                intent.setAction(MediaStore.ACTION_IMAGE_CAPTURE);
-                intent.setType("image/");
-                activityResult.launch(intent);
-                if(imgUri != null)
-                    uploadToFirebase(imgUri);
+                int permissionCheck = ContextCompat.checkSelfPermission(getContext(), Manifest.permission.CAMERA);
+                if(permissionCheck == PackageManager.PERMISSION_DENIED ){
+                    Toast.makeText(getContext(),"권한 필요",Toast.LENGTH_SHORT).show();
+                }else{
+                    Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
 
+                    activityResult.launch(intent);
+                }
             }
         });
 
@@ -111,15 +117,26 @@ public class BottomSheet extends BottomSheetDialogFragment {
         return view;
 
     } //oncreateView
+
     ActivityResultLauncher<Intent> activityResult = registerForActivityResult(
             new ActivityResultContracts.StartActivityForResult(),
             new ActivityResultCallback<ActivityResult>() {
                 @Override
                 public void onActivityResult(ActivityResult result) {
+
                     if(result.getResultCode() == RESULT_OK && result.getData() != null){
-                        imgUri = result.getData().getData();
-                        uploadToFirebase(imgUri);
+                        if(result.getData().getData() == null){
+                            //imgUri = MediaStore.Images.Media.EXTERNAL_CONTENT_URI;
+                          //  Toast.makeText(getContext(),imgUri.toString(),Toast.LENGTH_SHORT).show();
+                           // uploadToFirebase(imgUri);
+                        } else{
+                            imgUri = result.getData().getData();
+                           // Toast.makeText(getContext(),imgUri.toString(),Toast.LENGTH_SHORT).show();
+                            uploadToFirebase(imgUri);
+                        }
+
                     }
+
                 }
             }
     );
@@ -154,6 +171,7 @@ public class BottomSheet extends BottomSheetDialogFragment {
             }
         });
     }
+
 
 
     private String getTime() {
