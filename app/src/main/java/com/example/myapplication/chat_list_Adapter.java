@@ -29,6 +29,7 @@ public class chat_list_Adapter extends RecyclerView.Adapter<chat_list_Adapter.Li
         public TextView chat_list_id_1;
         public TextView chat_list_id_2;
         public TextView chat_last_msg;
+        public TextView chat_last_time;
         public View list_rootView;
 
         public CircleImageView circle_imgv;
@@ -38,6 +39,7 @@ public class chat_list_Adapter extends RecyclerView.Adapter<chat_list_Adapter.Li
             chat_list_id_1 = v.findViewById(R.id.chat_list_id_1);
             chat_list_id_2 = v.findViewById(R.id.chat_list_id_2);
             chat_last_msg = v.findViewById(R.id.chat_last_msg);
+            chat_last_time = v.findViewById(R.id.list_time);
             list_rootView = v;
             circle_imgv = v.findViewById(R.id.circle_imgv);
             v.setClickable(true);
@@ -73,6 +75,7 @@ public class chat_list_Adapter extends RecyclerView.Adapter<chat_list_Adapter.Li
         }
 
         holder.chat_last_msg.setText(chatD.getLast_msg());
+        holder.chat_last_time.setText(getLastTime(chatD.getLast_time()));
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -118,5 +121,29 @@ public class chat_list_Adapter extends RecyclerView.Adapter<chat_list_Adapter.Li
     @Override
     public int getItemViewType(int position){           //오버라이딩 하지 않으면 view 꼬임
         return position;
+    }
+
+
+
+
+    private String getLastTime(long regTime){
+        long curTime = System.currentTimeMillis();
+        long diffTime = (curTime - regTime) / 1000;
+        String msg = null;
+        if (diffTime < 60) {
+            msg = "방금 전";
+        } else if ((diffTime /= 60) < 60) {
+            msg = diffTime + "분 전";
+        } else if ((diffTime /= 60) < 24) {
+            msg = (diffTime) + "시간 전";
+        } else if ((diffTime /= 24) < 30) {
+            msg = (diffTime) + "일 전";
+        } else if ((diffTime /= 30) < 12) {
+            msg = (diffTime) + "달 전";
+        } else {
+            msg = (diffTime) + "년 전";
+        }
+        return msg;
+
     }
 }

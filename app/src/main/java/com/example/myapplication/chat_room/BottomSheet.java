@@ -43,6 +43,7 @@ import java.io.File;
 import java.io.InputStream;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Locale;
 
 public class BottomSheet extends BottomSheetDialogFragment {
 
@@ -160,6 +161,7 @@ public class BottomSheet extends BottomSheetDialogFragment {
                         chat_list_data chatL= new chat_list_data();
                         chatL.setID_1(name);
                         chatL.setID_2(name_other);
+                        chatL.setLast_time(getNow());
                         chatL.setLast_msg(name+"님이 사진을 보냈습니다.");
 
                         root.child(room_name).child("chat_info").setValue(chatL);
@@ -177,8 +179,9 @@ public class BottomSheet extends BottomSheetDialogFragment {
     private String getTime() {
         long now = System.currentTimeMillis();
         Date date = new Date(now);
-        SimpleDateFormat msg_dateFormat = new SimpleDateFormat("hh:mm aa");
+        SimpleDateFormat msg_dateFormat = new SimpleDateFormat("hh:mm aa", Locale.KOREA);
         String time = msg_dateFormat.format(date);
+
 
         return time;
     }
@@ -188,6 +191,12 @@ public class BottomSheet extends BottomSheetDialogFragment {
     public interface BottomSheetListener{
         void onButtonClicked();
     }
+    private long getNow(){
+        long now = System.currentTimeMillis();
+        return now;
+
+    }
+
 }
 
 

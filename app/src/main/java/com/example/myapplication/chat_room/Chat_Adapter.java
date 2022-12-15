@@ -18,7 +18,11 @@ import com.bumptech.glide.Glide;
 import com.example.myapplication.R;
 
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
+import java.util.TimeZone;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
@@ -165,6 +169,9 @@ public class Chat_Adapter extends RecyclerView.Adapter<Chat_Adapter.MyViewHolder
         mDataset.add(chat);
         notifyItemInserted(mDataset.size()-1);
     }
+
+
+
 
 
     @Override
