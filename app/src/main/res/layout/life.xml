@@ -43,10 +43,10 @@
 
             <Button
                 android:id="@+id/menu"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:layout_gravity="right"
-                android:background="@drawable/menu"
+                android:layout_width="31dp"
+                android:layout_height="31dp"
+                android:layout_gravity="center"
+                android:background="@drawable/life_profile"
                 android:gravity="center" />
 
             <Button
