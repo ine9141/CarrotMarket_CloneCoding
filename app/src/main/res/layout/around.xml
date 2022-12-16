@@ -72,6 +72,91 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:background="#ffffff"
+                android:layout_marginBottom="7dp">
+
+                <TableLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingBottom="10dp"
+                    android:stretchColumns="*">
+
+                    <TableRow>
+
+                        <ImageButton
+                            android:layout_width="70dp"
+                            android:layout_height="70dp"
+                            android:gravity="center"
+                            android:src="@drawable/job"
+                            android:background="#ffffff"
+                            android:scaleType="centerCrop"/>
+
+                        <ImageButton
+                            android:layout_width="70dp"
+                            android:layout_height="70dp"
+                            android:gravity="center"
+                            android:src="@drawable/car"
+                            android:background="#ffffff"
+                            android:scaleType="centerCrop"/>
+
+                        <ImageButton
+                            android:layout_width="70dp"
+                            android:layout_height="70dp"
+                            android:gravity="center"
+                            android:src="@drawable/house"
+                            android:background="#ffffff"
+                            android:scaleType="centerCrop"/>
+
+                        <ImageButton
+                            android:layout_width="70dp"
+                            android:layout_height="70dp"
+                            android:gravity="center"
+                            android:src="@drawable/mini"
+                            android:background="#ffffff"
+                            android:scaleType="centerCrop"/>
+                    </TableRow>
+
+                    <TableRow>
+
+                        <ImageButton
+                            android:layout_width="70dp"
+                            android:layout_height="70dp"
+                            android:gravity="center"
+                            android:src="@drawable/farm"
+                            android:background="#ffffff"
+                            android:scaleType="centerCrop"/>
+
+                        <ImageButton
+                            android:layout_width="70dp"
+                            android:layout_height="70dp"
+                            android:gravity="center"
+                            android:src="@drawable/coupon"
+                            android:background="#ffffff"
+                            android:scaleType="centerCrop"/>
+
+                        <ImageButton
+                            android:layout_width="70dp"
+                            android:layout_height="70dp"
+                            android:gravity="center"
+                            android:src="@drawable/study"
+                            android:background="#ffffff"
+                            android:scaleType="centerCrop"/>
+
+                        <ImageButton
+                            android:layout_width="70dp"
+                            android:layout_height="70dp"
+                            android:gravity="center"
+                            android:src="@drawable/map"
+                            android:background="#ffffff"
+                            android:scaleType="centerCrop"/>
+                    </TableRow>
+                </TableLayout>
+            </LinearLayout>
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -82,7 +167,7 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="ㅇㅇ동 이웃들은 어디로 갈까?"
+                    android:text="이웃들은 어디로 갈까?"
                     android:textColor="#000000"
                     android:textSize="20dp" />
 
@@ -159,9 +244,9 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="ㅇㅇ님 근처에서 할 수 있는 알바를 모았어요" />
+                    android:text="근처에서 할 수 있는 알바를 모았어요" />
                 <ListView
-                    android:id="@+id/jop_list"
+                    android:id="@+id/job_list"
                     android:layout_width="match_parent"
                     android:layout_height="210dp" />
                 <Button

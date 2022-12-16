@@ -38,7 +38,7 @@ public class job_list_adapter extends BaseAdapter {
 
         if(view == null) {
             LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            view = inflater.inflate(R.layout.jop_list_item, viewGroup, false);
+            view = inflater.inflate(R.layout.job_list_item, viewGroup, false);
         }
         ImageView img = (ImageView) view.findViewById(R.id.img);
         TextView local = (TextView) view.findViewById(R.id.local);
