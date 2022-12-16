@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.annotation.SuppressLint;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -40,7 +41,8 @@ public class chat extends AppCompatActivity {
     private RecyclerView.LayoutManager lLayoutManager;
     private List<chat_list_data> chat_data;
     private DatabaseReference lRef;
-
+    public static Context mContext;
+    public String uri;
 
     @SuppressLint("MissingInflatedId")
     @Override
@@ -148,6 +150,8 @@ public class chat extends AppCompatActivity {
             }
         });
 
+        uri =secondIntent.getStringExtra("img_uri");
+        mContext = this;
 
 
         FirebaseDatabase database = FirebaseDatabase.getInstance();

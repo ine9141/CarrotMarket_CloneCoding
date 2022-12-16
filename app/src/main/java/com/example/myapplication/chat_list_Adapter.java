@@ -4,6 +4,7 @@ import static android.content.Intent.getIntent;
 
 import android.content.Context;
 import android.content.Intent;
+import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -27,6 +28,7 @@ public class chat_list_Adapter extends RecyclerView.Adapter<chat_list_Adapter.Li
 
     public List<chat_list_data> lDataset;
     private String myNickName;
+
 
     public static class ListViewHolder extends RecyclerView.ViewHolder{
         public TextView chat_list_id_1;
@@ -52,6 +54,7 @@ public class chat_list_Adapter extends RecyclerView.Adapter<chat_list_Adapter.Li
             v.setEnabled(true);
 
 
+
         }
     }
     public chat_list_Adapter(List<chat_list_data> myDataset, Context context, String myNickName){
@@ -73,7 +76,8 @@ public class chat_list_Adapter extends RecyclerView.Adapter<chat_list_Adapter.Li
     public void onBindViewHolder(@NonNull ListViewHolder holder, int position) {
         chat_list_data chatD = lDataset.get(position);
 
-        //Glide.with(holder.itemView).load().override(60,60).into(holder.list_imgv);
+
+        Glide.with(holder.itemView).load("https://firebasestorage.googleapis.com/v0/b/mobile-programming-978f9.appspot.com/o/posts%2F"+"1671125155109"+".jpg?alt=media").override(60,60).into(holder.list_imgv);
 
         if(myNickName.equals(chatD.getID_1())){
             holder.chat_list_id_2.setText(chatD.getID_2());
