@@ -8,6 +8,7 @@ import android.os.Handler;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -18,6 +19,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
 import com.example.myapplication.R;
 import com.example.myapplication.chat_list_data;
 import com.google.firebase.database.ChildEventListener;
@@ -51,6 +53,7 @@ public class chat_room_activity extends AppCompatActivity implements BottomSheet
     private ImageButton btn_back, btn_call, btn_set, btn_send, btn_add;
     private DatabaseReference myRef;
     private TextView chat_price, chat_title;
+    private ImageView chat_room_imgv;
 
     @SuppressLint("MissingInflatedId")
     @Override
@@ -71,6 +74,8 @@ public class chat_room_activity extends AppCompatActivity implements BottomSheet
         img_uri = intent.getStringExtra("uri");
 
 
+
+
         if (myName == null || otherName == null) {
             Toast.makeText(getApplicationContext(), "아이디 필요", Toast.LENGTH_SHORT).show();
             finish();
@@ -88,17 +93,23 @@ public class chat_room_activity extends AppCompatActivity implements BottomSheet
         chat_title = findViewById(R.id.chat_room_title);
         chat_price = findViewById(R.id.chat_room_price);
         EditText_chat = findViewById(R.id.Edit_msg);
+        chat_room_imgv = findViewById(R.id.chat_room_imgv);
+
         other_name_room = (TextView) findViewById(R.id.other_name_room);
         other_name_room.setText(otherName);
 
         if(price != null){
             chat_title.setText(title);
-            chat_price.setText(price);
+            chat_price.setText(price+"원");
+            Glide.with(chat_room_activity.this)
+                    .load("https://firebasestorage.googleapis.com/v0/b/mobile-programming-978f9.appspot.com/o/posts%2F"+img_uri+".jpg?alt=media")
+                    .into(chat_room_imgv);
         }
 
         if (url != null) {
             EditText_chat.setText(url);
         }
+
 
         mRecyclerView = findViewById(R.id.chat_recycler_view);
         mRecyclerView.setHasFixedSize(true);
@@ -156,10 +167,11 @@ public class chat_room_activity extends AppCompatActivity implements BottomSheet
 
                     chatP.setPrice(price);
                     chatP.setTitle(title);
+                    chatP.setImg_uri(img_uri);
 
                     myRef.child("chat").child(chat_room_name).child("chat_info").setValue(chatL);
                     myRef.child("chat").child(chat_room_name).child("chat_log").push().setValue(chat);
-                    if(price != null) {
+                    if(price != null) {     //채팅탭으로 넘어온 경우 price와 title, img_uri가 null
                         myRef.child("chat").child(chat_room_name).child("chat_price_title").setValue(chatP);
                     }
                 }
@@ -216,7 +228,11 @@ public class chat_room_activity extends AppCompatActivity implements BottomSheet
                 if(snapshot.getValue(chat_list_data.class) != null){
                     chat_price_title chatP = snapshot.getValue(chat_price_title.class);
                     chat_title.setText(chatP.getTitle());
-                    chat_price.setText(chatP.getPrice());
+                    chat_price.setText(chatP.getPrice()+"원");
+                   //Toast.makeText(chat_room_activity.this, chatP.getImg_uri(),Toast.LENGTH_LONG).show();
+                    Glide.with(chat_room_activity.this)
+                            .load("https://firebasestorage.googleapis.com/v0/b/mobile-programming-978f9.appspot.com/o/posts%2F"+chatP.getImg_uri()+".jpg?alt=media")
+                            .into(chat_room_imgv);
                 }
 
 
