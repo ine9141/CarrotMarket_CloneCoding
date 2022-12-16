@@ -1,10 +1,7 @@
 package com.example.myapplication;
-
 import static android.content.Intent.getIntent;
-
 import android.content.Context;
 import android.content.Intent;
-import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,6 +9,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -23,13 +21,9 @@ import com.example.myapplication.post.write_info;
 import java.util.List;
 
 import de.hdodenhof.circleimageview.CircleImageView;
-
 public class chat_list_Adapter extends RecyclerView.Adapter<chat_list_Adapter.ListViewHolder> {
-
     public List<chat_list_data> lDataset;
     private String myNickName;
-
-
     public static class ListViewHolder extends RecyclerView.ViewHolder{
         public TextView chat_list_id_1;
         public TextView chat_list_id_2;
@@ -53,16 +47,12 @@ public class chat_list_Adapter extends RecyclerView.Adapter<chat_list_Adapter.Li
             v.setClickable(true);
             v.setEnabled(true);
 
-
-
         }
     }
     public chat_list_Adapter(List<chat_list_data> myDataset, Context context, String myNickName){
         lDataset = myDataset;
         this.myNickName = myNickName;
-
     }
-
     @NonNull
     @Override
     public chat_list_Adapter.ListViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
@@ -71,13 +61,14 @@ public class chat_list_Adapter extends RecyclerView.Adapter<chat_list_Adapter.Li
         ListViewHolder lh = new ListViewHolder(v);
         return lh;
     }
-
     @Override
     public void onBindViewHolder(@NonNull ListViewHolder holder, int position) {
         chat_list_data chatD = lDataset.get(position);
 
-
-        Glide.with(holder.itemView).load("https://firebasestorage.googleapis.com/v0/b/mobile-programming-978f9.appspot.com/o/posts%2F"+"1671125155109"+".jpg?alt=media").override(60,60).into(holder.list_imgv);
+        Glide.with(holder.itemView)
+                .load("https://firebasestorage.googleapis.com/v0/b/mobile-programming-978f9.appspot.com/o/posts%2F"+"1671125155109"+".jpg?alt=media")
+                .override(60,60)
+                .into(holder.list_imgv);
 
         if(myNickName.equals(chatD.getID_1())){
             holder.chat_list_id_2.setText(chatD.getID_2());
@@ -85,10 +76,8 @@ public class chat_list_Adapter extends RecyclerView.Adapter<chat_list_Adapter.Li
         else{
             holder.chat_list_id_2.setText(chatD.getID_1());
         }
-
         holder.chat_last_msg.setText(chatD.getLast_msg());
         holder.chat_last_time.setText(getLastTime(chatD.getLast_time()));
-
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -98,10 +87,7 @@ public class chat_list_Adapter extends RecyclerView.Adapter<chat_list_Adapter.Li
                 v.getContext().startActivity(intent);
             }
         });
-
-
     }
-
     @Override
     public int getItemCount() {
         return lDataset == null ? 0 : lDataset.size();
@@ -115,7 +101,6 @@ public class chat_list_Adapter extends RecyclerView.Adapter<chat_list_Adapter.Li
             lDataset.add(chat);
             notifyDataSetChanged();
         }
-
     }
     public void setChatList(chat_list_data chat){
         if(chat.getID_1() == null) return;
@@ -129,15 +114,10 @@ public class chat_list_Adapter extends RecyclerView.Adapter<chat_list_Adapter.Li
             notifyDataSetChanged();
         }
     }
-
     @Override
     public int getItemViewType(int position){           //오버라이딩 하지 않으면 view 꼬임
         return position;
     }
-
-
-
-
     private String getLastTime(long regTime){
         long curTime = System.currentTimeMillis();
         long diffTime = (curTime - regTime) / 1000;
@@ -156,6 +136,5 @@ public class chat_list_Adapter extends RecyclerView.Adapter<chat_list_Adapter.Li
             msg = (diffTime) + "년 전";
         }
         return msg;
-
     }
 }
