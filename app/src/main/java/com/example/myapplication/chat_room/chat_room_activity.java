@@ -45,7 +45,7 @@ public class chat_room_activity extends AppCompatActivity implements BottomSheet
     private String user_dong;
     private String url;
     private String chat_room_name;
-    private String price, title,uri;
+    private String price, title,img_uri;
     private TextView other_name_room;
     private EditText EditText_chat;
     private ImageButton btn_back, btn_call, btn_set, btn_send, btn_add;
@@ -68,7 +68,7 @@ public class chat_room_activity extends AppCompatActivity implements BottomSheet
         url = intent.getStringExtra("URL");
         price = intent.getStringExtra("price");
         title = intent.getStringExtra("title");
-        uri = intent.getStringExtra("uri");
+        img_uri = intent.getStringExtra("uri");
 
 
         if (myName == null || otherName == null) {
