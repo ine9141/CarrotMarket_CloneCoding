@@ -37,7 +37,6 @@ public class chat_list_Adapter extends RecyclerView.Adapter<chat_list_Adapter.Li
         public CircleImageView circle_imgv;
 
 
-
         public ListViewHolder(View v){
             super(v);
             chat_list_id_1 = v.findViewById(R.id.chat_list_id_1);
@@ -67,9 +66,9 @@ public class chat_list_Adapter extends RecyclerView.Adapter<chat_list_Adapter.Li
     @Override
     public void onBindViewHolder(@NonNull ListViewHolder holder, int position) {
         chat_list_data chatD = lDataset.get(position);
-
+        String uri = chatD.getImg_uri();
         Glide.with(holder.itemView)
-                .load("https://firebasestorage.googleapis.com/v0/b/mobile-programming-978f9.appspot.com/o/posts%2F"+"1671125155109"+".jpg?alt=media")
+                .load("https://firebasestorage.googleapis.com/v0/b/mobile-programming-978f9.appspot.com/o/posts%2F"+uri+".jpg?alt=media")
                 .override(60,60)
                 .into(holder.list_imgv);
 
