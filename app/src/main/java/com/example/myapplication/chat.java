@@ -168,12 +168,14 @@ public class chat extends AppCompatActivity {
                    public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
                        chat_list_data chat_D = snapshot.getValue(chat_list_data.class);
                        ((chat_list_Adapter)lAdapter).addChatList(chat_D);
+                       ((chat_list_Adapter)lAdapter).sortList();
                    }
 
                    @Override
                    public void onChildChanged(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
                        chat_list_data chat_D = snapshot.getValue(chat_list_data.class);
                        ((chat_list_Adapter)lAdapter).setChatList(chat_D);
+                       ((chat_list_Adapter)lAdapter).sortList();
                    }
 
                    @Override

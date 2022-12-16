@@ -18,6 +18,9 @@ import com.bumptech.glide.Glide;
 import com.example.myapplication.chat_room.Chat_Data;
 import com.example.myapplication.post.write_info;
 
+import java.util.Collection;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 import de.hdodenhof.circleimageview.CircleImageView;
@@ -98,7 +101,7 @@ public class chat_list_Adapter extends RecyclerView.Adapter<chat_list_Adapter.Li
     public void addChatList(chat_list_data chat){
         if(chat.getID_1() == null) return;
         if(chat.getID_1().equals(myNickName) || chat.getID_2().equals(myNickName)) {
-            lDataset.add(chat);
+            lDataset.add(0,chat);
             notifyDataSetChanged();
         }
     }
@@ -113,7 +116,21 @@ public class chat_list_Adapter extends RecyclerView.Adapter<chat_list_Adapter.Li
             lDataset.set(i, chat);
             notifyDataSetChanged();
         }
+
     }
+    public void sortList(){
+        Collections.sort(lDataset,cmpAsc);
+    }
+    Comparator<chat_list_data> cmpAsc = new Comparator<chat_list_data>() {
+        @Override
+        public int compare(chat_list_data s1, chat_list_data s2) {
+            if (s1.getLast_time() > s2.getLast_time())
+                return -1;
+            else
+                return 1;
+        }
+    };
+
     @Override
     public int getItemViewType(int position){           //오버라이딩 하지 않으면 view 꼬임
         return position;
