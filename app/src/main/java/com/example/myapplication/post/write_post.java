@@ -6,6 +6,8 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.database.Cursor;
+import android.provider.MediaStore;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
@@ -68,7 +70,7 @@ public class write_post extends AppCompatActivity {
 
         done_button = (Button) findViewById(R.id.done_button);
         add_image_button = (ImageButton) findViewById(R.id.add_image_button);
-        imageView = (ImageView)findViewById(R.id.imageView);
+        imageView = (ImageView) findViewById(R.id.imageView);
         storage = FirebaseStorage.getInstance();
         redo_button = (FloatingActionButton) findViewById(R.id.redoButton);
 
@@ -87,9 +89,6 @@ public class write_post extends AppCompatActivity {
         });
 
 
-
-
-
         done_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -102,7 +101,7 @@ public class write_post extends AppCompatActivity {
 
 
                 } catch (FileNotFoundException e) {
-                    Toast.makeText(write_post.this, "실패",Toast.LENGTH_SHORT).show();
+                    Toast.makeText(write_post.this, "실패", Toast.LENGTH_SHORT).show();
                 }
             }
         });
@@ -122,7 +121,7 @@ public class write_post extends AppCompatActivity {
 
     private void storageUpload() throws FileNotFoundException {
         final String title = ((EditText) findViewById(R.id.titleEditText)).getText().toString();
-        final int price = Integer.parseInt(((EditText)findViewById(R.id.priceEditText)).getText().toString());
+        final int price = Integer.parseInt(((EditText) findViewById(R.id.priceEditText)).getText().toString());
         final String contents = ((EditText) findViewById(R.id.contentsEditText)).getText().toString();
         String cur = String.valueOf(System.currentTimeMillis());
 
@@ -131,42 +130,40 @@ public class write_post extends AppCompatActivity {
             FirebaseFirestore db = FirebaseFirestore.getInstance();
             final DocumentReference documentReference = db.collection("post").document();
 
-            if(uri != null){
+            if (uri != null) {
                 StorageReference storageRef = storage.getReference();
 
-                StorageReference mountainsRef = storageRef.child("posts/"+cur+".jpg");
+                StorageReference mountainsRef = storageRef.child("posts/" + cur + ".jpg");
                 UploadTask uploadTask = mountainsRef.putFile(uri);
                 uploadTask.addOnFailureListener(new OnFailureListener() {
                     @Override
                     public void onFailure(@NonNull Exception e) {
-                        Toast.makeText(write_post.this,"사진 업로드 실패",Toast.LENGTH_SHORT).show();
+                        Toast.makeText(write_post.this, "사진 업로드 실패", Toast.LENGTH_SHORT).show();
                     }
 
                 }).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                     @Override
                     public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                        Toast.makeText(write_post.this,"사진 업로드 완료",Toast.LENGTH_SHORT).show();
+                        Toast.makeText(write_post.this, "사진 업로드 완료", Toast.LENGTH_SHORT).show();
 
                         mountainsRef.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
                             @Override
                             public void onSuccess(Uri uri) {
-                                Log.e("로그",uri.toString());
+                                Log.e("로그", uri.toString());
                             }
                         });
                     }
                 });
             }
             write_info writeInfo;
-            writeInfo = new write_info(title,price,contents,new Date(),cur,nick_name,s);
-            storeUpload(documentReference,writeInfo);
-        }
-
-        else{
+            writeInfo = new write_info(title, price, contents, new Date(), cur, nick_name, s);
+            storeUpload(documentReference, writeInfo);
+        } else {
             startToast("제목,카테고리,내용은 필수 입력 항목이에요.");
         }
     }
 
-    private void storeUpload(DocumentReference documentReference,write_info writeInfo){
+    private void storeUpload(DocumentReference documentReference, write_info writeInfo) {
         documentReference.set(writeInfo)
                 .addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override
@@ -182,26 +179,23 @@ public class write_post extends AppCompatActivity {
                 });
     }
 
-    private void startToast(String msg)
-    { Toast.makeText(this, msg, Toast.LENGTH_SHORT).show();}
-
+    private void startToast(String msg) {
+        Toast.makeText(this, msg, Toast.LENGTH_SHORT).show();
+    }
 
 
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
-        switch(requestCode) {
+        switch (requestCode) {
             case 1:
                 if (resultCode == RESULT_OK) {
                     uri = data.getData();
-                   imageView.setImageURI(uri);
+                    imageView.setImageURI(uri);
                 }
                 break;
         }
     }
-
-
-
 
 
 }
