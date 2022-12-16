@@ -50,10 +50,13 @@ public class chat_room_activity extends AppCompatActivity implements BottomSheet
     private String url;
     private String chat_room_name;
 
-    private TextView other_name_room;
+
+    private TextView other_name_room,chat_room_title, chat_room_price;
     private EditText EditText_chat;
     private ImageButton btn_back, btn_call, btn_set, btn_send, btn_add;
     private DatabaseReference myRef;
+
+
 
 
     @SuppressLint("MissingInflatedId")
@@ -71,6 +74,10 @@ public class chat_room_activity extends AppCompatActivity implements BottomSheet
         user_dong = intent.getStringExtra("user_dong");
         url = intent.getStringExtra("URL");
 
+        chat_room_title = findViewById(R.id.chat_room_title);
+        chat_room_title.setText(intent.getStringExtra("title"));
+        chat_room_price = findViewById(R.id.chat_room_price);
+        chat_room_price.setText(intent.getStringExtra("price"));
 
         if (myName == null || otherName == null) {
             Toast.makeText(getApplicationContext(), "아이디 필요", Toast.LENGTH_SHORT).show();

@@ -70,7 +70,7 @@ public class BottomSheet extends BottomSheetDialogFragment {
         chat_add_location = view.findViewById(R.id.Btn_chat_location);
         chat_add_img = view.findViewById(R.id.Btn_chat_img);
         chat_add_camera = view.findViewById(R.id.Btn_chat_camera);
-        imgv = view.findViewById(R.id.sample_img);
+
 
 
 
