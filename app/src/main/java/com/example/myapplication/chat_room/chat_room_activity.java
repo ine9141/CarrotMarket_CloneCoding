@@ -2,6 +2,7 @@ package com.example.myapplication.chat_room;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.View;
@@ -102,6 +103,13 @@ public class chat_room_activity extends AppCompatActivity implements BottomSheet
         mAdapter = new Chat_Adapter(chatList, chat_room_activity.this, myName);
         mRecyclerView.setAdapter(mAdapter);
 
+        btn_call.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent call_intent = new Intent(Intent.ACTION_DIAL, Uri.parse("tel:01055555555"));
+                startActivity(call_intent);
+            }
+        });
 
         btn_add.setOnClickListener(new View.OnClickListener() {
             @Override

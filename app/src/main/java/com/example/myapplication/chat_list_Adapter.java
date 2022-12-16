@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -14,7 +15,9 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
 import com.example.myapplication.chat_room.Chat_Data;
+import com.example.myapplication.post.write_info;
 
 import java.util.List;
 
@@ -31,8 +34,10 @@ public class chat_list_Adapter extends RecyclerView.Adapter<chat_list_Adapter.Li
         public TextView chat_last_msg;
         public TextView chat_last_time;
         public View list_rootView;
-
+        public ImageView list_imgv;
         public CircleImageView circle_imgv;
+
+
 
         public ListViewHolder(View v){
             super(v);
@@ -42,6 +47,7 @@ public class chat_list_Adapter extends RecyclerView.Adapter<chat_list_Adapter.Li
             chat_last_time = v.findViewById(R.id.list_time);
             list_rootView = v;
             circle_imgv = v.findViewById(R.id.circle_imgv);
+            list_imgv = v.findViewById(R.id.list_imgv);
             v.setClickable(true);
             v.setEnabled(true);
 
@@ -66,6 +72,8 @@ public class chat_list_Adapter extends RecyclerView.Adapter<chat_list_Adapter.Li
     @Override
     public void onBindViewHolder(@NonNull ListViewHolder holder, int position) {
         chat_list_data chatD = lDataset.get(position);
+
+        //Glide.with(holder.itemView).load().override(60,60).into(holder.list_imgv);
 
         if(myNickName.equals(chatD.getID_1())){
             holder.chat_list_id_2.setText(chatD.getID_2());

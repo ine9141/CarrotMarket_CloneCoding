@@ -13,7 +13,7 @@
         >
         <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/imgv"
-            android:src="@drawable/chat_img"
+            android:src="@drawable/profile"
             android:padding="0dp"
             android:scaleType="centerCrop"
             android:layout_width="35dp"
