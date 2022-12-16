@@ -25,6 +25,7 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -44,12 +45,12 @@ public class chat_room_activity extends AppCompatActivity implements BottomSheet
     private String user_dong;
     private String url;
     private String chat_room_name;
-
+    private String price, title;
     private TextView other_name_room;
     private EditText EditText_chat;
     private ImageButton btn_back, btn_call, btn_set, btn_send, btn_add;
     private DatabaseReference myRef;
-
+    private TextView chat_price, chat_title;
 
     @SuppressLint("MissingInflatedId")
     @Override
@@ -65,6 +66,9 @@ public class chat_room_activity extends AppCompatActivity implements BottomSheet
         otherName = intent.getStringExtra("otherName");
         user_dong = intent.getStringExtra("user_dong");
         url = intent.getStringExtra("URL");
+        price = intent.getStringExtra("price");
+        title = intent.getStringExtra("title");
+
 
 
         if (myName == null || otherName == null) {
@@ -81,9 +85,16 @@ public class chat_room_activity extends AppCompatActivity implements BottomSheet
         btn_call = (ImageButton) findViewById(R.id.btn_call);
         btn_set = (ImageButton) findViewById(R.id.btn_set_chat);
         btn_add = (ImageButton) findViewById(R.id.Btn_add_chat);
+        chat_title = findViewById(R.id.chat_room_title);
+        chat_price = findViewById(R.id.chat_room_price);
         EditText_chat = findViewById(R.id.Edit_msg);
         other_name_room = (TextView) findViewById(R.id.other_name_room);
         other_name_room.setText(otherName);
+
+        if(price != null){
+            chat_title.setText(title);
+            chat_price.setText(price);
+        }
 
         if (url != null) {
             EditText_chat.setText(url);
@@ -141,6 +152,8 @@ public class chat_room_activity extends AppCompatActivity implements BottomSheet
                     chatL.setLast_msg(msg);
                     chatL.setUser_dong(user_dong);
                     chatL.setLast_time(getNow());
+                    chatL.setTitle(title);
+                    chatL.setPrice(price);
 
                     myRef.child("chat").child(chat_room_name).child("chat_info").setValue(chatL);
                     myRef.child("chat").child(chat_room_name).child("chat_log").push().setValue(chat);
@@ -157,6 +170,19 @@ public class chat_room_activity extends AppCompatActivity implements BottomSheet
         myRef = database.getReference();
 
 
+        myRef.child("chat").child(chat_room_name).child("chat_info").addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                chat_list_data chatL = snapshot.getValue(chat_list_data.class);
+                chat_title.setText(chatL.getTitle());
+                chat_price.setText(chatL.getPrice());
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
 
         myRef.child("chat").child(chat_room_name).child("chat_log").addChildEventListener(new ChildEventListener() {
             @Override

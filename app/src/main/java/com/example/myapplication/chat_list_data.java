@@ -7,6 +7,9 @@ public class chat_list_data {
     private String user_dong;
     private long last_time;
 
+    private String title;
+    private String price;
+
     public String getID_1(){
         return id_1;
     }
@@ -25,5 +28,10 @@ public class chat_list_data {
     public void setUser_dong(String user_dong) { this.user_dong = user_dong; }
     public void setLast_time(long last_time){this.last_time = last_time; }
     public long getLast_time(){ return last_time; }
+
+    public String getTitle(){ return title; }
+    public void setTitle(String title){ this.title = title; }
+    public String getPrice(){ return price; }
+    public void setPrice(String price){ this.price = price; }
 
 }
