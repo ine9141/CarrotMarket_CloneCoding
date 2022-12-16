@@ -170,19 +170,7 @@ public class chat_room_activity extends AppCompatActivity implements BottomSheet
         myRef = database.getReference();
 
 
-        myRef.child("chat").child(chat_room_name).child("chat_info").addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                chat_list_data chatL = snapshot.getValue(chat_list_data.class);
-                chat_title.setText(chatL.getTitle());
-                chat_price.setText(chatL.getPrice());
-            }
 
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-
-            }
-        });
 
         myRef.child("chat").child(chat_room_name).child("chat_log").addChildEventListener(new ChildEventListener() {
             @Override
@@ -209,6 +197,24 @@ public class chat_room_activity extends AppCompatActivity implements BottomSheet
 
             @Override
             public void onChildMoved(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+
+        myRef.child("chat").child(chat_room_name).child("chat_info").addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                if(snapshot.getValue(chat_list_data.class) != null){
+                    chat_list_data chatL = snapshot.getValue(chat_list_data.class);
+                    chat_title.setText(chatL.getTitle());
+                    chat_price.setText(chatL.getPrice());
+                }
+
 
             }
 
