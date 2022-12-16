@@ -4,150 +4,169 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <ScrollView
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
-
-            <ImageView
-                android:id="@+id/post_picture"
-                android:layout_width="match_parent"
-                android:layout_height="400dp"
-                android:maxHeight="400dp" />
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:layout_marginHorizontal="10dp"
-                android:background="#aaa" />
-
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <de.hdodenhof.circleimageview.CircleImageView
-                    android:id="@+id/imageView"
-                    android:layout_width="0dp"
-                    android:layout_height="60dp"
-                    android:layout_gravity="center"
-                    android:layout_marginLeft="15dp"
-                    android:layout_weight="1"
-                    android:src="@drawable/profile"
-                    app:civ_border_color="#818181"
-                    app:civ_border_overlay="true"
-                    app:civ_border_width="1dp" />
-
-
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="70dp"
-                    android:layout_margin="10dp"
-                    android:layout_weight="4"
-                    android:orientation="vertical">
-
-                    <TextView
-                        android:id="@+id/user_name"
-                        android:layout_width="match_parent"
-                        android:layout_height="35dp"
-                        android:gravity="center|left"
-                        android:text="닉네임"
-                        android:textSize="15dp"
-                        android:textStyle="bold" />
-
-                    <TextView
-                        android:id="@+id/dong_name"
-                        android:layout_width="match_parent"
-                        android:layout_height="35dp"
-                        android:text="주소" />
-
-                </LinearLayout>
-            </LinearLayout>
-
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:layout_marginHorizontal="10dp"
-                android:background="#aaa" />
-
-
-            <TextView
-                android:id="@+id/title"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="10dp"
-                android:background="@null"
-                android:text="제목"
-                android:textSize="20dp"
-                android:textStyle="bold" />
-
-            <TextView
-                android:id="@+id/view_post_time"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="OO월 OO일 OO시 OO분"
-                android:textSize="10dp" />
-
-            <TextView
-                android:id="@+id/text"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="10dp"
-                android:background="@null"
-                android:text="내용"
-                android:textSize="15dp" />
-
-        </LinearLayout>
-    </ScrollView>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom"
-        android:layout_weight="1"
-        android:background="@drawable/my_border"
-        android:orientation="horizontal"
-        android:paddingBottom="0dp">
-
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent">
-
-            <Button
-                android:id="@+id/heart_button"
-                android:layout_width="35dp"
-                android:layout_height="40dp"
-                android:layout_gravity="center"
-                android:layout_margin="20dp"
-                android:background="@drawable/heart_drawble" />
-        </LinearLayout>
-
-        <LinearLayout
+        <ScrollView
+            android:layout_alignParentTop="true"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:id="@+id/post_picture"
+                    android:layout_width="430dp"
+                    android:layout_gravity="center"
+                    android:layout_height="430dp"
+                    android:maxWidth="430dp"
+                    android:maxHeight="430dp" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginHorizontal="10dp"
+                    android:background="#aaa" />
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <de.hdodenhof.circleimageview.CircleImageView
+                        android:id="@+id/imageView"
+                        android:layout_width="0dp"
+                        android:layout_height="60dp"
+                        android:layout_gravity="center"
+                        android:layout_marginLeft="15dp"
+                        android:layout_weight="1"
+                        android:src="@drawable/profile"
+                        app:civ_border_color="#818181"
+                        app:civ_border_overlay="true"
+                        app:civ_border_width="1dp" />
+
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="70dp"
+                        android:layout_margin="10dp"
+                        android:layout_weight="4"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/user_name"
+                            android:layout_width="match_parent"
+                            android:layout_height="35dp"
+                            android:gravity="center|left"
+                            android:text="닉네임"
+                            android:textSize="15dp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/dong_name"
+                            android:layout_width="match_parent"
+                            android:layout_height="35dp"
+                            android:text="주소" />
+
+                    </LinearLayout>
+                </LinearLayout>
+
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginHorizontal="10dp"
+                    android:background="#aaa" />
+
+
+                <TextView
+                    android:id="@+id/title"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="20dp"
+                    android:background="@null"
+                    android:text="제목"
+                    android:textSize="24dp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/view_post_time"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="OO월 OO일 OO시 OO분"
+                    android:layout_marginLeft="10dp"
+                    android:textSize="15dp" />
+
+                <TextView
+                    android:id="@+id/text"
+                    android:layout_width="match_parent"
+                    android:layout_height="300dp"
+                    android:layout_margin="10dp"
+                    android:background="@null"
+                    android:text="내용"
+                    android:textSize="18dp" />
+
+            </LinearLayout>
+        </ScrollView>
+
+        <LinearLayout
+            android:layout_alignParentBottom="true"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:background="@drawable/my_border"
+            android:orientation="horizontal">
+
+
+            <Button
+                android:id="@+id/heart_button"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_gravity="center"
+                android:layout_margin="15dp"
+                android:background="@drawable/heart_drawble" />
+
+            <View
+                android:layout_width="1dp"
+                android:layout_height="match_parent"
+                android:layout_marginVertical="15dp"
+                android:background="#aaa" />
+
+
             <TextView
                 android:id="@+id/price"
-                android:layout_width="0dp"
+                android:layout_width="wrap_content"
                 android:layout_height="80dp"
-                android:layout_weight="2" />
+                android:layout_marginLeft="10dp"
+                android:gravity="center|left"
+                android:text="50000"
+                android:textColor="@color/black"
+                android:textSize="30dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="80dp"
+                android:layout_weight="1"
+                android:gravity="center|left"
+                android:text=" 원"
+                android:textColor="@color/black"
+                android:textSize="30dp" />
+
 
             <Button
                 android:id="@+id/chatbtn"
-                android:layout_width="0dp"
-                android:layout_height="55dp"
-                android:layout_gravity="center"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center|right"
                 android:layout_marginRight="10dp"
-                android:layout_weight="1"
                 android:background="@color/carrot"
-                android:text="채팅하기" />
-
+                android:text="채팅하기"
+                android:textColor="@color/white" />
         </LinearLayout>
-    </LinearLayout>
-
+    </RelativeLayout>
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
