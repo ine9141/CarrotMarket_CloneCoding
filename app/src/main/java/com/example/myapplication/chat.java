@@ -41,8 +41,7 @@ public class chat extends AppCompatActivity {
     private RecyclerView.LayoutManager lLayoutManager;
     private List<chat_list_data> chat_data;
     private DatabaseReference lRef;
-    public static Context mContext;
-    public String uri;
+
 
     @SuppressLint("MissingInflatedId")
     @Override
@@ -150,8 +149,7 @@ public class chat extends AppCompatActivity {
             }
         });
 
-        uri =secondIntent.getStringExtra("img_uri");
-        mContext = this;
+
 
 
         FirebaseDatabase database = FirebaseDatabase.getInstance();

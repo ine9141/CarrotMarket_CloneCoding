@@ -152,9 +152,10 @@ public class chat_room_activity extends AppCompatActivity implements BottomSheet
                     chatL.setLast_msg(msg);
                     chatL.setUser_dong(user_dong);
                     chatL.setLast_time(getNow());
-                    chatL.setTitle(title);
-                    chatL.setPrice(price);
-
+                    if(title != null) {
+                        chatL.setTitle(title);
+                        chatL.setPrice(price);
+                    }
                     myRef.child("chat").child(chat_room_name).child("chat_info").setValue(chatL);
                     myRef.child("chat").child(chat_room_name).child("chat_log").push().setValue(chat);
 
@@ -209,11 +210,11 @@ public class chat_room_activity extends AppCompatActivity implements BottomSheet
         myRef.child("chat").child(chat_room_name).child("chat_info").addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                if(snapshot.getValue(chat_list_data.class) != null){
+                //if(snapshot.getValue(chat_list_data.class) != null){
                     chat_list_data chatL = snapshot.getValue(chat_list_data.class);
                     chat_title.setText(chatL.getTitle());
                     chat_price.setText(chatL.getPrice());
-                }
+                //}
 
 
             }
