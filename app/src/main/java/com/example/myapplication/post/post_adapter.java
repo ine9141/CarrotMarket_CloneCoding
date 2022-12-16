@@ -1,4 +1,3 @@
-
 package com.example.myapplication.post;
 
 import android.annotation.SuppressLint;
@@ -53,6 +52,7 @@ public class post_adapter extends RecyclerView.Adapter<post_adapter.postViewHold
                 .load("https://firebasestorage.googleapis.com/v0/b/mobile-programming-978f9.appspot.com/o/posts%2F"+writeInfo.getUri()+".jpg?alt=media")
                 .into(holder.goods_img);
 
+
         holder.titleTextView.setText(writeInfo.getTitle());
         holder.priceTextView.setText(String.valueOf(writeInfo.getPrice()));
         holder.localTextView.setText(writeInfo.getDong());
@@ -72,6 +72,7 @@ public class post_adapter extends RecyclerView.Adapter<post_adapter.postViewHold
                 post_page.putExtra("dong",arrayList.get(position).getDong());
                 post_page.putExtra("uri",arrayList.get(position).getUri());
                 post_page.putExtra("dong_s",((home)home.mContext).s);
+                post_page.putExtra("uri",arrayList.get(position).getUri());
                 post_page.putExtra("nick_name",((home)home.mContext).nick_name);
                 post_page.putExtra("time",getLastTime(arrayList.get(position).getCreateAt().getTime()));
                 ((home) context).startActivity(post_page);
