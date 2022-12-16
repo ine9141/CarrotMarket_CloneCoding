@@ -45,7 +45,7 @@ public class chat_room_activity extends AppCompatActivity implements BottomSheet
     private String user_dong;
     private String url;
     private String chat_room_name;
-    private String price, title;
+    private String price, title,uri;
     private TextView other_name_room;
     private EditText EditText_chat;
     private ImageButton btn_back, btn_call, btn_set, btn_send, btn_add;
@@ -68,7 +68,7 @@ public class chat_room_activity extends AppCompatActivity implements BottomSheet
         url = intent.getStringExtra("URL");
         price = intent.getStringExtra("price");
         title = intent.getStringExtra("title");
-
+        uri = intent.getStringExtra("uri");
 
 
         if (myName == null || otherName == null) {
@@ -146,19 +146,22 @@ public class chat_room_activity extends AppCompatActivity implements BottomSheet
 
 
                     chat_list_data chatL= new chat_list_data();
-
+                    chat_price_title chatP = new chat_price_title();
                     chatL.setID_1(myName);
                     chatL.setID_2(otherName);
                     chatL.setLast_msg(msg);
                     chatL.setUser_dong(user_dong);
                     chatL.setLast_time(getNow());
-                    if(title != null) {
-                        chatL.setTitle(title);
-                        chatL.setPrice(price);
-                    }
+
+
+                    chatP.setPrice(price);
+                    chatP.setTitle(title);
+
                     myRef.child("chat").child(chat_room_name).child("chat_info").setValue(chatL);
                     myRef.child("chat").child(chat_room_name).child("chat_log").push().setValue(chat);
-
+                    if(price != null) {
+                        myRef.child("chat").child(chat_room_name).child("chat_price_title").setValue(chatP);
+                    }
                 }
 
                 EditText_chat.setText("");
@@ -207,14 +210,14 @@ public class chat_room_activity extends AppCompatActivity implements BottomSheet
             }
         });
 
-        myRef.child("chat").child(chat_room_name).child("chat_info").addListenerForSingleValueEvent(new ValueEventListener() {
+        myRef.child("chat").child(chat_room_name).child("chat_price_title").addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                //if(snapshot.getValue(chat_list_data.class) != null){
-                    chat_list_data chatL = snapshot.getValue(chat_list_data.class);
-                    chat_title.setText(chatL.getTitle());
-                    chat_price.setText(chatL.getPrice());
-                //}
+                if(snapshot.getValue(chat_list_data.class) != null){
+                    chat_price_title chatP = snapshot.getValue(chat_price_title.class);
+                    chat_title.setText(chatP.getTitle());
+                    chat_price.setText(chatP.getPrice());
+                }
 
 
             }

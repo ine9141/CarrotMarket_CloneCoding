@@ -134,6 +134,7 @@ public class post_page extends AppCompatActivity {
                 intent.putExtra("text", txt);
                 intent.putExtra("price", num);
                 intent.putExtra("otherName", other_name);
+                intent.putExtra("uri",uri);
                 startActivity(intent);
             }
         });
