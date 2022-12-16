@@ -34,6 +34,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 
 public class chat_room_activity extends AppCompatActivity implements BottomSheet.BottomSheetListener {
 
@@ -44,6 +45,7 @@ public class chat_room_activity extends AppCompatActivity implements BottomSheet
     private List<chat_list_data> chatListData;
     private String myName = "user1";
     private String otherName;
+    private String user_dong;
     private String url;
     private String chat_room_name;
 
@@ -65,6 +67,7 @@ public class chat_room_activity extends AppCompatActivity implements BottomSheet
         Intent intent = getIntent();
         myName = intent.getStringExtra("myName");
         otherName = intent.getStringExtra("otherName");
+        user_dong = intent.getStringExtra("user_dong");
         url = intent.getStringExtra("URL");
 
 
@@ -127,11 +130,15 @@ public class chat_room_activity extends AppCompatActivity implements BottomSheet
                     chat.setMsg(msg);
                     chat.setTime(msg_time);
 
+
                     chat_list_data chatL= new chat_list_data();
 
                     chatL.setID_1(myName);
                     chatL.setID_2(otherName);
                     chatL.setLast_msg(msg);
+                    chatL.setUser_dong(user_dong);
+                    chatL.setLast_time(getNow());
+
                     myRef.child("chat").child(chat_room_name).child("chat_info").setValue(chatL);
                     myRef.child("chat").child(chat_room_name).child("chat_log").push().setValue(chat);
 
@@ -195,14 +202,24 @@ public class chat_room_activity extends AppCompatActivity implements BottomSheet
     private String getTime() {
         long now = System.currentTimeMillis();
         Date date = new Date(now);
-        SimpleDateFormat msg_dateFormat = new SimpleDateFormat("hh:mm aa");
+        SimpleDateFormat msg_dateFormat = new SimpleDateFormat("hh:mm aa", Locale.KOREA);
         String time = msg_dateFormat.format(date);
 
         return time;
     }
+    private long getNow(){
+        long now = System.currentTimeMillis();
+        return now;
+
+    }
+
 
     @Override
     public void onButtonClicked() {
 
     }
+
+
+
+
 }

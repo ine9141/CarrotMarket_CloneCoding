@@ -7,6 +7,7 @@ public class Chat_Data {
     private String name;
     private String time;
 
+
     public String getMsg(){
         return msg;
     }
@@ -21,5 +22,6 @@ public class Chat_Data {
     }
     public String getTime() { return time; }
     public void setTime(String time) { this.time = time; }
+
 
 }

@@ -91,6 +91,7 @@ public class chat extends AppCompatActivity {
                 Intent intent = new Intent(getApplicationContext(),com.example.myapplication.chat_room.chat_room_activity.class);
                 intent.putExtra("myName",nick_name);
                 intent.putExtra("otherName",otherName.getText().toString());
+                intent.putExtra("user_dong",s);
                 startActivity(intent);
 
             }

@@ -2,12 +2,15 @@ package com.example.myapplication.chat_room;
 
 import static android.app.Activity.RESULT_OK;
 
+import android.Manifest;
 import android.content.ContentResolver;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -21,7 +24,10 @@ import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 
+import com.example.myapplication.MainActivity;
 import com.example.myapplication.R;
 
 import com.example.myapplication.chat_list_data;
@@ -33,9 +39,11 @@ import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 
+import java.io.File;
 import java.io.InputStream;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Locale;
 
 public class BottomSheet extends BottomSheetDialogFragment {
 
@@ -46,6 +54,7 @@ public class BottomSheet extends BottomSheetDialogFragment {
 
     private ImageButton chat_add_location;
     private ImageButton chat_add_img;
+    private ImageButton chat_add_camera;
     private Uri imgUri;
 
 
@@ -60,7 +69,7 @@ public class BottomSheet extends BottomSheetDialogFragment {
 
         chat_add_location = view.findViewById(R.id.Btn_chat_location);
         chat_add_img = view.findViewById(R.id.Btn_chat_img);
-
+        chat_add_camera = view.findViewById(R.id.Btn_chat_camera);
         imgv = view.findViewById(R.id.sample_img);
 
 
@@ -73,12 +82,23 @@ public class BottomSheet extends BottomSheetDialogFragment {
                 intent.setAction(Intent.ACTION_GET_CONTENT);
                 intent.setType("image/");
                 activityResult.launch(intent);
-                if(imgUri != null)
-                    uploadToFirebase(imgUri);
+
 
             }
         });
+        chat_add_camera.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                int permissionCheck = ContextCompat.checkSelfPermission(getContext(), Manifest.permission.CAMERA);
+                if(permissionCheck == PackageManager.PERMISSION_DENIED ){
+                    Toast.makeText(getContext(),"권한 필요",Toast.LENGTH_SHORT).show();
+                }else{
+                    Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
 
+                    activityResult.launch(intent);
+                }
+            }
+        });
 
 
 
@@ -98,15 +118,26 @@ public class BottomSheet extends BottomSheetDialogFragment {
         return view;
 
     } //oncreateView
+
     ActivityResultLauncher<Intent> activityResult = registerForActivityResult(
             new ActivityResultContracts.StartActivityForResult(),
             new ActivityResultCallback<ActivityResult>() {
                 @Override
                 public void onActivityResult(ActivityResult result) {
+
                     if(result.getResultCode() == RESULT_OK && result.getData() != null){
-                        imgUri = result.getData().getData();
-                        uploadToFirebase(imgUri);
+                        if(result.getData().getData() == null){
+                            //imgUri = MediaStore.Images.Media.EXTERNAL_CONTENT_URI;
+                          //  Toast.makeText(getContext(),imgUri.toString(),Toast.LENGTH_SHORT).show();
+                           // uploadToFirebase(imgUri);
+                        } else{
+                            imgUri = result.getData().getData();
+                           // Toast.makeText(getContext(),imgUri.toString(),Toast.LENGTH_SHORT).show();
+                            uploadToFirebase(imgUri);
+                        }
+
                     }
+
                 }
             }
     );
@@ -130,6 +161,7 @@ public class BottomSheet extends BottomSheetDialogFragment {
                         chat_list_data chatL= new chat_list_data();
                         chatL.setID_1(name);
                         chatL.setID_2(name_other);
+                        chatL.setLast_time(getNow());
                         chatL.setLast_msg(name+"님이 사진을 보냈습니다.");
 
                         root.child(room_name).child("chat_info").setValue(chatL);
@@ -143,11 +175,13 @@ public class BottomSheet extends BottomSheetDialogFragment {
     }
 
 
+
     private String getTime() {
         long now = System.currentTimeMillis();
         Date date = new Date(now);
-        SimpleDateFormat msg_dateFormat = new SimpleDateFormat("hh:mm aa");
+        SimpleDateFormat msg_dateFormat = new SimpleDateFormat("hh:mm aa", Locale.KOREA);
         String time = msg_dateFormat.format(date);
+
 
         return time;
     }
@@ -157,6 +191,12 @@ public class BottomSheet extends BottomSheetDialogFragment {
     public interface BottomSheetListener{
         void onButtonClicked();
     }
+    private long getNow(){
+        long now = System.currentTimeMillis();
+        return now;
+
+    }
+
 }
 
 

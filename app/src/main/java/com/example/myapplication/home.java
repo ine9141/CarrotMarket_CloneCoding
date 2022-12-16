@@ -189,6 +189,8 @@ public class home extends AppCompatActivity {
                             if (progressDialog.isShowing())
                                 progressDialog.dismiss();
                         }
+                        if (progressDialog.isShowing())
+                            progressDialog.dismiss();
                     }
                 });
     }

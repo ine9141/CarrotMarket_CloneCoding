@@ -124,7 +124,7 @@ public class write_post extends AppCompatActivity {
         final String title = ((EditText) findViewById(R.id.titleEditText)).getText().toString();
         final int price = Integer.parseInt(((EditText)findViewById(R.id.priceEditText)).getText().toString());
         final String contents = ((EditText) findViewById(R.id.contentsEditText)).getText().toString();
-        String send_uri;
+        String cur = String.valueOf(System.currentTimeMillis());
 
         if (title.length() > 0 && contents.length() > 0) {
             FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
@@ -133,7 +133,8 @@ public class write_post extends AppCompatActivity {
 
             if(uri != null){
                 StorageReference storageRef = storage.getReference();
-                StorageReference mountainsRef = storageRef.child("posts/"+documentReference.getId()+".jpg");
+
+                StorageReference mountainsRef = storageRef.child("posts/"+cur+".jpg");
                 UploadTask uploadTask = mountainsRef.putFile(uri);
                 uploadTask.addOnFailureListener(new OnFailureListener() {
                     @Override
@@ -154,12 +155,9 @@ public class write_post extends AppCompatActivity {
                         });
                     }
                 });
-                send_uri = uri.toString();
             }
-            else send_uri = "";
-
             write_info writeInfo;
-            writeInfo = new write_info(title,price,contents,new Date(),send_uri,nick_name,s);
+            writeInfo = new write_info(title,price,contents,new Date(),cur,nick_name,s);
             storeUpload(documentReference,writeInfo);
         }
 
