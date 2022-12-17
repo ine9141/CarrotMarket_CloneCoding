@@ -117,7 +117,7 @@ public class chat_list_Adapter extends RecyclerView.Adapter<chat_list_Adapter.Li
             notifyDataSetChanged();
         }
     }
-    public void setChatList(chat_list_data chat, chat_list_img chatI){
+    public void setChatList(chat_list_data chat){
         if(chat.getID_1() == null) return;
         if(chat.getID_1().equals(myNickName) || chat.getID_2().equals(myNickName)) {
             int i;
@@ -126,30 +126,17 @@ public class chat_list_Adapter extends RecyclerView.Adapter<chat_list_Adapter.Li
                     break;
             }
             lDataset.set(i, chat);
-            if(chatI.getRoom_name()!=null) {
-                //IDataset.set(i, chatI);
-            }
             notifyDataSetChanged();
         }
 
     }
     public void sortList(){
         Collections.sort(lDataset,cmpAsc);
-        //Collections.sort(IDataset, cmpAsc_I);
     }
     Comparator<chat_list_data> cmpAsc = new Comparator<chat_list_data>() {
         @Override
         public int compare(chat_list_data s1, chat_list_data s2) {
             if (s1.getLast_time() > s2.getLast_time())
-                return -1;
-            else
-                return 1;
-        }
-    };
-    Comparator<chat_list_img>cmpAsc_I = new Comparator<chat_list_img>() {
-        @Override
-        public int compare(chat_list_img o1, chat_list_img o2) {
-            if(o1.getLast_time() > o2.getLast_time())
                 return -1;
             else
                 return 1;

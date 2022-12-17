@@ -164,7 +164,6 @@ public class chat_room_activity extends AppCompatActivity implements BottomSheet
                     chatL.setLast_msg(msg);
                     chatL.setUser_dong(user_dong);
                     chatL.setLast_time(getNow());
-                    chatL.setImg_uri(img_uri);
 
                     chatP.setPrice(price);
                     chatP.setTitle(title);

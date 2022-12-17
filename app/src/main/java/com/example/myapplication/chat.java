@@ -169,8 +169,6 @@ public class chat extends AppCompatActivity {
                    public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
                        chat_list_data chat_D = snapshot.getValue(chat_list_data.class);
                        chat_list_img chat_I = snapshot.getValue(chat_list_img.class);
-                       if(chat_I.getRoom_name()!=null)
-                           Toast.makeText(chat.this ,chat_I.getRoom_name(),Toast.LENGTH_SHORT).show();
                        ((chat_list_Adapter)lAdapter).addChatList(chat_D,chat_I);
                        ((chat_list_Adapter)lAdapter).sortList();
                    }
@@ -178,9 +176,7 @@ public class chat extends AppCompatActivity {
                    @Override
                    public void onChildChanged(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
                        chat_list_data chat_D = snapshot.getValue(chat_list_data.class);
-                       chat_list_img chat_I = snapshot.getValue(chat_list_img.class);
-
-                       ((chat_list_Adapter)lAdapter).setChatList(chat_D,chat_I);
+                       ((chat_list_Adapter)lAdapter).setChatList(chat_D);
                        ((chat_list_Adapter)lAdapter).sortList();
                    }
 

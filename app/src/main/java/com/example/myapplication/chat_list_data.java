@@ -6,7 +6,7 @@ public class chat_list_data {
     private String last_msg;
     private String user_dong;
     private long last_time;
-    private String img_uri;
+
 
 
 
@@ -29,8 +29,7 @@ public class chat_list_data {
     public void setLast_time(long last_time){this.last_time = last_time; }
     public long getLast_time(){ return last_time; }
 
-    public String getImg_uri(){return img_uri;}
-    public void setImg_uri(String img_uri){ this.img_uri = img_uri; }
+
 
 
 }
