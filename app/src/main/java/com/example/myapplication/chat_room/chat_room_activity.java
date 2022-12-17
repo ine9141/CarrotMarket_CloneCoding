@@ -159,6 +159,7 @@ public class chat_room_activity extends AppCompatActivity implements BottomSheet
                     chat_list_data chatL= new chat_list_data();
                     chat_price_title chatP = new chat_price_title();
                     chat_list_img chatI = new chat_list_img();
+
                     chatL.setID_1(myName);
                     chatL.setID_2(otherName);
                     chatL.setLast_msg(msg);
@@ -170,7 +171,6 @@ public class chat_room_activity extends AppCompatActivity implements BottomSheet
                     chatP.setImg_uri(img_uri);
 
                     chatI.setImg_uri(img_uri);
-                    chatI.setLast_time(getNow());
                     chatI.setRoom_name(chat_room_name);
 
                     myRef.child("chat").child(chat_room_name).child("chat_info").setValue(chatL);
