@@ -102,23 +102,15 @@ public class Chat_Adapter extends RecyclerView.Adapter<Chat_Adapter.MyViewHolder
     @Override
     public void onBindViewHolder(MyViewHolder holder, int position){
         Chat_Data chat = mDataset.get(position);
-
         holder.TextView_nickname.setText(chat.getName());
         holder.TextView_msg.setText(chat.getMsg());
-
         holder.TextView_time_left.setText(chat.getTime());
         holder.TextView_time_right.setText(chat.getTime());
-
-
-
         if(chat.getName().equals(this.myNickname)){
-
             holder.TextView_msg.setTextAlignment(View.TEXT_ALIGNMENT_VIEW_END);
             holder.TextView_msg.setBackgroundResource(R.drawable.round_send_msg);
             holder.TextView_msg.setTextColor(Color.WHITE);
             holder.chat_linear.setGravity(Gravity.RIGHT);
-
-
             holder.TextView_nickname.setVisibility(View.INVISIBLE);
             holder.Cir_img.setVisibility(View.INVISIBLE);
             holder.TextView_time_right.setVisibility(View.INVISIBLE);
@@ -132,19 +124,14 @@ public class Chat_Adapter extends RecyclerView.Adapter<Chat_Adapter.MyViewHolder
                 holder.chat_imgv.setMaxWidth(150);
                 holder.TextView_msg.setHeight(0);
                 holder.TextView_msg.setWidth(0);
-
             }
-
         }
         else{
-
             LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
             params.setMargins(0,0,0,0);
             holder.chat_linear.setLayoutParams(params);
-
             holder.TextView_msg.setTextAlignment(View.TEXT_ALIGNMENT_VIEW_START);
             holder.TextView_nickname.setTextAlignment(View.TEXT_ALIGNMENT_VIEW_START);
-
             holder.TextView_time_left.setVisibility(View.INVISIBLE);
             holder.TextView_time_left.setMaxWidth(0);
             holder.TextView_time_left.setMaxHeight(0);
@@ -153,7 +140,6 @@ public class Chat_Adapter extends RecyclerView.Adapter<Chat_Adapter.MyViewHolder
                 holder.chat_imgv.setVisibility(View.VISIBLE);
                 holder.TextView_msg.setHeight(0);
                 holder.TextView_msg.setWidth(0);
-
             }
         }
     }

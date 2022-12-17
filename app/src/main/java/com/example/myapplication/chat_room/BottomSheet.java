@@ -82,8 +82,6 @@ public class BottomSheet extends BottomSheetDialogFragment {
                 intent.setAction(Intent.ACTION_GET_CONTENT);
                 intent.setType("image/");
                 activityResult.launch(intent);
-
-
             }
         });
         chat_add_camera.setOnClickListener(new View.OnClickListener() {
@@ -94,7 +92,6 @@ public class BottomSheet extends BottomSheetDialogFragment {
                     Toast.makeText(getContext(),"권한 필요",Toast.LENGTH_SHORT).show();
                 }else{
                     Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-
                     activityResult.launch(intent);
                 }
             }
@@ -127,7 +124,7 @@ public class BottomSheet extends BottomSheetDialogFragment {
 
                     if(result.getResultCode() == RESULT_OK && result.getData() != null){
                         if(result.getData().getData() == null){
-                            //imgUri = MediaStore.Images.Media.EXTERNAL_CONTENT_URI;
+                            imgUri = MediaStore.Images.Media.EXTERNAL_CONTENT_URI;
                           //  Toast.makeText(getContext(),imgUri.toString(),Toast.LENGTH_SHORT).show();
                            // uploadToFirebase(imgUri);
                         } else{
