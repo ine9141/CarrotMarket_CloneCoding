@@ -20,11 +20,10 @@
 
                 <ImageView
                     android:id="@+id/post_picture"
-                    android:layout_width="430dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:layout_height="430dp"
-                    android:maxWidth="430dp"
-                    android:maxHeight="430dp" />
+                    android:scaleType="fitCenter" />
 
                 <View
                     android:layout_width="match_parent"
