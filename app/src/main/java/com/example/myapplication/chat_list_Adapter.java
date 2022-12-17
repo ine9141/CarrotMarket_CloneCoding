@@ -16,6 +16,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.example.myapplication.chat_room.Chat_Data;
+import com.example.myapplication.chat_room.chat_list_img;
 import com.example.myapplication.post.write_info;
 
 import java.util.Collection;
@@ -26,6 +27,7 @@ import java.util.List;
 import de.hdodenhof.circleimageview.CircleImageView;
 public class chat_list_Adapter extends RecyclerView.Adapter<chat_list_Adapter.ListViewHolder> {
     public List<chat_list_data> lDataset;
+    public List<chat_list_img> IDataset;
     private String myNickName;
     public static class ListViewHolder extends RecyclerView.ViewHolder{
         public TextView chat_list_id_1;
@@ -51,8 +53,9 @@ public class chat_list_Adapter extends RecyclerView.Adapter<chat_list_Adapter.Li
 
         }
     }
-    public chat_list_Adapter(List<chat_list_data> myDataset, Context context, String myNickName){
+    public chat_list_Adapter(List<chat_list_data> myDataset, Context context, String myNickName, List<chat_list_img> IIDataset){
         lDataset = myDataset;
+        IDataset = IIDataset;
         this.myNickName = myNickName;
     }
     @NonNull
@@ -66,11 +69,18 @@ public class chat_list_Adapter extends RecyclerView.Adapter<chat_list_Adapter.Li
     @Override
     public void onBindViewHolder(@NonNull ListViewHolder holder, int position) {
         chat_list_data chatD = lDataset.get(position);
-        String uri = chatD.getImg_uri();
-        Glide.with(holder.itemView)
-                .load("https://firebasestorage.googleapis.com/v0/b/mobile-programming-978f9.appspot.com/o/posts%2F"+uri+".jpg?alt=media")
-                .override(60,60)
-                .into(holder.list_imgv);
+
+        for(int i=0; i<IDataset.size(); i++){
+            if(IDataset.get(i).getRoom_name().contains(chatD.getID_1())&&
+                IDataset.get(i).getRoom_name().contains(chatD.getID_2())) {
+                String uri = IDataset.get(i).getImg_uri();
+                Glide.with(holder.itemView)
+                        .load("https://firebasestorage.googleapis.com/v0/b/mobile-programming-978f9.appspot.com/o/posts%2F"+uri+".jpg?alt=media")
+                        .override(60,60)
+                        .into(holder.list_imgv);
+                break;
+            }
+        }
 
         if(myNickName.equals(chatD.getID_1())){
             holder.chat_list_id_2.setText(chatD.getID_2());
@@ -97,14 +107,17 @@ public class chat_list_Adapter extends RecyclerView.Adapter<chat_list_Adapter.Li
     public chat_list_data getChat(int position){
         return lDataset != null ? lDataset.get(position) : null;
     }
-    public void addChatList(chat_list_data chat){
+    public void addChatList(chat_list_data chat, chat_list_img chatI){
+        if(chatI.getRoom_name()!=null) {
+            IDataset.add(chatI);
+        }
         if(chat.getID_1() == null) return;
         if(chat.getID_1().equals(myNickName) || chat.getID_2().equals(myNickName)) {
             lDataset.add(0,chat);
             notifyDataSetChanged();
         }
     }
-    public void setChatList(chat_list_data chat){
+    public void setChatList(chat_list_data chat, chat_list_img chatI){
         if(chat.getID_1() == null) return;
         if(chat.getID_1().equals(myNickName) || chat.getID_2().equals(myNickName)) {
             int i;
@@ -113,17 +126,30 @@ public class chat_list_Adapter extends RecyclerView.Adapter<chat_list_Adapter.Li
                     break;
             }
             lDataset.set(i, chat);
+            if(chatI.getRoom_name()!=null) {
+                //IDataset.set(i, chatI);
+            }
             notifyDataSetChanged();
         }
 
     }
     public void sortList(){
         Collections.sort(lDataset,cmpAsc);
+        //Collections.sort(IDataset, cmpAsc_I);
     }
     Comparator<chat_list_data> cmpAsc = new Comparator<chat_list_data>() {
         @Override
         public int compare(chat_list_data s1, chat_list_data s2) {
             if (s1.getLast_time() > s2.getLast_time())
+                return -1;
+            else
+                return 1;
+        }
+    };
+    Comparator<chat_list_img>cmpAsc_I = new Comparator<chat_list_img>() {
+        @Override
+        public int compare(chat_list_img o1, chat_list_img o2) {
+            if(o1.getLast_time() > o2.getLast_time())
                 return -1;
             else
                 return 1;

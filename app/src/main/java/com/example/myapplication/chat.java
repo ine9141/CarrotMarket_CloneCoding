@@ -19,6 +19,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.myapplication.chat_room.Chat_Data;
+import com.example.myapplication.chat_room.chat_list_img;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -40,6 +41,7 @@ public class chat extends AppCompatActivity {
     private RecyclerView.Adapter lAdapter;
     private RecyclerView.LayoutManager lLayoutManager;
     private List<chat_list_data> chat_data;
+    private List<chat_list_img> chat_I_data;
     private DatabaseReference lRef;
 
 
@@ -71,6 +73,7 @@ public class chat extends AppCompatActivity {
         lLayoutManager = new LinearLayoutManager(this);
         lRecyclerView.setLayoutManager(lLayoutManager);
         chat_data = new ArrayList<>();
+        chat_I_data = new ArrayList<>();
 
 
         //동네이름 설정
@@ -83,7 +86,7 @@ public class chat extends AppCompatActivity {
         if (secondIntent.hasExtra("nick_name")) {
             nick_name = secondIntent.getStringExtra("nick_name");
         }
-        lAdapter = new chat_list_Adapter(chat_data, chat.this, nick_name);
+        lAdapter = new chat_list_Adapter(chat_data, chat.this, nick_name, chat_I_data);
         lRecyclerView.setAdapter(lAdapter);
 
         go_chat.setOnClickListener(new View.OnClickListener() {
@@ -165,14 +168,19 @@ public class chat extends AppCompatActivity {
                    @Override
                    public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
                        chat_list_data chat_D = snapshot.getValue(chat_list_data.class);
-                       ((chat_list_Adapter)lAdapter).addChatList(chat_D);
+                       chat_list_img chat_I = snapshot.getValue(chat_list_img.class);
+                       if(chat_I.getRoom_name()!=null)
+                           Toast.makeText(chat.this ,chat_I.getRoom_name(),Toast.LENGTH_SHORT).show();
+                       ((chat_list_Adapter)lAdapter).addChatList(chat_D,chat_I);
                        ((chat_list_Adapter)lAdapter).sortList();
                    }
 
                    @Override
                    public void onChildChanged(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
                        chat_list_data chat_D = snapshot.getValue(chat_list_data.class);
-                       ((chat_list_Adapter)lAdapter).setChatList(chat_D);
+                       chat_list_img chat_I = snapshot.getValue(chat_list_img.class);
+
+                       ((chat_list_Adapter)lAdapter).setChatList(chat_D,chat_I);
                        ((chat_list_Adapter)lAdapter).sortList();
                    }
 

@@ -158,6 +158,7 @@ public class chat_room_activity extends AppCompatActivity implements BottomSheet
 
                     chat_list_data chatL= new chat_list_data();
                     chat_price_title chatP = new chat_price_title();
+                    chat_list_img chatI = new chat_list_img();
                     chatL.setID_1(myName);
                     chatL.setID_2(otherName);
                     chatL.setLast_msg(msg);
@@ -169,10 +170,17 @@ public class chat_room_activity extends AppCompatActivity implements BottomSheet
                     chatP.setTitle(title);
                     chatP.setImg_uri(img_uri);
 
+                    chatI.setImg_uri(img_uri);
+                    chatI.setLast_time(getNow());
+                    chatI.setRoom_name(chat_room_name);
+
                     myRef.child("chat").child(chat_room_name).child("chat_info").setValue(chatL);
                     myRef.child("chat").child(chat_room_name).child("chat_log").push().setValue(chat);
                     if(price != null) {     //채팅탭으로 넘어온 경우 price와 title, img_uri가 null
                         myRef.child("chat").child(chat_room_name).child("chat_price_title").setValue(chatP);
+                    }
+                    if(img_uri != null){
+                        myRef.child("chat").child(chat_room_name).child("chat_list_img").setValue(chatI);
                     }
                 }
 
